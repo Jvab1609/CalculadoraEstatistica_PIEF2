@@ -122,7 +122,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="370" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="367" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
@@ -133,7 +133,7 @@
                               <Component id="jToggleButton1" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="1107" max="32767" attributes="0"/>
+                      <EmptySpace pref="1110" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -395,7 +395,7 @@
                               <Component id="jScrollPane2" min="-2" pref="900" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="962" max="32767" attributes="0"/>
+                      <EmptySpace pref="959" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -455,6 +455,9 @@
               </Events>
             </Component>
             <Component class="javax.swing.JSpinner" name="jSpinner1">
+              <Events>
+                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSpinner1StateChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
               <Properties>
@@ -467,6 +470,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JSpinner" name="jSpinner2">
+              <Events>
+                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSpinner2StateChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JCheckBox" name="jCheckBox2">
               <Properties>
