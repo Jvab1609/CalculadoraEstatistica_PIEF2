@@ -647,8 +647,6 @@ public class Calculadora extends javax.swing.JFrame {
                         freq = 0;
                     }
                     
-                    
-                    
                     break;
                     
                 case 2:
@@ -661,13 +659,6 @@ public class Calculadora extends javax.swing.JFrame {
                         freq = 0;
                     }
                     preview = String.valueOf(((DefaultTableModel) jTable2.getModel()).getDataVector());
-                    
-
-                    
-                    
-                    
-                    
-                    
                     
                     break;     
             }
@@ -750,6 +741,7 @@ public class Calculadora extends javax.swing.JFrame {
             String linha = bf.readLine();
             ((DefaultTableModel) jTable3.getModel()).setRowCount(0);
             ((DefaultTableModel) jTable2.getModel()).setRowCount(0);
+            
             //System.out.println(linha);
             while(linha != null) {
                 StringTokenizer tokens = new StringTokenizer(linha, "|");
@@ -843,37 +835,49 @@ public class Calculadora extends javax.swing.JFrame {
                 if (parametros[4].equals("1")) {
                     if(jCheckBox2.isSelected() == false) {
                         jCheckBox2.doClick();
-                        ((DefaultTableModel) jTable2.getModel()).setColumnCount(2);
-       
-                        jTable2.getColumnModel().getColumn(0).setHeaderValue("Xi");
-                        jTable2.getColumnModel().getColumn(1).setHeaderValue("Fi");
+                        
                         tabelaFreq = true;
                     }
                 }
                 else {
                     if(jCheckBox2.isSelected() == true) {
                         jCheckBox2.doClick();
+                        tabelaFreq = false;
                     }
                 }
                 linha = bf.readLine();
                 tk = new StringTokenizer(linha, ";");
                 String[] linhaRead = new String[tk.countTokens()];
-                ((DefaultTableModel) jTable2.getModel()).setColumnCount(linhaRead.length);
+                
+                ((DefaultTableModel) jTable2.getModel()).setColumnCount(tk.countTokens());
+                if (tabelaFreq == true) {
+                    jTable2.getColumnModel().getColumn(0).setHeaderValue("Xi");
+                    jTable2.getColumnModel().getColumn(1).setHeaderValue("Fi");
+                }
+                else {
+                    jTable2.getColumnModel().getColumn(0).setHeaderValue("A");
+                    jTable2.getColumnModel().getColumn(1).setHeaderValue("B");
+                }
                 int numLinhas = 0;
-                while (linha != null) {
+                
+                boolean finalSeq = false;
+                while (finalSeq == false) {
                     tk = new StringTokenizer(linha, ";");
                     for (int i = 0; i < linhaRead.length; i++) {
                         linhaRead[i] = tk.nextToken();
-                        numLinhas += 1;
+                        System.out.print(linhaRead[i] + "    ");
+                        
                         if (linhaRead[i].endsWith("&zz")) {
-                            System.out.println("AAAAAAAAAAAAAAAAAAAAAA");
+                            //System.out.println("AAAAAAAAAAAAAAAAAAAAAA");
                             linhaRead[i] = linhaRead[i].substring(0, linhaRead[i].length() - 3);
                             System.out.println(linhaRead[i]);
                             
-                            break;
+                            finalSeq = true;
                         }
                         
                     }
+                    System.out.println("");
+                    numLinhas +=1;
                     linha = bf.readLine();
                     ((DefaultTableModel) jTable2.getModel()).addRow(linhaRead);
                     
