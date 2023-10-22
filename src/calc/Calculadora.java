@@ -619,103 +619,108 @@ public class Calculadora extends javax.swing.JFrame {
             writerHide = new FileWriter(historicoHide,true);
             UIManager.put("OptionPane.cancelButtonText", "Cancelar");
             UIManager.put("OptionPane.okButtonText", "OK");
-            String nomeSave = JOptionPane.showInputDialog(this, "Nome do salvamento: ", "Salvar no histórico", JOptionPane.QUESTION_MESSAGE, null, null, DISPOSE_ON_CLOSE).toString();
-            String tipoShow = null;
-            String tipoHide = null;
-            String preview = null;
-            int colunasArquivo = 0;
-            int freq = 0;
-            
-            
-            switch (jTabbedPane1.getSelectedIndex()) {
-                case 1:
-                    tipoShow = "Arquivo aberto";
-                    tipoHide = "arqv";
-                    File arquivoAberto = arquivo; 
-                    preview = arquivoAberto.getAbsolutePath();
-                    
-                    if (jCheckBox1.isSelected() == true) {
-                        colunasArquivo = 1;
-                    }
-                    else {
-                        colunasArquivo = 0;
-                    }
-                    if (jCheckBox3.isSelected() == true) {
-                        freq = 1;
-                    }
-                    else {
-                        freq = 0;
-                    }
-                    
-                    break;
-                    
-                case 2:
-                    tipoShow = "Dados digitados";
-                    tipoHide = "dados";
-                    if (jCheckBox2.isSelected() == true) {
-                        freq = 1;
-                    }
-                    else {
-                        freq = 0;
-                    }
-                    preview = String.valueOf(((DefaultTableModel) jTable2.getModel()).getDataVector());
-                    
-                    break;     
-            }
-            
-            
-            
-            
-            String linha = "";
-            String[] parametrosHide = {nomeSave, tipoHide, operacoes, String.valueOf(colunasArquivo), String.valueOf(freq)};
-            //System.out.println(parametrosHide[1]);
-            for (int i = 0; i < parametrosHide.length; i++) {
-                
-                linha += parametrosHide[i];
-                
-                if (i < parametrosHide.length-1) {
-                    linha += "|";
-                }
-            }
-            writerHide.write(linha+"\n");
-            
-            if (jTabbedPane1.getSelectedIndex() == 1) {
-                writerHide.write(preview+"\n");
-            }
-            else {
-                int n = ((DefaultTableModel) jTable2.getModel()).getRowCount();
-                    int c = ((DefaultTableModel) jTable2.getModel()).getColumnCount();
-                    for (int i = 0; i < n; i++) {
-                        linha = "";
-                        for (int j = 0; j < c; j++) {
-                            linha += jTable2.getValueAt(i, j);
-                            if(j < c-1) {
-                                linha += ";";
-                                // coloca o delimitador entre as strings, exceto para a última.
-                            }
-                            if (i == n-1 && j == c-1) {
-                                linha += "&zz";
-                            }
-                               
+            // String nomeSave = JOptionPane.showInputDialog(this, "Nome do salvamento: ", "Salvar no histórico", JOptionPane.QUESTION_MESSAGE, null, null, DISPOSE_ON_CLOSE).toString();
+            var nomeSave = JOptionPane.showInputDialog(this, "Nome do salvamento: ", "Salvar no histórico", JOptionPane.QUESTION_MESSAGE, null, null, DISPOSE_ON_CLOSE);
+            if (nomeSave != null) {
+                String nome = nomeSave.toString();
+                String tipoShow = null;
+                String tipoHide = null;
+                String preview = null;
+                int colunasArquivo = 0;
+                int freq = 0;
+
+
+                switch (jTabbedPane1.getSelectedIndex()) {
+                    case 1:
+                        tipoShow = "Arquivo aberto";
+                        tipoHide = "arqv";
+                        File arquivoAberto = arquivo; 
+                        preview = arquivoAberto.getAbsolutePath();
+
+                        if (jCheckBox1.isSelected() == true) {
+                            colunasArquivo = 1;
                         }
-                        
-                        writerHide.write(linha+"\n");
-                    }
-            }
-            
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");  
-            LocalDateTime atual = LocalDateTime.now();  
-            String data = dtf.format(atual);
-            
-            linha = "";
-            String[] parametrosShow = {nomeSave, tipoShow, operacoes, preview, data};
-            for (int i = 0; i < parametrosShow.length; i++) {
-                linha += parametrosShow[i];
-                if (i < parametrosShow.length-1) {
-                    linha += "|";
+                        else {
+                            colunasArquivo = 0;
+                        }
+                        if (jCheckBox3.isSelected() == true) {
+                            freq = 1;
+                        }
+                        else {
+                            freq = 0;
+                        }
+
+                        break;
+
+                    case 2:
+                        tipoShow = "Dados digitados";
+                        tipoHide = "dados";
+                        if (jCheckBox2.isSelected() == true) {
+                            freq = 1;
+                        }
+                        else {
+                            freq = 0;
+                        }
+                        preview = String.valueOf(((DefaultTableModel) jTable2.getModel()).getDataVector());
+
+                        break;     
                 }
+
+
+
+
+                String linha = "";
+                String[] parametrosHide = {nome, tipoHide, operacoes, String.valueOf(colunasArquivo), String.valueOf(freq)};
+                //System.out.println(parametrosHide[1]);
+                for (int i = 0; i < parametrosHide.length; i++) {
+
+                    linha += parametrosHide[i];
+
+                    if (i < parametrosHide.length-1) {
+                        linha += "|";
+                    }
+                }
+                writerHide.write(linha+"\n");
+
+                if (jTabbedPane1.getSelectedIndex() == 1) {
+                    writerHide.write(preview+"\n");
+                }
+                else {
+                    int n = ((DefaultTableModel) jTable2.getModel()).getRowCount();
+                        int c = ((DefaultTableModel) jTable2.getModel()).getColumnCount();
+                        for (int i = 0; i < n; i++) {
+                            linha = "";
+                            for (int j = 0; j < c; j++) {
+                                linha += jTable2.getValueAt(i, j);
+                                if(j < c-1) {
+                                    linha += ";";
+                                    // coloca o delimitador entre as strings, exceto para a última.
+                                }
+                                if (i == n-1 && j == c-1) {
+                                    linha += "&zz";
+                                }
+
+                            }
+
+                            writerHide.write(linha+"\n");
+                        }
+                }
+
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");  
+                LocalDateTime atual = LocalDateTime.now();  
+                String data = dtf.format(atual);
+
+                linha = "";
+                String[] parametrosShow = {nome, tipoShow, operacoes, preview, data};
+                for (int i = 0; i < parametrosShow.length; i++) {
+                    linha += parametrosShow[i];
+                    if (i < parametrosShow.length-1) {
+                        linha += "|";
+                    }
+                }
+                writerShow.write(linha+"\n");
             }
-            writerShow.write(linha+"\n");
+            
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this,
