@@ -1,24 +1,2 @@
-SAVE 1|dados|********|0|0
-1;1
-2;2
-3;3&zz
-SAVE 2|dados|********|0|0
-1;1;12
-2;2;13
-3;3;14&zz
-SSSSSSS|dados|********|0|0
-1;1;1;1
-2;2;2;2
-3;3;3;3&zz
-2|dados|********|0|0
-1;1;null;null;null
-2;2;null;null;null
-3;3&zz;null;null;null&zz
-ada|dados|********|0|1
-21;1
-11;1
-11;111&zz
-adadd|arqv|********|1|0
+BNROKER|arqv|********|1|0
 C:\Users\jvalb\OneDrive\Imagens (OneDrive)\Amostras.csv
-abba|arqv|********|0|1
-C:\Users\jvalb\OneDrive\Imagens (OneDrive)\freq.txt

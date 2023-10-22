@@ -625,7 +625,8 @@ public class Calculadora extends javax.swing.JFrame {
                 String nome = nomeSave.toString();
                 String tipoShow = null;
                 String tipoHide = null;
-                String preview = null;
+                String previewShow = null;
+                String previewHide = null;
                 int colunasArquivo = 0;
                 int freq = 0;
 
@@ -635,8 +636,8 @@ public class Calculadora extends javax.swing.JFrame {
                         tipoShow = "Arquivo aberto";
                         tipoHide = "arqv";
                         File arquivoAberto = arquivo; 
-                        preview = arquivoAberto.getAbsolutePath();
-
+                        previewHide = arquivoAberto.getAbsolutePath();
+                        previewShow = arquivoAberto.getName();
                         if (jCheckBox1.isSelected() == true) {
                             colunasArquivo = 1;
                         }
@@ -661,7 +662,7 @@ public class Calculadora extends javax.swing.JFrame {
                         else {
                             freq = 0;
                         }
-                        preview = String.valueOf(((DefaultTableModel) jTable2.getModel()).getDataVector());
+                        previewShow = String.valueOf(((DefaultTableModel) jTable2.getModel()).getDataVector());
 
                         break;     
                 }
@@ -683,7 +684,7 @@ public class Calculadora extends javax.swing.JFrame {
                 writerHide.write(linha+"\n");
 
                 if (jTabbedPane1.getSelectedIndex() == 1) {
-                    writerHide.write(preview+"\n");
+                    writerHide.write(previewHide+"\n");
                 }
                 else {
                     int n = ((DefaultTableModel) jTable2.getModel()).getRowCount();
@@ -711,7 +712,7 @@ public class Calculadora extends javax.swing.JFrame {
                 String data = dtf.format(atual);
 
                 linha = "";
-                String[] parametrosShow = {nome, tipoShow, operacoes, preview, data};
+                String[] parametrosShow = {nome, tipoShow, operacoes, previewShow, data};
                 for (int i = 0; i < parametrosShow.length; i++) {
                     linha += parametrosShow[i];
                     if (i < parametrosShow.length-1) {
