@@ -39,7 +39,15 @@ public class Calculadora extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     
+    // Declaração de variáveis que serão utilizadas por múltiplos métodos.
+    File arquivo = null;
+    FileWriter writer = null;
+    FileWriter writerShow = null;
+    FileWriter writerHide = null;
+    File historicoShow = new File("historicoCalculadoraSHOW.csv");
+    File historicoHide = new File("historicoCalculadoraHIDE.csv");
     boolean tabelaFreq;
+    
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -54,7 +62,7 @@ public class Calculadora extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        jButton9 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -140,10 +148,10 @@ public class Calculadora extends javax.swing.JFrame {
             }
         });
 
-        jToggleButton1.setText("Histórico");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButton9.setText("Histórico");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                jButton9ActionPerformed(evt);
             }
         });
 
@@ -160,7 +168,7 @@ public class Calculadora extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(1110, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -169,12 +177,11 @@ public class Calculadora extends javax.swing.JFrame {
                 .addGap(302, 302, 302)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(629, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(690, 690, 690))
         );
 
         jTabbedPane1.addTab("tab3", jPanel2);
@@ -477,6 +484,7 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        // Mostra o submenu quando o usuário clica em "Arquivo" no canto superior direito
         jPopupMenu1.show(this,10,50);
     }//GEN-LAST:event_jMenu1MouseClicked
     
@@ -486,6 +494,7 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     
+    // Gerencia a criação da tabela para digitação manual de dados
     public void criarDigitar(int numLinha, int numCol) {
         if (jCheckBox2.isSelected() == true) {
             jSpinner1.setValue(2);
@@ -506,22 +515,14 @@ public class Calculadora extends javax.swing.JFrame {
         }
     }
     
+    // Executa a criação da tabela para digitação
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int numCol = (int) jSpinner1.getValue();
         int numLinha = (int) jSpinner2.getValue();
         criarDigitar(numLinha,numCol);
     }//GEN-LAST:event_jButton2ActionPerformed
     
-    
-    
-    File arquivo = null;
-    FileWriter writer = null;
-    FileWriter writerShow = null;
-    FileWriter writerHide = null;
-    File historicoShow = new File("historicoCalculadoraSHOW.csv");
-    File historicoHide = new File("historicoCalculadoraHIDE.csv");
-   
-    
+    // Gerencia a escolha do arquivo a ser carregado
     public void escolherArquivo() {
         try {
             JFileChooser chooser = new JFileChooser();
@@ -550,7 +551,7 @@ public class Calculadora extends javax.swing.JFrame {
 
     }
     
-    
+    // Lê o arquivo escolhido
     public void lerArquivo() {
         try {
             ((DefaultTableModel) jTable1.getModel()).setColumnCount(0);
@@ -561,7 +562,6 @@ public class Calculadora extends javax.swing.JFrame {
             StringTokenizer tk = new StringTokenizer(linha, jTextField2.getText());
             
             int numCol = (int) tk.countTokens();
-            //System.out.println(numCol);
             if (jCheckBox3.isSelected() == true) {
                 if (numCol == 2) {
                     tabelaFreq = true;
@@ -569,7 +569,6 @@ public class Calculadora extends javax.swing.JFrame {
                 else {
                     tabelaFreq = false;
                     throw new Exception("O número de colunas do arquivo é diferente de 2. Impossível colocar no modelo tabela de frequência.");
-                    
                 }
             }
             else {
@@ -588,7 +587,6 @@ public class Calculadora extends javax.swing.JFrame {
                 
                 ((DefaultTableModel) jTable1.getModel()).setColumnCount(tk.countTokens());
                 if (tabelaFreq == true) {
-                    //((DefaultTableModel) jTable3.getModel()).setColumnCount(2);
                     jTable1.getColumnModel().getColumn(0).setHeaderValue("Xi");
                     jTable1.getColumnModel().getColumn(1).setHeaderValue("Fi");
                 }
@@ -612,14 +610,13 @@ public class Calculadora extends javax.swing.JFrame {
         }
     }
     
-    
+    // Salva as informações em ambos os arquivos de Histórico
     public void escreverHistorico(String operacoes) {
         try {
             writerShow = new FileWriter(historicoShow,true);
             writerHide = new FileWriter(historicoHide,true);
             UIManager.put("OptionPane.cancelButtonText", "Cancelar");
             UIManager.put("OptionPane.okButtonText", "OK");
-            // String nomeSave = JOptionPane.showInputDialog(this, "Nome do salvamento: ", "Salvar no histórico", JOptionPane.QUESTION_MESSAGE, null, null, DISPOSE_ON_CLOSE).toString();
             var nomeSave = JOptionPane.showInputDialog(this, "Nome do salvamento: ", "Salvar no histórico", JOptionPane.QUESTION_MESSAGE, null, null, DISPOSE_ON_CLOSE);
             if (nomeSave != null) {
                 String nome = nomeSave.toString();
@@ -629,7 +626,6 @@ public class Calculadora extends javax.swing.JFrame {
                 String previewHide = null;
                 int colunasArquivo = 0;
                 int freq = 0;
-
 
                 switch (jTabbedPane1.getSelectedIndex()) {
                     case 1:
@@ -667,12 +663,8 @@ public class Calculadora extends javax.swing.JFrame {
                         break;     
                 }
 
-
-
-
                 String linha = "";
                 String[] parametrosHide = {nome, tipoHide, operacoes, String.valueOf(colunasArquivo), String.valueOf(freq)};
-                //System.out.println(parametrosHide[1]);
                 for (int i = 0; i < parametrosHide.length; i++) {
 
                     linha += parametrosHide[i];
@@ -738,17 +730,15 @@ public class Calculadora extends javax.swing.JFrame {
         }
     }
     
+    // Exibe, em tabela, as informações armazenadas no arquivo que contém os dados de histórico a serem mostrados
     public void lerHistorico() {
         try {
-            // ((DefaultTableModel) jTable3.getModel()).setRowCount(0);
-            // System.out.println(historico.getAbsolutePath());
             FileReader reader = new FileReader(historicoShow);
             BufferedReader bf = new BufferedReader(reader);
             String linha = bf.readLine();
             ((DefaultTableModel) jTable3.getModel()).setRowCount(0);
             ((DefaultTableModel) jTable2.getModel()).setRowCount(0);
-            
-            //System.out.println(linha);
+
             while(linha != null) {
                 StringTokenizer tokens = new StringTokenizer(linha, "|");
                 String row[] = new String[5];
@@ -767,45 +757,32 @@ public class Calculadora extends javax.swing.JFrame {
         }
     }
     
+    // Carrega as informações do arquivo que permanece oculto ao usuário, para o tipo de tabela escolhido
     public void carregarHistorico() {
         try {
             FileReader reader = new FileReader(historicoHide);
             BufferedReader bf = new BufferedReader(reader);
             String linha = bf.readLine();
-            //System.out.println(linha);
             int row = jTable3.getSelectedRow();
             String nome = (String)jTable3.getValueAt(row, 0);
-            //System.out.println("nome " + nome);
             StringTokenizer tk = new StringTokenizer(linha, "|");
             String parametros[] = new String [tk.countTokens()];
-            //System.out.println(tk.countTokens());
-            //System.out.println("aqui1");
-            System.out.println(nome);
             while (linha != null) {
                 if (linha.startsWith(nome)) {
                     tk = new StringTokenizer(linha, "|");
                     for (int i = 0; i < 5; i++) {
                         parametros[i] = tk.nextToken();
-                        //System.out.println(parametros[i]);
                     }
-                    System.out.println(linha);
                     break;
                 }
                 else {
                     linha = bf.readLine();
                 }
-                //System.out.println("LINHA "+linha);
-                
             }
-            //System.out.println("aqui2");
-            // parametrosHide = {nomeSave, tipoHide, operacoes, String.valueOf(colunasArquivo), String.valueOf(freq)};
-            //System.out.println(parametros[3]);
-            System.out.println("1");
             
             if (parametros[1].equals("arqv")) {
                 linha = bf.readLine();
                 jTabbedPane1.setSelectedIndex(1);
-                System.out.println(linha);
                 arquivo = new File(linha);
                 
                 if (parametros[3].equals("1")) {
@@ -817,7 +794,6 @@ public class Calculadora extends javax.swing.JFrame {
                 else {
                     if(jCheckBox1.isSelected() == true) {
                         jCheckBox1.doClick();
-                        
                     }
                 }
                 
@@ -832,7 +808,6 @@ public class Calculadora extends javax.swing.JFrame {
                     }
                 }
                 jTextField1.setText(arquivo.getAbsolutePath());
-                //System.out.println(arquivo.getAbsolutePath());
                 lerArquivo();
             }
             else {
@@ -841,7 +816,6 @@ public class Calculadora extends javax.swing.JFrame {
                 if (parametros[4].equals("1")) {
                     if(jCheckBox2.isSelected() == false) {
                         jCheckBox2.doClick();
-                        
                         tabelaFreq = true;
                     }
                 }
@@ -871,28 +845,19 @@ public class Calculadora extends javax.swing.JFrame {
                     tk = new StringTokenizer(linha, ";");
                     for (int i = 0; i < linhaRead.length; i++) {
                         linhaRead[i] = tk.nextToken();
-                        System.out.print(linhaRead[i] + "    ");
                         
                         if (linhaRead[i].endsWith("&zz")) {
-                            //System.out.println("AAAAAAAAAAAAAAAAAAAAAA");
                             linhaRead[i] = linhaRead[i].substring(0, linhaRead[i].length() - 3);
-                            System.out.println(linhaRead[i]);
-                            
                             finalSeq = true;
                         }
                         
                     }
-                    System.out.println("");
                     numLinhas +=1;
                     linha = bf.readLine();
-                    ((DefaultTableModel) jTable2.getModel()).addRow(linhaRead);
-                    
+                    ((DefaultTableModel) jTable2.getModel()).addRow(linhaRead); 
                 }
                 jSpinner1.setValue(((DefaultTableModel) jTable2.getModel()).getColumnCount());
                 jSpinner2.setValue(((DefaultTableModel) jTable2.getModel()).getRowCount());
-                
-                
-                
             }
             
         } catch (Exception e) {
@@ -906,37 +871,32 @@ public class Calculadora extends javax.swing.JFrame {
     
     
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+        // Abre a tela de escolha de arquivo e muda de tela
         escolherArquivo();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // Muda para a digitação de dados e reseta a tabela
         jSpinner1.setValue(0);
         jSpinner2.setValue(0);
         ((DefaultTableModel) jTable2.getModel()).setColumnCount(0);
         ((DefaultTableModel) jTable2.getModel()).setRowCount(0);
         jTabbedPane1.setSelectedIndex(2);
-        
     }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        jTabbedPane1.setSelectedIndex(3);
-        lerHistorico();
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // Abre a tela de escolha de arquivo e muda de tela
         escolherArquivo();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // Lê o arquivo selecionado e transcreve os dados para a tabela
         try {
             lerArquivo();
-            
-            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this,
                     e.getMessage(), 
@@ -946,31 +906,35 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // Abre a tela de escolha de arquivo para trocar a seleção
         escolherArquivo();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // Muda para a tela de digitação de dados
         jTabbedPane1.setSelectedIndex(2);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // JOptionPane.showInputDialog(this, "Nome do salvamento: ", DISPOSE_ON_CLOSE);
+        // Escreve as informações no histórico
         escreverHistorico("********");
-        //lerHistorico();
-        
+
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+        // Abre o submenu para abrir o histórico
         jPopupMenu2.show(this,10,50);
     }//GEN-LAST:event_jMenu2MouseClicked
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // Muda para a tela de visualização de histórico e transcreve os dados salvos para a tabela
         jTabbedPane1.setSelectedIndex(3);
         lerHistorico();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
  
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+        // Coloca a tabela de digitação de dados na forma de tabela de frequência
         if (jCheckBox2.isSelected() == true) {
             jSpinner1.setValue(2);
             jSpinner1.setEnabled(false);
@@ -981,10 +945,12 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_jCheckBox2ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // Escreve as informações no histórico
         escreverHistorico("********");
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // Carrega os dados armazenados no arquivo oculto
         carregarHistorico();
     }//GEN-LAST:event_jButton8ActionPerformed
 
@@ -993,18 +959,26 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_jCheckBox3ActionPerformed
 
     private void jSpinner2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner2StateChanged
-        int s1 = (int) jSpinner2.getValue();
-        if (s1 < 0) {
+        // Previne o spinner das linhas de tomar valores negativos
+        int s2 = (int) jSpinner2.getValue();
+        if (s2 < 0) {
             jSpinner2.setValue(0);
         }
     }//GEN-LAST:event_jSpinner2StateChanged
 
     private void jSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner1StateChanged
-        int s2 = (int) jSpinner1.getValue();
-        if (s2 < 0) {
+        // Previne o spinner das colunas de tomar valores negativos
+        int s1 = (int) jSpinner1.getValue();
+        if (s1 < 0) {
             jSpinner1.setValue(0);
         }
     }//GEN-LAST:event_jSpinner1StateChanged
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // Muda da tela inicial para o histórico
+        jTabbedPane1.setSelectedIndex(3);
+        lerHistorico();
+    }//GEN-LAST:event_jButton9ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1050,6 +1024,7 @@ public class Calculadora extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
@@ -1082,6 +1057,5 @@ public class Calculadora extends javax.swing.JFrame {
     private javax.swing.JTable jTable3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }
