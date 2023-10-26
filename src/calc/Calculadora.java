@@ -913,6 +913,9 @@ public class Calculadora extends javax.swing.JFrame {
                     writerHide = new FileWriter(historicoHide,false);
                     writerHide.write("");
                     writerShow.write("");
+                    writerHide.close();
+                    writerShow.close();
+                    
                 }
             }
             else {
@@ -923,14 +926,7 @@ public class Calculadora extends javax.swing.JFrame {
                     e.getMessage(), 
                     "ERRO", 
                     JOptionPane.ERROR_MESSAGE);
-        } finally {
-            try {
-                writerShow.close();
-                writerHide.close();
-            } catch (IOException ex) {
-                
-            }
-        }
+        } 
         
     }
     
