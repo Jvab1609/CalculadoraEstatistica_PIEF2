@@ -89,6 +89,7 @@ public class Calculadora extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
         jButton8 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
@@ -298,7 +299,7 @@ public class Calculadora extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton6)
-                .addContainerGap(402, Short.MAX_VALUE))
+                .addContainerGap(463, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab1", jPanel1);
@@ -392,7 +393,7 @@ public class Calculadora extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton7)
-                .addContainerGap(407, Short.MAX_VALUE))
+                .addContainerGap(468, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab2", jPanel3);
@@ -423,6 +424,13 @@ public class Calculadora extends javax.swing.JFrame {
             }
         });
 
+        jButton10.setText("Limpar histórico");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -431,17 +439,22 @@ public class Calculadora extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 921, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton10))
                 .addContainerGap(835, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton8)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jButton8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton10))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(451, Short.MAX_VALUE))
+                .addContainerGap(512, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab4", jPanel4);
@@ -769,10 +782,23 @@ public class Calculadora extends javax.swing.JFrame {
     // Carrega as informações do arquivo que permanece oculto ao usuário, para o tipo de tabela escolhido
     public void carregarHistorico() {
         try {
+            
+            if (((DefaultTableModel) jTable3.getModel()).getRowCount() == 0) {
+                throw new Exception("O histórico está vazio.");
+            }
+            int row = jTable3.getSelectedRow();
+            System.out.println(row);
+            if (row == -1) {
+                throw new Exception("Nenhum salvamento selecionado.");
+            }
+            else if (row > 1) {
+                throw new Exception("Selecione apenas um salvamento.");
+            }
+          
             FileReader reader = new FileReader(historicoHide);
             BufferedReader bf = new BufferedReader(reader);
             String linha = bf.readLine();
-            int row = jTable3.getSelectedRow();
+            
             String nome = (String)jTable3.getValueAt(row, 0);
             StringTokenizer tk = new StringTokenizer(linha, "|");
             String parametros[] = new String [tk.countTokens()];
@@ -875,6 +901,37 @@ public class Calculadora extends javax.swing.JFrame {
                     "ERRO", 
                     JOptionPane.ERROR_MESSAGE);
         }
+    }
+    public void limparHistorico() {
+        try {
+            if (((DefaultTableModel) jTable3.getModel()).getRowCount() != 0) {
+                UIManager.put("OptionPane.cancelButtonText", "Cancelar");
+                UIManager.put("OptionPane.okButtonText", "OK");
+                var nomeSave = JOptionPane.showInputDialog(this, "Não será possível recuperar os dados uma vez que o histórico seja deletado.\nPara confirmar a limpeza do histórico, digite 'LIMPAR' abaixo:", "Limpar histórico?", JOptionPane.WARNING_MESSAGE, null, null, DISPOSE_ON_CLOSE);
+                if (nomeSave.toString().equals("LIMPAR")) {
+                    writerShow = new FileWriter(historicoShow,false);
+                    writerHide = new FileWriter(historicoHide,false);
+                    writerHide.write("");
+                    writerShow.write("");
+                }
+            }
+            else {
+                throw new Exception("O histórico já está vazio.");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,
+                    e.getMessage(), 
+                    "ERRO", 
+                    JOptionPane.ERROR_MESSAGE);
+        } finally {
+            try {
+                writerShow.close();
+                writerHide.close();
+            } catch (IOException ex) {
+                
+            }
+        }
+        
     }
     
     
@@ -994,7 +1051,8 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
-        
+        UIManager.put("OptionPane.noButtonText", "Não");
+        UIManager.put("OptionPane.yesButtonText", "Sim");
         int dialogButton = JOptionPane.YES_NO_OPTION;
         int dialogResult = JOptionPane.showConfirmDialog (this, "Deseja voltar ao início?","Voltar ao início?",dialogButton);
         if(dialogResult == JOptionPane.YES_OPTION){
@@ -1002,6 +1060,12 @@ public class Calculadora extends javax.swing.JFrame {
             jTabbedPane1.setSelectedIndex(0);
         }
     }//GEN-LAST:event_jMenu3MouseClicked
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+
+        limparHistorico();
+        lerHistorico();
+    }//GEN-LAST:event_jButton10ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1040,6 +1104,7 @@ public class Calculadora extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
