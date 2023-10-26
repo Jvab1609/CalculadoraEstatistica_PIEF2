@@ -90,6 +90,7 @@ public class Calculadora extends javax.swing.JFrame {
         jTable3 = new javax.swing.JTable();
         jButton8 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu3 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
@@ -446,6 +447,14 @@ public class Calculadora extends javax.swing.JFrame {
         jTabbedPane1.addTab("tab4", jPanel4);
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, 1920, 1100));
+
+        jMenu3.setText("Início");
+        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu3MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu3);
 
         jMenu1.setText("Dados");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -912,6 +921,10 @@ public class Calculadora extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // Muda para a tela de digitação de dados
+        jSpinner1.setValue(0);
+        jSpinner2.setValue(0);
+        ((DefaultTableModel) jTable2.getModel()).setColumnCount(0);
+        ((DefaultTableModel) jTable2.getModel()).setRowCount(0);
         jTabbedPane1.setSelectedIndex(2);
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -980,6 +993,16 @@ public class Calculadora extends javax.swing.JFrame {
         lerHistorico();
     }//GEN-LAST:event_jButton9ActionPerformed
 
+    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+        
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        int dialogResult = JOptionPane.showConfirmDialog (this, "Deseja voltar ao início?","Voltar ao início?",dialogButton);
+        if(dialogResult == JOptionPane.YES_OPTION){
+        //if JOptionPane.showConfirmDialog(this, "tem certeza que quer voltar ao início?", "voltar ao início", WIDTH, HEIGHT, null);
+            jTabbedPane1.setSelectedIndex(0);
+        }
+    }//GEN-LAST:event_jMenu3MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1035,6 +1058,7 @@ public class Calculadora extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
