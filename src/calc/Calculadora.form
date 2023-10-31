@@ -254,17 +254,17 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jCheckBox6" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jCheckBox7" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jButton11" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jCheckBox5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jCheckBox4" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="619" max="32767" attributes="0"/>
+                      <EmptySpace pref="585" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -436,7 +436,7 @@
             </Component>
             <Component class="javax.swing.JCheckBox" name="jCheckBox7">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jCheckBox7"/>
+                <Property name="text" type="java.lang.String" value="Construir tabela de frequ&#xea;ncia"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="jButton11">

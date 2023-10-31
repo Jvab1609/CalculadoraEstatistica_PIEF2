@@ -262,7 +262,7 @@ public class Calculadora extends javax.swing.JFrame {
 
         jLabel4.setText("Coluna:");
 
-        jCheckBox7.setText("jCheckBox7");
+        jCheckBox7.setText("Construir tabela de frequência");
 
         jButton11.setText("Fazer operações");
         jButton11.addActionListener(new java.awt.event.ActionListener() {
@@ -310,14 +310,14 @@ public class Calculadora extends javax.swing.JFrame {
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jCheckBox6)
-                        .addGap(81, 81, 81)
+                        .addGap(18, 18, 18)
                         .addComponent(jCheckBox7))
                     .addComponent(jButton11)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jCheckBox5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jCheckBox4)))
-                .addContainerGap(619, Short.MAX_VALUE))
+                .addContainerGap(585, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -600,10 +600,20 @@ public class Calculadora extends javax.swing.JFrame {
         criarDigitar(numLinha,numCol);
     }//GEN-LAST:event_jButton2ActionPerformed
     
-    public void itensCombo() {
-        for (int i = 0; i < ((DefaultTableModel) jTable1.getModel()).getColumnCount(); i++) {
-            jComboBox1.addItem(((DefaultTableModel) jTable1.getModel()).getColumnName(i));
+    public void itensCombo(javax.swing.JComboBox combo, javax.swing.JTable tabela, javax.swing.JCheckBox freqCheck) {
+        if (tabelaFreq == false) {
+            for (int i = 0; i < ((DefaultTableModel) tabela.getModel()).getColumnCount(); i++) {
+                combo.addItem(((DefaultTableModel) tabela.getModel()).getColumnName(i));
+            }
+            combo.setEnabled(true);
+            freqCheck.setEnabled(true);
         }
+        else {
+            combo.addItem(String.valueOf(tabela.getColumnModel().getColumn(0).getHeaderValue()));
+            combo.setEnabled(false);
+            freqCheck.setEnabled(false);
+        }
+        
     }
     
     public double[] selecaoColunas() {
@@ -631,7 +641,6 @@ public class Calculadora extends javax.swing.JFrame {
         for (int i = 0; i < dados.length; i++) {
                 soma += dados[i];
                 contador +=1;
-                
             }
             double resultado = soma/contador;
         return resultado;
@@ -668,15 +677,15 @@ public class Calculadora extends javax.swing.JFrame {
         return mediana;
     }
     
-    public void calcular() {
+    public void calcular(javax.swing.JCheckBox medianaCheck,javax.swing.JCheckBox mediaCheck, javax.swing.JCheckBox modaCheck) {
         double[] dados = selecaoColunas();
-        if(jCheckBox4.isSelected()) {
+        if(medianaCheck.isSelected()) {
             System.out.println("MEDIANA "+mediana(selecaoColunas()));
         }
-        if(jCheckBox5.isSelected()) {
+        if(mediaCheck.isSelected()) {
             System.out.println("MÉDIA "+media(selecaoColunas()));
         }
-        if(jCheckBox6.isSelected()) {
+        if(modaCheck.isSelected()) {
             System.out.println("MODA"+moda(selecaoColunas()));
         }
     }
@@ -1100,7 +1109,7 @@ public class Calculadora extends javax.swing.JFrame {
         // Lê o arquivo selecionado e transcreve os dados para a tabela
         try {
             lerArquivo();
-            itensCombo();
+            itensCombo(jComboBox1, jTable1, jCheckBox7);
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this,
@@ -1207,7 +1216,7 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        calcular();
+        calcular(jCheckBox4, jCheckBox5, jCheckBox6);
     }//GEN-LAST:event_jButton11ActionPerformed
 
     /**
