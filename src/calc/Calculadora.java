@@ -13,6 +13,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
+import java.text.DecimalFormat;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -82,6 +83,8 @@ public class Calculadora extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jCheckBox7 = new javax.swing.JCheckBox();
         jButton11 = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -271,6 +274,11 @@ public class Calculadora extends javax.swing.JFrame {
             }
         });
 
+        jTextArea1.setEditable(false);
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane4.setViewportView(jTextArea1);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -316,7 +324,8 @@ public class Calculadora extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jCheckBox5)
                         .addGap(18, 18, 18)
-                        .addComponent(jCheckBox4)))
+                        .addComponent(jCheckBox4))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(585, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -352,7 +361,9 @@ public class Calculadora extends javax.swing.JFrame {
                             .addComponent(jCheckBox6)
                             .addComponent(jCheckBox7))
                         .addGap(18, 18, 18)
-                        .addComponent(jButton11)))
+                        .addComponent(jButton11)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jButton6)
                 .addContainerGap(402, Short.MAX_VALUE))
@@ -430,7 +441,7 @@ public class Calculadora extends javax.swing.JFrame {
                             .addGap(18, 18, 18)
                             .addComponent(jButton2))
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(959, Short.MAX_VALUE))
+                .addContainerGap(962, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -616,9 +627,9 @@ public class Calculadora extends javax.swing.JFrame {
         
     }
     
-    public double[] selecaoColunas() {
+    public double[] selecaoColunas(javax.swing.JTable tabela) {
         String colunaSel = String.valueOf(jComboBox1.getSelectedItem());
-        DefaultTableModel tabela1 = ((DefaultTableModel) jTable1.getModel());
+        DefaultTableModel tabela1 = ((DefaultTableModel) tabela.getModel());
         double coluna[] = new double[tabela1.getRowCount()];
         int indiceColuna = 0;
         for (int i = 0; i < tabela1.getColumnCount(); i++) {
@@ -628,15 +639,29 @@ public class Calculadora extends javax.swing.JFrame {
         }
         
         for (int j = 0; j < coluna.length; j++) {
-            coluna[j] = Double.parseDouble(((String) jTable1.getValueAt(j, indiceColuna)).replace(",", "."));
+            coluna[j] = Double.parseDouble(((String) tabela.getValueAt(j, indiceColuna)).replace(",", "."));
            
         }
  
         return coluna;
     }
-    int contador = 0;
+    public double[][] colunasFreq(javax.swing.JTable tabela) {
+        DefaultTableModel tabela1 = ((DefaultTableModel) tabela.getModel());
+        double[][] colunas = new double[2][tabela1.getRowCount()];
+        for (int i = 0; i < tabela1.getRowCount(); i++) {
+            colunas[0][i] = Double.parseDouble(((String) tabela.getValueAt(i, 0)).replace(",", "."));
+            
+        }
+        for (int j = 0; j < tabela1.getRowCount(); j++) {
+            colunas[1][j] = Double.parseDouble(((String) tabela.getValueAt(j, 1)).replace(",", "."));
+            
+        }
+        return colunas;
+    }
+    
     public double media(double[] dados) {
         
+        int contador = 0;
         double soma = 0;
         for (int i = 0; i < dados.length; i++) {
                 soma += dados[i];
@@ -650,7 +675,7 @@ public class Calculadora extends javax.swing.JFrame {
         int contadorMax = 0;
         double moda = 0;
         for (int i = 0; i < dados.length; i++) {
-            contador = 0;
+            int contador = 0;
             for (int j = 0; j < dados.length; j++) {
                 if (dados[i]==dados[j]){
                     contador++;
@@ -677,16 +702,24 @@ public class Calculadora extends javax.swing.JFrame {
         return mediana;
     }
     
-    public void calcular(javax.swing.JCheckBox medianaCheck,javax.swing.JCheckBox mediaCheck, javax.swing.JCheckBox modaCheck) {
-        double[] dados = selecaoColunas();
+    String operacoes = "";
+    DecimalFormat df = new DecimalFormat("0.000");
+   
+    public void calcular(javax.swing.JCheckBox medianaCheck,javax.swing.JCheckBox mediaCheck, javax.swing.JCheckBox modaCheck, javax.swing.JTextArea areaTxt) {
+        areaTxt.setText("");
+        operacoes = "";
+        double[] dados = selecaoColunas(jTable1);
         if(medianaCheck.isSelected()) {
-            System.out.println("MEDIANA "+mediana(selecaoColunas()));
+            areaTxt.append("MEDIANA = "+df.format(mediana(dados))+"\n");
+            operacoes += " Mediana;";
         }
         if(mediaCheck.isSelected()) {
-            System.out.println("MÉDIA "+media(selecaoColunas()));
+            areaTxt.append("MÉDIA = "+df.format(media(dados))+"\n");
+            operacoes += " Média;";
         }
         if(modaCheck.isSelected()) {
-            System.out.println("MODA"+moda(selecaoColunas()));
+            areaTxt.append("MODA = "+df.format(moda(dados))+"\n");
+            operacoes += " Moda;";
         }
     }
     
@@ -710,7 +743,15 @@ public class Calculadora extends javax.swing.JFrame {
                 jButton1.setEnabled(false);
                 jCheckBox1.setEnabled(false);
                 jTextField2.setEnabled(false);
+                jCheckBox4.setEnabled(false);
+                jCheckBox5.setEnabled(false);
+                jCheckBox6.setEnabled(false);
+                jCheckBox7.setEnabled(false);
+                
+                
             }
+            jButton11.setEnabled(false);
+            jComboBox1.setEnabled(false);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this,
                     e.getMessage(), 
@@ -772,6 +813,12 @@ public class Calculadora extends javax.swing.JFrame {
                 
                 linha = bf.readLine();
             }
+            jButton11.setEnabled(true);
+            jComboBox1.setEnabled(true);
+            jCheckBox4.setEnabled(true);
+            jCheckBox5.setEnabled(true);
+            jCheckBox6.setEnabled(true);
+            jCheckBox7.setEnabled(true);
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this,
@@ -1135,7 +1182,7 @@ public class Calculadora extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // Escreve as informações no histórico
-        escreverHistorico("********");
+        escreverHistorico(operacoes);
 
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -1216,7 +1263,14 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        calcular(jCheckBox4, jCheckBox5, jCheckBox6);
+        calcular(jCheckBox4, jCheckBox5, jCheckBox6, jTextArea1);
+        double[][] e = colunasFreq(jTable1);
+        for (int i = 0; i < e[0].length; i++) {
+            System.out.println(e[0][i]);
+        }
+        for (int i = 0; i < e[1].length; i++) {
+            System.out.println(e[1][i]);
+        }
     }//GEN-LAST:event_jButton11ActionPerformed
 
     /**
@@ -1297,12 +1351,14 @@ public class Calculadora extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
