@@ -140,6 +140,14 @@ public class Calculadora extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Calculadora Estatística");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Agency FB", 1, 64)); // NOI18N
@@ -1272,7 +1280,29 @@ public class Calculadora extends javax.swing.JFrame {
             System.out.println(e[1][i]);
         }
     }//GEN-LAST:event_jButton11ActionPerformed
+    public void confirmacaoFechar() {
+        UIManager.put("OptionPane.noButtonText", "Não");
+        UIManager.put("OptionPane.yesButtonText", "Sim");
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        int dialogResult = JOptionPane.showConfirmDialog (this, "Deseja fechar a janela?","Fechar janela?",dialogButton);
+        if(dialogResult == JOptionPane.YES_OPTION){
+            System.exit(dialogResult);
+        }
+        if (dialogResult == JOptionPane.NO_OPTION){
+            frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+            System.exit(WIDTH);
+        }
+    }
+    
+    
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        confirmacaoFechar();
+    }//GEN-LAST:event_formWindowClosing
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosed
+    
     /**
      * @param args the command line arguments
      */
@@ -1301,9 +1331,11 @@ public class Calculadora extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Calculadora().setVisible(true);
+                
             }
         });
     }
