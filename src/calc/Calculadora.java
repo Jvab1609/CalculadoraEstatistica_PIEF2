@@ -1284,6 +1284,9 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton11ActionPerformed
     
     public void confirmacaoFechar() {
+        // usar jTabbedPane1.getSelectedIndex(); para ver se ele está nas janelas de digitar dados (1 e 2) com if
+        // se sim, executar esse método
+        // se o usuário escolher salvar, chamar o método escreverHistorico(operacoes);
         UIManager.put("OptionPane.noButtonText", "Não");
         UIManager.put("OptionPane.yesButtonText", "Sim");
         UIManager.put("OptionPane.cancelButtonText", "Cancelar");
