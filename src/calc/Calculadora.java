@@ -604,6 +604,19 @@ public class Calculadora extends javax.swing.JFrame {
         }
     }
     
+    public void limparTela(javax.swing.JCheckBox medianaCheck,javax.swing.JCheckBox mediaCheck, javax.swing.JCheckBox modaCheck, javax.swing.JTextArea areaTxt, javax.swing.JComboBox combo) {
+        javax.swing.JCheckBox[] checks = {medianaCheck, mediaCheck, modaCheck};
+        for (int i = 0; i < checks.length; i++) {
+            if(checks[i].isSelected() == true) {
+                checks[i].doClick();
+            }
+        }
+        areaTxt.setText("");
+        combo.removeAllItems();
+        
+    }
+    
+    
     // Executa a criação da tabela para digitação
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int numCol = (int) jSpinner1.getValue();
@@ -703,6 +716,7 @@ public class Calculadora extends javax.swing.JFrame {
     }
     
     String operacoes = "";
+    String operacoesHide = "";
     DecimalFormat df = new DecimalFormat("0.000");
    
     public void calcular(javax.swing.JCheckBox medianaCheck,javax.swing.JCheckBox mediaCheck, javax.swing.JCheckBox modaCheck, javax.swing.JTextArea areaTxt) {
@@ -712,6 +726,7 @@ public class Calculadora extends javax.swing.JFrame {
         if(medianaCheck.isSelected()) {
             areaTxt.append("MEDIANA = "+df.format(mediana(dados))+"\n");
             operacoes += " Mediana;";
+            
         }
         if(mediaCheck.isSelected()) {
             areaTxt.append("MÉDIA = "+df.format(media(dados))+"\n");
@@ -1130,6 +1145,7 @@ public class Calculadora extends javax.swing.JFrame {
     
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // Abre a tela de escolha de arquivo e muda de tela
+        limparTela(jCheckBox4, jCheckBox5, jCheckBox6, jTextArea1, jComboBox1);
         escolherArquivo();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
@@ -1140,6 +1156,12 @@ public class Calculadora extends javax.swing.JFrame {
         ((DefaultTableModel) jTable2.getModel()).setColumnCount(0);
         ((DefaultTableModel) jTable2.getModel()).setRowCount(0);
         jTabbedPane1.setSelectedIndex(2);
+        if(jCheckBox3.isSelected() == true) {
+                jCheckBox3.doClick();
+        }
+        if(jCheckBox1.isSelected() == true) {
+                jCheckBox1.doClick();
+        }
         
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
@@ -1149,6 +1171,7 @@ public class Calculadora extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // Abre a tela de escolha de arquivo e muda de tela
+        limparTela(jCheckBox4, jCheckBox5, jCheckBox6, jTextArea1, jComboBox1);
         escolherArquivo();
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -1178,6 +1201,7 @@ public class Calculadora extends javax.swing.JFrame {
         ((DefaultTableModel) jTable2.getModel()).setColumnCount(0);
         ((DefaultTableModel) jTable2.getModel()).setRowCount(0);
         jTabbedPane1.setSelectedIndex(2);
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -1249,10 +1273,17 @@ public class Calculadora extends javax.swing.JFrame {
         UIManager.put("OptionPane.noButtonText", "Não");
         UIManager.put("OptionPane.yesButtonText", "Sim");
         int dialogButton = JOptionPane.YES_NO_OPTION;
-        int dialogResult = JOptionPane.showConfirmDialog (this, "Deseja voltar ao início?","Voltar ao início?",dialogButton);
-        if(dialogResult == JOptionPane.YES_OPTION){
-        //if JOptionPane.showConfirmDialog(this, "tem certeza que quer voltar ao início?", "voltar ao início", WIDTH, HEIGHT, null);
-            jTabbedPane1.setSelectedIndex(0);
+        if (jTabbedPane1.getSelectedIndex() != 0) {
+            int dialogResult = JOptionPane.showConfirmDialog (this, "Deseja voltar ao início?","Voltar ao início?",dialogButton);
+            if(dialogResult == JOptionPane.YES_OPTION){
+            //if JOptionPane.showConfirmDialog(this, "tem certeza que quer voltar ao início?", "voltar ao início", WIDTH, HEIGHT, null);
+                if(jTabbedPane1.getSelectedIndex() == 1 || jTabbedPane1.getSelectedIndex() == 2) {
+                    escreverHistorico(operacoes);
+                    jTabbedPane1.setSelectedIndex(0);
+                }
+
+
+            }
         }
     }//GEN-LAST:event_jMenu3MouseClicked
 
