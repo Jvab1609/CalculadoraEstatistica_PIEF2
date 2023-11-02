@@ -14,6 +14,8 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import java.text.DecimalFormat;
+import javax.swing.JFrame;
+import javax.swing.WindowConstants;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -1280,23 +1282,27 @@ public class Calculadora extends javax.swing.JFrame {
             System.out.println(e[1][i]);
         }
     }//GEN-LAST:event_jButton11ActionPerformed
+    
     public void confirmacaoFechar() {
         UIManager.put("OptionPane.noButtonText", "Não");
         UIManager.put("OptionPane.yesButtonText", "Sim");
-        int dialogButton = JOptionPane.YES_NO_OPTION;
+        UIManager.put("OptionPane.cancelButtonText", "Cancelar");
+        int dialogButton = JOptionPane.YES_NO_CANCEL_OPTION;
         int dialogResult = JOptionPane.showConfirmDialog (this, "Deseja fechar a janela?","Fechar janela?",dialogButton);
-        if(dialogResult == JOptionPane.YES_OPTION){
-            System.exit(dialogResult);
+        if(dialogResult == JOptionPane.YES_OPTION || dialogResult == JOptionPane.NO_OPTION ){
+            //System.exit(1);
+            setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         }
-        if (dialogResult == JOptionPane.NO_OPTION){
-            frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-            System.exit(WIDTH);
+        else if (dialogResult == JOptionPane.CANCEL_OPTION){
+            setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+           
         }
     }
     
     
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         confirmacaoFechar();
+        
     }//GEN-LAST:event_formWindowClosing
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
