@@ -613,7 +613,8 @@ public class Calculadora extends javax.swing.JFrame {
         }
         areaTxt.setText("");
         combo.removeAllItems();
-        
+        operacoes = "";
+        operacoesHide = "";
     }
     
     
@@ -720,22 +721,37 @@ public class Calculadora extends javax.swing.JFrame {
     DecimalFormat df = new DecimalFormat("0.000");
    
     public void calcular(javax.swing.JCheckBox medianaCheck,javax.swing.JCheckBox mediaCheck, javax.swing.JCheckBox modaCheck, javax.swing.JTextArea areaTxt) {
-        areaTxt.setText("");
-        operacoes = "";
-        double[] dados = selecaoColunas(jTable1);
-        if(medianaCheck.isSelected()) {
-            areaTxt.append("MEDIANA = "+df.format(mediana(dados))+"\n");
-            operacoes += " Mediana;";
-            
-        }
-        if(mediaCheck.isSelected()) {
-            areaTxt.append("MÉDIA = "+df.format(media(dados))+"\n");
-            operacoes += " Média;";
-        }
-        if(modaCheck.isSelected()) {
-            areaTxt.append("MODA = "+df.format(moda(dados))+"\n");
-            operacoes += " Moda;";
-        }
+        try {    
+            areaTxt.setText("");
+            operacoes = "";
+            operacoesHide = "";
+            double[] dados = selecaoColunas(jTable1);
+            if(medianaCheck.isSelected()) {
+                areaTxt.append("MEDIANA = "+df.format(mediana(dados))+"\n");
+                operacoes += " Mediana;";
+                operacoesHide += "a";
+            }
+            if(mediaCheck.isSelected()) {
+                areaTxt.append("MÉDIA = "+df.format(media(dados))+"\n");
+                operacoes += " Média;";
+                operacoesHide += "b";
+            }
+            if(modaCheck.isSelected()) {
+                areaTxt.append("MODA = "+df.format(moda(dados))+"\n");
+                operacoes += " Moda;";
+                operacoesHide += "c";
+            }
+        } catch(NumberFormatException e) {
+            JOptionPane.showMessageDialog(this,
+                    "São aceitos somente dados numéricos! Revise a tabela.",
+                    "ERRO",
+                    JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(this,
+                    e.getMessage(), 
+                    "ERRO", 
+                    JOptionPane.ERROR_MESSAGE);
+        }                                       
     }
     
 
@@ -844,108 +860,134 @@ public class Calculadora extends javax.swing.JFrame {
     }
     
     // Salva as informações em ambos os arquivos de Histórico
-    public void escreverHistorico(String operacoes) {
+    public void escreverHistorico(String operacoes, String operacoesHide) {
         try {
             writerShow = new FileWriter(historicoShow,true);
             writerHide = new FileWriter(historicoHide,true);
             UIManager.put("OptionPane.cancelButtonText", "Cancelar");
             UIManager.put("OptionPane.okButtonText", "OK");
             var nomeSave = JOptionPane.showInputDialog(this, "Nome do salvamento: ", "Salvar no histórico", JOptionPane.QUESTION_MESSAGE, null, null, DISPOSE_ON_CLOSE);
-            if (nomeSave != null) {
-                String nome = nomeSave.toString();
-                String tipoShow = null;
-                String tipoHide = null;
-                String previewShow = null;
-                String previewHide = null;
-                int colunasArquivo = 0;
-                int freq = 0;
+            boolean nomeDisp = true;
+            if (nomeSave.toString().equals("")){
+                throw new Exception("O nome já está em uso.");
+            }
+            else {
+                
+                FileReader reader = new FileReader(historicoHide);
+                BufferedReader bf = new BufferedReader(reader);
+                String linhaHide = bf.readLine();
 
-                switch (jTabbedPane1.getSelectedIndex()) {
-                    case 1:
-                        tipoShow = "Arquivo aberto";
-                        tipoHide = "arqv";
-                        File arquivoAberto = arquivo; 
-                        previewHide = arquivoAberto.getAbsolutePath();
-                        previewShow = arquivoAberto.getName();
-                        if (jCheckBox1.isSelected() == true) {
-                            colunasArquivo = 1;
-                        }
-                        else {
-                            colunasArquivo = 0;
-                        }
-                        if (jCheckBox3.isSelected() == true) {
-                            freq = 1;
-                        }
-                        else {
-                            freq = 0;
-                        }
-
+                while (linhaHide != null) {
+                    if (linhaHide.startsWith(nomeSave.toString())) {
+                        nomeDisp = false;
                         break;
-
-                    case 2:
-                        tipoShow = "Dados digitados";
-                        tipoHide = "dados";
-                        if (jCheckBox2.isSelected() == true) {
-                            freq = 1;
-                        }
-                        else {
-                            freq = 0;
-                        }
-                        previewShow = String.valueOf(((DefaultTableModel) jTable2.getModel()).getDataVector());
-
-                        break;     
-                }
-
-                String linha = "";
-                String[] parametrosHide = {nome, tipoHide, operacoes, String.valueOf(colunasArquivo), String.valueOf(freq)};
-                for (int i = 0; i < parametrosHide.length; i++) {
-
-                    linha += parametrosHide[i];
-
-                    if (i < parametrosHide.length-1) {
-                        linha += "|";
                     }
+                    linhaHide = bf.readLine();
                 }
-                writerHide.write(linha+"\n");
+                if (nomeDisp == true) {
+                    String nome = nomeSave.toString();
+                    String tipoShow = null;
+                    String tipoHide = null;
+                    String previewShow = null;
+                    String previewHide = null;
+                    int colunasArquivo = 0;
+                    int freq = 0;
+                    if (operacoes.equals("")) {
+                        operacoes = "Nenhuma";
+                    }
+                    if (operacoesHide.equals("")) {
+                        operacoesHide = "#";
+                    }
 
-                if (jTabbedPane1.getSelectedIndex() == 1) {
-                    writerHide.write(previewHide+"\n");
-                }
-                else {
-                    int n = ((DefaultTableModel) jTable2.getModel()).getRowCount();
-                        int c = ((DefaultTableModel) jTable2.getModel()).getColumnCount();
-                        for (int i = 0; i < n; i++) {
-                            linha = "";
-                            for (int j = 0; j < c; j++) {
-                                linha += jTable2.getValueAt(i, j);
-                                if(j < c-1) {
-                                    linha += ";";
-                                    // coloca o delimitador entre as strings, exceto para a última.
-                                }
-                                if (i == n-1 && j == c-1) {
-                                    linha += "&zz";
-                                }
-
+                    switch (jTabbedPane1.getSelectedIndex()) {
+                        case 1:
+                            tipoShow = "Arquivo aberto";
+                            tipoHide = "arqv";
+                            File arquivoAberto = arquivo; 
+                            previewHide = arquivoAberto.getAbsolutePath();
+                            previewShow = arquivoAberto.getName();
+                            if (jCheckBox1.isSelected() == true) {
+                                colunasArquivo = 1;
+                            }
+                            else {
+                                colunasArquivo = 0;
+                            }
+                            if (jCheckBox3.isSelected() == true) {
+                                freq = 1;
+                            }
+                            else {
+                                freq = 0;
                             }
 
-                            writerHide.write(linha+"\n");
-                        }
-                }
+                            break;
 
-                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");  
-                LocalDateTime atual = LocalDateTime.now();  
-                String data = dtf.format(atual);
+                        case 2:
+                            tipoShow = "Dados digitados";
+                            tipoHide = "dados";
+                            if (jCheckBox2.isSelected() == true) {
+                                freq = 1;
+                            }
+                            else {
+                                freq = 0;
+                            }
+                            previewShow = String.valueOf(((DefaultTableModel) jTable2.getModel()).getDataVector());
 
-                linha = "";
-                String[] parametrosShow = {nome, tipoShow, operacoes, previewShow, data};
-                for (int i = 0; i < parametrosShow.length; i++) {
-                    linha += parametrosShow[i];
-                    if (i < parametrosShow.length-1) {
-                        linha += "|";
+                            break;     
                     }
+
+                    String linha = "";
+                    String[] parametrosHide = {nome, tipoHide, operacoesHide, String.valueOf(colunasArquivo), String.valueOf(freq)};
+                    for (int i = 0; i < parametrosHide.length; i++) {
+
+                        linha += parametrosHide[i];
+
+                        if (i < parametrosHide.length-1) {
+                            linha += "|";
+                        }
+                    }
+                    writerHide.write(linha+"\n");
+
+                    if (jTabbedPane1.getSelectedIndex() == 1) {
+                        writerHide.write(previewHide+"\n");
+                    }
+                    else {
+                        int n = ((DefaultTableModel) jTable2.getModel()).getRowCount();
+                            int c = ((DefaultTableModel) jTable2.getModel()).getColumnCount();
+                            for (int i = 0; i < n; i++) {
+                                linha = "";
+                                for (int j = 0; j < c; j++) {
+                                    linha += jTable2.getValueAt(i, j);
+                                    if(j < c-1) {
+                                        linha += ";";
+                                        // coloca o delimitador entre as strings, exceto para a última.
+                                    }
+                                    if (i == n-1 && j == c-1) {
+                                        linha += "&zz";
+                                    }
+
+                                }
+
+                                writerHide.write(linha+"\n");
+                            }
+                    }
+
+                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");  
+                    LocalDateTime atual = LocalDateTime.now();  
+                    String data = dtf.format(atual);
+
+                    linha = "";
+                    String[] parametrosShow = {nome, tipoShow, operacoes, previewShow, data};
+                    for (int i = 0; i < parametrosShow.length; i++) {
+                        linha += parametrosShow[i];
+                        if (i < parametrosShow.length-1) {
+                            linha += "|";
+                        }
+                    }
+                    writerShow.write(linha+"\n");
                 }
-                writerShow.write(linha+"\n");
+                
             }
+            
             
             
         } catch (Exception e) {
@@ -998,13 +1040,10 @@ public class Calculadora extends javax.swing.JFrame {
                 throw new Exception("O histórico está vazio.");
             }
             int row = jTable3.getSelectedRow();
-            System.out.println(row);
             if (row == -1) {
                 throw new Exception("Nenhum salvamento selecionado.");
             }
-            else if (row > 1) {
-                throw new Exception("Selecione apenas um salvamento.");
-            }
+            
           
             FileReader reader = new FileReader(historicoHide);
             BufferedReader bf = new BufferedReader(reader);
@@ -1025,6 +1064,8 @@ public class Calculadora extends javax.swing.JFrame {
                     linha = bf.readLine();
                 }
             }
+            
+            
             
             if (parametros[1].equals("arqv")) {
                 linha = bf.readLine();
@@ -1053,8 +1094,55 @@ public class Calculadora extends javax.swing.JFrame {
                         jCheckBox3.doClick();
                     }
                 }
+                
+                // Checa mediana
+                if (parametros[2].contains("a")) {
+                if (jCheckBox4.isSelected() == false) {
+                    jCheckBox4.doClick();
+                }
+                } else {
+                    if (jCheckBox4.isSelected() == true) {
+                        jCheckBox4.doClick();
+                    }
+                }
+                // Checa média
+                if (parametros[2].contains("b")) {
+                    if (jCheckBox5.isSelected() == false) {
+                        jCheckBox5.doClick();
+                    }
+                } else {
+                    if (jCheckBox5.isSelected() == true) {
+                        jCheckBox5.doClick();
+                    }
+                }
+                if (parametros[2].contains("c")) {
+                    if (jCheckBox6.isSelected() == false) {
+                        jCheckBox6.doClick();
+                    }
+                } else {
+                    if (jCheckBox6.isSelected() == true) {
+                        jCheckBox6.doClick();
+                    }
+                }
+                if (parametros[2].equals("#")) {
+                    if (jCheckBox4.isSelected() == true) {
+                        jCheckBox4.doClick();
+                    }
+                    if (jCheckBox5.isSelected() == true) {
+                        jCheckBox5.doClick();
+                    }
+                    if (jCheckBox6.isSelected() == true) {
+                        jCheckBox6.doClick();
+                    }
+
+                }
+                
+                
+                
+                
                 jTextField1.setText(arquivo.getAbsolutePath());
                 lerArquivo();
+                calcular(jCheckBox4, jCheckBox5, jCheckBox6, jTextArea1);
             }
             else {
                 jTabbedPane1.setSelectedIndex(2);
@@ -1206,7 +1294,7 @@ public class Calculadora extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // Escreve as informações no histórico
-        escreverHistorico(operacoes);
+        escreverHistorico(operacoes, operacoesHide);
 
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -1235,7 +1323,7 @@ public class Calculadora extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // Escreve as informações no histórico
-        escreverHistorico("********");
+        escreverHistorico("********", "*******");
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -1278,10 +1366,10 @@ public class Calculadora extends javax.swing.JFrame {
             if(dialogResult == JOptionPane.YES_OPTION){
             //if JOptionPane.showConfirmDialog(this, "tem certeza que quer voltar ao início?", "voltar ao início", WIDTH, HEIGHT, null);
                 if(jTabbedPane1.getSelectedIndex() == 1 || jTabbedPane1.getSelectedIndex() == 2) {
-                    escreverHistorico(operacoes);
-                    jTabbedPane1.setSelectedIndex(0);
+                    escreverHistorico(operacoes, operacoesHide);
+                    
                 }
-
+                jTabbedPane1.setSelectedIndex(0);
 
             }
         }
@@ -1295,13 +1383,7 @@ public class Calculadora extends javax.swing.JFrame {
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         calcular(jCheckBox4, jCheckBox5, jCheckBox6, jTextArea1);
-        double[][] e = colunasFreq(jTable1);
-        for (int i = 0; i < e[0].length; i++) {
-            System.out.println(e[0][i]);
-        }
-        for (int i = 0; i < e[1].length; i++) {
-            System.out.println(e[1][i]);
-        }
+        
     }//GEN-LAST:event_jButton11ActionPerformed
 
     /**
