@@ -673,47 +673,154 @@ public class Calculadora extends javax.swing.JFrame {
         return colunas;
     }
     
-    public double media(double[] dados) {
+    public double media(double[] dados, double[][] dadosfreq) {
         
-        int contador = 0;
-        double soma = 0;
-        for (int i = 0; i < dados.length; i++) {
-                soma += dados[i];
-                contador +=1;
+        if(tabelaFreq==true){
+            double somafi = 0;
+            double soma = 0;
+            for (int i = 0; i < jTable1.getRowCount(); i++) {
+                somafi += dadosfreq[1][i];
+                System.out.println(dadosfreq[1][i]);
+               
+                
             }
-            double resultado = soma/contador;
-        return resultado;
-    }
-    
-    public double moda(double[] dados) {
-        int contadorMax = 0;
-        double moda = 0;
-        for (int i = 0; i < dados.length; i++) {
-            int contador = 0;
-            for (int j = 0; j < dados.length; j++) {
-                if (dados[i]==dados[j]){
-                    contador++;
+            for (int i = 0; i < jTable1.getRowCount(); i++) {
+                    soma = soma +(dadosfreq[0][i]*dadosfreq[1][i]);
+                    
+                    
                     
                 }
-                    
-            }
-            if (contador>contadorMax){
-                moda = dados[i];
-                contadorMax = contador;
-            }
                 
+            double resultado = soma/somafi;
+            return resultado;
+            
+        }else{
+            int contador = 0;
+            double soma = 0;
+        
+            for (int i = 0; i < dados.length; i++) {
+                 soma += dados[i];
+                 contador +=1;
+            }
+            double resultado = soma/contador;
+            return resultado;
         }
-        return moda;
+       
+        
     }
-    public double mediana(double[] dados) {
-        double mediana = 0;
-        if (dados.length%2!=0){
-            mediana = dados[dados.length/2];
+    public double desviopadrao(double[] dados,double[][]dadosfreq ) {
+        if (tabelaFreq==true){
+            double somafi = 0;
+            double somaxi = 0 ;
+            
+            for (int i = 0; i < dadosfreq[0].length; i++) {
+               somaxi+= Math.pow((dadosfreq[0][i]-media(null, dadosfreq)),2);
+               somafi += dadosfreq[1][i];
+              
+                
+            }
+            double variancia = somaxi/(somafi-1);
+            double dv = Math.sqrt(variancia);
+            return dv;
         }
-        else {
-            mediana = (dados[dados.length/2]+dados[(dados.length/2)-1])/2;
+        else{
+            
+            double somaxi = 0 ;
+            
+            for (int i = 0; i < dados.length; i++) {
+               somaxi+= Math.pow((dados[i]-media(dados, null)),2);
+               
+              
+                
+            }
+            System.out.println(somaxi);
+            System.out.println(dados.length);
+            double variancia = somaxi/(dados.length-1);
+            double dv = Math.sqrt(variancia);
+            return dv;
         }
+        
+    }
+    
+    public double moda(double[] dados, double[][]dadosfreq) {
+        
+        if (tabelaFreq==true){
+            double maior = 0;
+            double moda = 0;
+            for (int i = 0; i < jTable1.getRowCount(); i++) {
+                if (dadosfreq[1][i]>maior){
+                    maior = dadosfreq[1][i];
+                    moda = dadosfreq[0][i];
+                
+                }
+                
+                
+            }
+            
+            return moda;
+        }
+        else{
+            int contadorMax = 0;
+            double moda = 0;
+            for (int i = 0; i < dados.length; i++) {
+                int contador = 0;
+                for (int j = 0; j < dados.length; j++) {
+                    if (dados[i]==dados[j]){
+                        contador++;
+                    
+                    }
+                    
+                }
+                if (contador>contadorMax){
+                     moda = dados[i];
+                    contadorMax = contador;
+                }
+                
+            }
+            return moda;
+        }
+        
+    }
+    public double mediana(double[] dados, double[][]dadosfreq) {
+        
+        if (tabelaFreq==true){
+            double somafi = 0;
+            double classemediana = 0;
+             for (int i = 0; i < jTable1.getRowCount(); i++) {
+                somafi += dadosfreq[1][i];
+                
+            }
+             
+            double md = somafi/2;
+            somafi = 0;
+            
+            for (int i = 0; i < jTable1.getRowCount(); i++) {
+                somafi += dadosfreq[1][i];
+                
+                if (somafi>md){
+                    classemediana = dadosfreq[0][i];
+                    break;
+                    
+                }
+                
+            }
+            
+            
+            double mediana = classemediana;
+            return mediana;
+        }
+        else{
+            double mediana = 0;
+            if (dados.length%2!=0){
+                mediana = dados[dados.length/2];
+            }
+            else {
+             mediana = (dados[dados.length/2]+dados[(dados.length/2)-1])/2;
+            }           
         return mediana;
+        
+        }
+        
     }
     
     String operacoes = "";
@@ -726,6 +833,7 @@ public class Calculadora extends javax.swing.JFrame {
             operacoes = "";
             operacoesHide = "";
             double[] dados = selecaoColunas(jTable1);
+            double[][] dadosfreq = colunasFreq(jTable1);
             if(medianaCheck.isSelected()) {
                 areaTxt.append("MEDIANA = "+df.format(mediana(dados))+"\n");
                 operacoes += " Mediana;";
