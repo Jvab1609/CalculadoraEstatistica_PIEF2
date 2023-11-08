@@ -1290,16 +1290,26 @@ public class Calculadora extends javax.swing.JFrame {
         UIManager.put("OptionPane.noButtonText", "Não");
         UIManager.put("OptionPane.yesButtonText", "Sim");
         UIManager.put("OptionPane.cancelButtonText", "Cancelar");
-        int dialogButton = JOptionPane.YES_NO_CANCEL_OPTION;
-        int dialogResult = JOptionPane.showConfirmDialog (this, "Deseja fechar a janela?","Fechar janela?",dialogButton);
-        if(dialogResult == JOptionPane.YES_OPTION || dialogResult == JOptionPane.NO_OPTION ){
-            //System.exit(1);
-            setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        if(jTabbedPane1.getSelectedIndex() != 0) {
+            int dialogButton = JOptionPane.YES_NO_CANCEL_OPTION;
+            int dialogResult = JOptionPane.showConfirmDialog (this, "Deseja fechar a janela?","Fechar janela?",dialogButton);
+            if(dialogResult == JOptionPane.YES_OPTION || dialogResult == JOptionPane.NO_OPTION ){
+                //System.exit(1);
+                setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            }
+            else if (dialogResult == JOptionPane.CANCEL_OPTION){
+                setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+
+            }
+        } else {
+            int dialogButton = JOptionPane.YES_NO_OPTION;
+            int dialogResult = JOptionPane.showConfirmDialog (this, "Deseja fechar a janela?","Fechar janela?",dialogButton);
+            if(dialogResult == JOptionPane.YES_OPTION || dialogResult == JOptionPane.NO_OPTION ){
+                
+            }
         }
-        else if (dialogResult == JOptionPane.CANCEL_OPTION){
-            setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-           
-        }
+            
+        
     }
     
     
