@@ -821,6 +821,41 @@ public class Calculadora extends javax.swing.JFrame {
         
     }
     
+    public double desviopadrao(double[] dados,double[][]dadosfreq ) {
+        if (tabelaFreq==true){
+            double somafi = 0;
+            double somaxi = 0 ;
+            
+            for (int i = 0; i < dadosfreq[0].length; i++) {
+               somaxi+= Math.pow((dadosfreq[0][i]-media(null, dadosfreq)),2);
+               somafi += dadosfreq[1][i];
+              
+                
+            }
+            double variancia = somaxi/(somafi-1);
+            double dv = Math.sqrt(variancia);
+            return dv;
+        }
+        else{
+            
+            double somaxi = 0 ;
+            
+            for (int i = 0; i < dados.length; i++) {
+               somaxi+= Math.pow((dados[i]-media(dados, null)),2);
+               
+              
+                
+            }
+            System.out.println(somaxi);
+            System.out.println(dados.length);
+            double variancia = somaxi/(dados.length-1);
+            double dv = Math.sqrt(variancia);
+            return dv;
+        }
+        
+    }
+    
+    
     String operacoes = "";
     DecimalFormat df = new DecimalFormat("0.000");
    
