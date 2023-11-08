@@ -285,7 +285,7 @@ public class Calculadora extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane4.setViewportView(jTextArea1);
 
-        jCheckBox8.setText("Varincia");
+        jCheckBox8.setText("Desvio padrão");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -336,7 +336,7 @@ public class Calculadora extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jCheckBox8))
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(585, Short.MAX_VALUE))
+                .addContainerGap(580, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -377,7 +377,7 @@ public class Calculadora extends javax.swing.JFrame {
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jButton6)
-                .addContainerGap(402, Short.MAX_VALUE))
+                .addContainerGap(463, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab1", jPanel1);
@@ -612,6 +612,7 @@ public class Calculadora extends javax.swing.JFrame {
             jTable2.getColumnModel().getColumn(0).setHeaderValue("A");
             jTable2.getColumnModel().getColumn(1).setHeaderValue("B");
             tabelaFreq = false;
+            
         }
     }
     
@@ -705,21 +706,37 @@ public class Calculadora extends javax.swing.JFrame {
        
         
     }
-    public double variancia(double[] dados,double[][]dadosfreq ) {
-        
+    public double desviopadrao(double[] dados,double[][]dadosfreq ) {
+        if (tabelaFreq==true){
             double somafi = 0;
             double somaxi = 0 ;
             
-            for (int i = 0; i < jTable1.getRowCount(); i++) {
-               somaxi= Math.sqrt(dadosfreq[0][i]+media(null, dadosfreq));
+            for (int i = 0; i < dadosfreq[0].length; i++) {
+               somaxi+= Math.pow((dadosfreq[0][i]-media(null, dadosfreq)),2);
                somafi += dadosfreq[1][i];
               
                 
             }
             double variancia = somaxi/(somafi-1);
-            return variancia;
-        
-        
+            double dv = Math.sqrt(variancia);
+            return dv;
+        }
+        else{
+            
+            double somaxi = 0 ;
+            
+            for (int i = 0; i < dados.length; i++) {
+               somaxi+= Math.pow((dados[i]-media(dados, null)),2);
+               
+              
+                
+            }
+            System.out.println(somaxi);
+            System.out.println(dados.length);
+            double variancia = somaxi/(dados.length-1);
+            double dv = Math.sqrt(variancia);
+            return dv;
+        }
         
     }
     
@@ -814,8 +831,12 @@ public class Calculadora extends javax.swing.JFrame {
         double[][] dadosfreq = colunasFreq(jTable1);
         
         if(jCheckBox8.isSelected()&&tabelaFreq==true) {
-            areaTxt.append("VARIÂNCIA = "+df.format(variancia(null, dadosfreq))+"\n");
-            operacoes += " Variancia;";
+            areaTxt.append("DESVIO PADRÃO = "+df.format(desviopadrao(null, dadosfreq))+"\n");
+            operacoes += " Desvio  padrão;";
+        }
+         if(jCheckBox8.isSelected()&&tabelaFreq==false) {
+            areaTxt.append("DESVIO PADRÃO = "+df.format(desviopadrao(dados, null))+"\n");
+            operacoes += " Desvio  padrão;";
         }
         if(medianaCheck.isSelected()&& tabelaFreq==false) {
             areaTxt.append("MEDIANA = "+df.format(mediana(dados, null))+"\n");
