@@ -627,6 +627,7 @@ public class Calculadora extends javax.swing.JFrame {
         operacoesHide = "";
     }
     
+   
     
     // Executa a criação da tabela para digitação
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
