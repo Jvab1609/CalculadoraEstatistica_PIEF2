@@ -1408,7 +1408,7 @@ public class Calculadora extends javax.swing.JFrame {
             int dialogResult = JOptionPane.showConfirmDialog (this, "Deseja salvar antes de fechar a janela?","Salvar antes de fechar?",dialogButton);
             if(dialogResult == JOptionPane.YES_OPTION){
                 //System.exit(1);
-                escreverHistorico(operacoes);
+                escreverHistorico(operacoes, operacoesHide);
                 setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 
             }
