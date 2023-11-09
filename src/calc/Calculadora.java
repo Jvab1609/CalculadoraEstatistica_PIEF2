@@ -14,6 +14,8 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import java.text.DecimalFormat;
+import javax.swing.JFrame;
+import javax.swing.WindowConstants;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -140,6 +142,14 @@ public class Calculadora extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Calculadora Estatística");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Agency FB", 1, 64)); // NOI18N
@@ -1385,7 +1395,54 @@ public class Calculadora extends javax.swing.JFrame {
         calcular(jCheckBox4, jCheckBox5, jCheckBox6, jTextArea1);
         
     }//GEN-LAST:event_jButton11ActionPerformed
+    
+    public void confirmacaoFechar() {
+        // usar jTabbedPane1.getSelectedIndex(); para ver se ele está nas janelas de digitar dados (1 e 2) com if
+        // se sim, executar esse método
+        // se o usuário escolher salvar, chamar o método escreverHistorico(operacoes);
+        UIManager.put("OptionPane.noButtonText", "Não");
+        UIManager.put("OptionPane.yesButtonText", "Sim");
+        UIManager.put("OptionPane.cancelButtonText", "Cancelar");
+        if(jTabbedPane1.getSelectedIndex() != 0) {
+            int dialogButton = JOptionPane.YES_NO_CANCEL_OPTION;
+            int dialogResult = JOptionPane.showConfirmDialog (this, "Deseja salvar antes de fechar a janela?","Salvar antes de fechar?",dialogButton);
+            if(dialogResult == JOptionPane.YES_OPTION){
+                //System.exit(1);
+                escreverHistorico(operacoes);
+                setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                
+            }
+            else if (dialogResult == JOptionPane.NO_OPTION ) {
+                setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            }
+            else if (dialogResult == JOptionPane.CANCEL_OPTION){
+                setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
+            }
+        } else {
+            int dialogButton = JOptionPane.YES_NO_OPTION;
+            int dialogResult = JOptionPane.showConfirmDialog (this, "Deseja fechar a janela?","Fechar janela?",dialogButton);
+            if(dialogResult == JOptionPane.YES_OPTION){
+                setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            }
+            else {
+                setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+            }
+        }
+            
+        
+    }
+    
+    
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        confirmacaoFechar();
+        
+    }//GEN-LAST:event_formWindowClosing
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosed
+    
     /**
      * @param args the command line arguments
      */
@@ -1414,9 +1471,11 @@ public class Calculadora extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Calculadora().setVisible(true);
+                
             }
         });
     }
