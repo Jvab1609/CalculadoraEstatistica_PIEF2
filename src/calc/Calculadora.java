@@ -816,7 +816,7 @@ public class Calculadora extends javax.swing.JFrame {
              mediana = (dados[dados.length/2]+dados[(dados.length/2)-1])/2;
             }           
         return mediana;
-        
+       
         }
         
     }
