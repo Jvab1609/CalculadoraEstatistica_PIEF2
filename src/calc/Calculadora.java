@@ -748,6 +748,7 @@ public class Calculadora extends javax.swing.JFrame {
             for (int i = 0; i < jTable1.getRowCount(); i++) {
                 if (dadosfreq[1][i]>maior){
                     maior = dadosfreq[1][i];
+                    
                     moda = dadosfreq[0][i];
                 
                 }
