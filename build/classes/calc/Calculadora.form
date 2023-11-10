@@ -266,6 +266,8 @@
                               <Component id="jCheckBox5" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jCheckBox4" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jCheckBox8" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane4" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -305,6 +307,7 @@
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jCheckBox4" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jCheckBox5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jCheckBox8" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -470,6 +473,11 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JCheckBox" name="jCheckBox8">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Desvio"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel3">

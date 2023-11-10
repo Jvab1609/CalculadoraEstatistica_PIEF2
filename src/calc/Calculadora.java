@@ -87,6 +87,7 @@ public class Calculadora extends javax.swing.JFrame {
         jButton11 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jCheckBox8 = new javax.swing.JCheckBox();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -289,6 +290,8 @@ public class Calculadora extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane4.setViewportView(jTextArea1);
 
+        jCheckBox8.setText("Desvio");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -334,7 +337,9 @@ public class Calculadora extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jCheckBox5)
                         .addGap(18, 18, 18)
-                        .addComponent(jCheckBox4))
+                        .addComponent(jCheckBox4)
+                        .addGap(18, 18, 18)
+                        .addComponent(jCheckBox8))
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(585, Short.MAX_VALUE))
         );
@@ -365,7 +370,8 @@ public class Calculadora extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jCheckBox4)
-                            .addComponent(jCheckBox5))
+                            .addComponent(jCheckBox5)
+                            .addComponent(jCheckBox8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jCheckBox6)
@@ -684,85 +690,202 @@ public class Calculadora extends javax.swing.JFrame {
         return colunas;
     }
     
-    public double media(double[] dados) {
+    public double media(double[] dados, double[][] dadosfreq) {
         
-        int contador = 0;
-        double soma = 0;
-        for (int i = 0; i < dados.length; i++) {
-                soma += dados[i];
-                contador +=1;
+        if(tabelaFreq==true){
+            double somafi = 0;
+            double soma = 0;
+            for (int i = 0; i < jTable1.getRowCount(); i++) {
+                somafi += dadosfreq[1][i];
+                System.out.println(dadosfreq[1][i]);
+               
+                
             }
-            double resultado = soma/contador;
-        return resultado;
-    }
-    
-    public double moda(double[] dados) {
-        int contadorMax = 0;
-        double moda = 0;
-        for (int i = 0; i < dados.length; i++) {
-            int contador = 0;
-            for (int j = 0; j < dados.length; j++) {
-                if (dados[i]==dados[j]){
-                    contador++;
+            for (int i = 0; i < jTable1.getRowCount(); i++) {
+                    soma = soma +(dadosfreq[0][i]*dadosfreq[1][i]);
+                    
+                    
                     
                 }
-                    
-            }
-            if (contador>contadorMax){
-                moda = dados[i];
-                contadorMax = contador;
-            }
                 
+            double resultado = soma/somafi;
+            return resultado;
+            
+        }else{
+            int contador = 0;
+            double soma = 0;
+        
+            for (int i = 0; i < dados.length; i++) {
+                 soma += dados[i];
+                 contador +=1;
+            }
+            double resultado = soma/contador;
+            return resultado;
         }
-        return moda;
+       
+        
     }
-    public double mediana(double[] dados) {
-        double mediana = 0;
-        if (dados.length%2!=0){
-            mediana = dados[dados.length/2];
+    public double desviopadrao(double[] dados,double[][]dadosfreq ) {
+        if (tabelaFreq==true){
+            double somafi = 0;
+            double somaxi = 0 ;
+            
+            for (int i = 0; i < dadosfreq[0].length; i++) {
+               somaxi+= Math.pow((dadosfreq[0][i]-media(null, dadosfreq)),2);
+               somafi += dadosfreq[1][i];
+              
+                
+            }
+            double variancia = somaxi/(somafi-1);
+            double dv = Math.sqrt(variancia);
+            return dv;
         }
-        else {
-            mediana = (dados[dados.length/2]+dados[(dados.length/2)-1])/2;
+        else{
+            
+            double somaxi = 0 ;
+            
+            for (int i = 0; i < dados.length; i++) {
+               somaxi+= Math.pow((dados[i]-media(dados, null)),2);
+               
+              
+                
+            }
+            System.out.println(somaxi);
+            System.out.println(dados.length);
+            double variancia = somaxi/(dados.length-1);
+            
+            double dv = Math.sqrt(variancia);
+            return dv;
         }
-        return mediana;
+        
     }
     
+    public double moda(double[] dados, double[][]dadosfreq) {
+        
+        if (tabelaFreq==true){
+            double maior = 0;
+            double moda = 0;
+            for (int i = 0; i < jTable1.getRowCount(); i++) {
+                if (dadosfreq[1][i]>maior){
+                    maior = dadosfreq[1][i];
+                    
+                    moda = dadosfreq[0][i];
+                
+                }
+                
+                
+            }
+            
+            return moda;
+        }
+        else{
+            int contadorMax = 0;
+            double moda = 0;
+            for (int i = 0; i < dados.length; i++) {
+                int contador = 0;
+                for (int j = 0; j < dados.length; j++) {
+                    if (dados[i]==dados[j]){
+                        contador++;
+                    
+                    }
+                    
+                }
+                if (contador>contadorMax){
+                     moda = dados[i];
+                    contadorMax = contador;
+                }
+                
+            }
+            return moda;
+        }
+        
+    }
+    public double mediana(double[] dados, double[][]dadosfreq) {
+        
+        if (tabelaFreq==true){
+            double somafi = 0;
+            double classemediana = 0;
+             for (int i = 0; i < jTable1.getRowCount(); i++) {
+                somafi += dadosfreq[1][i];
+                
+            }
+             
+            double md = somafi/2;
+            somafi = 0;
+            
+            for (int i = 0; i < jTable1.getRowCount(); i++) {
+                somafi += dadosfreq[1][i];
+                
+                if (somafi>md){
+                    classemediana = dadosfreq[0][i];
+                    break;
+                    
+                }
+                
+            }
+            
+            
+            double mediana = classemediana;
+            return mediana;
+        }
+        else{
+            double mediana = 0;
+            if (dados.length%2!=0){
+                mediana = dados[dados.length/2];
+            }
+            else {
+             mediana = (dados[dados.length/2]+dados[(dados.length/2)-1])/2;
+            }           
+        return mediana;
+       
+        }
+        
+    }
+    
+    
+    
     String operacoes = "";
-    String operacoesHide = "";
     DecimalFormat df = new DecimalFormat("0.000");
    
     public void calcular(javax.swing.JCheckBox medianaCheck,javax.swing.JCheckBox mediaCheck, javax.swing.JCheckBox modaCheck, javax.swing.JTextArea areaTxt) {
-        try {    
-            areaTxt.setText("");
-            operacoes = "";
-            operacoesHide = "";
-            double[] dados = selecaoColunas(jTable1);
-            if(medianaCheck.isSelected()) {
-                areaTxt.append("MEDIANA = "+df.format(mediana(dados))+"\n");
-                operacoes += " Mediana;";
-                operacoesHide += "a";
-            }
-            if(mediaCheck.isSelected()) {
-                areaTxt.append("MÉDIA = "+df.format(media(dados))+"\n");
-                operacoes += " Média;";
-                operacoesHide += "b";
-            }
-            if(modaCheck.isSelected()) {
-                areaTxt.append("MODA = "+df.format(moda(dados))+"\n");
-                operacoes += " Moda;";
-                operacoesHide += "c";
-            }
-        } catch(NumberFormatException e) {
-            JOptionPane.showMessageDialog(this,
-                    "São aceitos somente dados numéricos! Revise a tabela.",
-                    "ERRO",
-                    JOptionPane.ERROR_MESSAGE);
-        } catch (Exception e) {
-            JOptionPane.showConfirmDialog(this,
-                    e.getMessage(), 
-                    "ERRO", 
-                    JOptionPane.ERROR_MESSAGE);
-        }                                       
+        areaTxt.setText("");
+        operacoes = "";
+        double[] dados = selecaoColunas(jTable1);
+        double[][] dadosfreq = colunasFreq(jTable1);
+        
+        if(jCheckBox8.isSelected()&&tabelaFreq==true) {
+            areaTxt.append("DESVIO PADRÃO = "+df.format(desviopadrao(null, dadosfreq))+"\n");
+            operacoes += " Desvio  padrão;";
+        }
+         if(jCheckBox8.isSelected()&&tabelaFreq==false) {
+            areaTxt.append("DESVIO PADRÃO = "+df.format(desviopadrao(dados, null))+"\n");
+            operacoes += " Desvio  padrão;";
+        }
+        if(medianaCheck.isSelected()&& tabelaFreq==false) {
+            areaTxt.append("MEDIANA = "+df.format(mediana(dados, null))+"\n");
+            operacoes += " Mediana;";
+        }
+        if(medianaCheck.isSelected()&& tabelaFreq==true) {
+            areaTxt.append("MEDIANA = "+df.format(mediana(null, dadosfreq))+"\n");
+            operacoes += " Mediana;";
+        }
+        if(mediaCheck.isSelected()&&tabelaFreq==false) {
+            areaTxt.append("MÉDIA = "+df.format(media(dados, null))+"\n");
+            operacoes += " Média;";
+        }
+         if(mediaCheck.isSelected()&&tabelaFreq==true) {
+            areaTxt.append("MÉDIA = "+df.format(media(null, dadosfreq))+"\n");
+            operacoes += " Média;";
+        }
+        
+        if(modaCheck.isSelected()&& tabelaFreq==false) {
+            areaTxt.append("MODA = "+df.format(moda(dados,null))+"\n");
+            operacoes += " Moda;";
+        }
+        if(modaCheck.isSelected()&& tabelaFreq==true) {
+            areaTxt.append("MODA = "+df.format(moda(null,dadosfreq))+"\n");
+            operacoes += " Moda;";
+        }
     }
     
 
@@ -1517,6 +1640,7 @@ public class Calculadora extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox5;
     private javax.swing.JCheckBox jCheckBox6;
     private javax.swing.JCheckBox jCheckBox7;
+    private javax.swing.JCheckBox jCheckBox8;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
