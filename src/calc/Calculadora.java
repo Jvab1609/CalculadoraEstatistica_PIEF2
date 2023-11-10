@@ -845,46 +845,56 @@ public class Calculadora extends javax.swing.JFrame {
     
     
     String operacoes = "";
+    String operacoesHide = "";
     DecimalFormat df = new DecimalFormat("0.000");
    
-    public void calcular(javax.swing.JCheckBox medianaCheck,javax.swing.JCheckBox mediaCheck, javax.swing.JCheckBox modaCheck, javax.swing.JTextArea areaTxt) {
+    public void calcular(javax.swing.JCheckBox medianaCheck,javax.swing.JCheckBox mediaCheck, javax.swing.JCheckBox modaCheck, javax.swing.JCheckBox desvioCheck, javax.swing.JTextArea areaTxt) {
         areaTxt.setText("");
         operacoes = "";
         double[] dados = selecaoColunas(jTable1);
         double[][] dadosfreq = colunasFreq(jTable1);
         
-        if(jCheckBox8.isSelected()&&tabelaFreq==true) {
-            areaTxt.append("DESVIO PADRÃO = "+df.format(desviopadrao(null, dadosfreq))+"\n");
-            operacoes += " Desvio  padrão;";
-        }
-         if(jCheckBox8.isSelected()&&tabelaFreq==false) {
-            areaTxt.append("DESVIO PADRÃO = "+df.format(desviopadrao(dados, null))+"\n");
-            operacoes += " Desvio  padrão;";
-        }
+        
         if(medianaCheck.isSelected()&& tabelaFreq==false) {
             areaTxt.append("MEDIANA = "+df.format(mediana(dados, null))+"\n");
             operacoes += " Mediana;";
+            operacoesHide +="a";
         }
-        if(medianaCheck.isSelected()&& tabelaFreq==true) {
+        else if(medianaCheck.isSelected()&& tabelaFreq==true) {
             areaTxt.append("MEDIANA = "+df.format(mediana(null, dadosfreq))+"\n");
             operacoes += " Mediana;";
+            operacoesHide +="a";
         }
         if(mediaCheck.isSelected()&&tabelaFreq==false) {
             areaTxt.append("MÉDIA = "+df.format(media(dados, null))+"\n");
             operacoes += " Média;";
+            operacoesHide +="b";
         }
-         if(mediaCheck.isSelected()&&tabelaFreq==true) {
+        else if(mediaCheck.isSelected()&&tabelaFreq==true) {
             areaTxt.append("MÉDIA = "+df.format(media(null, dadosfreq))+"\n");
             operacoes += " Média;";
+            operacoesHide +="b";
         }
         
         if(modaCheck.isSelected()&& tabelaFreq==false) {
             areaTxt.append("MODA = "+df.format(moda(dados,null))+"\n");
             operacoes += " Moda;";
+            operacoesHide +="c";
         }
-        if(modaCheck.isSelected()&& tabelaFreq==true) {
+        else if(modaCheck.isSelected()&& tabelaFreq==true) {
             areaTxt.append("MODA = "+df.format(moda(null,dadosfreq))+"\n");
             operacoes += " Moda;";
+            operacoesHide +="c";
+        }
+        if(desvioCheck.isSelected()&&tabelaFreq==true) {
+            areaTxt.append("DESVIO PADRÃO = "+df.format(desviopadrao(null, dadosfreq))+"\n");
+            operacoes += " Desvio  padrão;";
+            operacoesHide +="d";
+        }
+         if(desvioCheck.isSelected()&&tabelaFreq==false) {
+            areaTxt.append("DESVIO PADRÃO = "+df.format(desviopadrao(dados, null))+"\n");
+            operacoes += " Desvio  padrão;";
+            operacoesHide +="d";
         }
     }
     
@@ -1267,6 +1277,15 @@ public class Calculadora extends javax.swing.JFrame {
                         jCheckBox6.doClick();
                     }
                 }
+                if (parametros[2].contains("d")) {
+                    if (jCheckBox8.isSelected() == false) {
+                        jCheckBox8.doClick();
+                    }
+                } else {
+                    if (jCheckBox8.isSelected() == true) {
+                        jCheckBox8.doClick();
+                    }
+                }
                 if (parametros[2].equals("#")) {
                     if (jCheckBox4.isSelected() == true) {
                         jCheckBox4.doClick();
@@ -1285,7 +1304,7 @@ public class Calculadora extends javax.swing.JFrame {
                 
                 jTextField1.setText(arquivo.getAbsolutePath());
                 lerArquivo();
-                calcular(jCheckBox4, jCheckBox5, jCheckBox6, jTextArea1);
+                calcular(jCheckBox4, jCheckBox5, jCheckBox6, jCheckBox8, jTextArea1);
             }
             else {
                 jTabbedPane1.setSelectedIndex(2);
@@ -1526,7 +1545,7 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        calcular(jCheckBox4, jCheckBox5, jCheckBox6, jTextArea1);
+        calcular(jCheckBox4, jCheckBox5, jCheckBox6, jCheckBox8, jTextArea1);
         
     }//GEN-LAST:event_jButton11ActionPerformed
     
