@@ -702,7 +702,7 @@ public class Calculadora extends javax.swing.JFrame {
             double soma = 0;
             for (int i = 0; i < jTable1.getRowCount(); i++) {
                 somafi += dadosfreq[1][i];
-                System.out.println(dadosfreq[1][i]);
+                
                
                 
             }
@@ -755,8 +755,7 @@ public class Calculadora extends javax.swing.JFrame {
               
                 
             }
-            System.out.println(somaxi);
-            System.out.println(dados.length);
+            
             double variancia = somaxi/(dados.length-1);
             
             double dv = Math.sqrt(variancia);
@@ -1030,14 +1029,29 @@ public class Calculadora extends javax.swing.JFrame {
                     FileReader reader = new FileReader(historicoHide);
                     BufferedReader bf = new BufferedReader(reader);
                     String linhaHide = bf.readLine();
-
+                    System.out.println(nomeSave.toString());
+                    
+                    
                     while (linhaHide != null) {
-                        if (linhaHide.startsWith(nomeSave.toString())) {
-                            nomeDisp = false;
-                            throw new Exception("O nome já está em uso.");
+                        StringTokenizer tk = new StringTokenizer(linhaHide, "|");
+                        String parametros[] = new String [tk.countTokens()];
+                        for (int i = 0; i < tk.countTokens(); i++) {;
+                            parametros[i] = tk.nextToken();
+                            System.out.println(parametros[i]);
+                            
+                        }
+                        if (nomeSave.toString().equals(parametros[0])) {
+                                nomeDisp = false;
+                                System.out.println("aaasas");
+                                throw new Exception("O nome já está em uso.");
+                                
                         }
                         linhaHide = bf.readLine();
                     }
+                    
+                    
+                        
+                   
                     if (nomeDisp == true) {
                         String nome = nomeSave.toString();
                         String tipoShow = null;
@@ -1239,6 +1253,7 @@ public class Calculadora extends javax.swing.JFrame {
                 else {
                     if(jCheckBox1.isSelected() == true) {
                         jCheckBox1.doClick();
+                        tabelaFreq = false;
                     }
                 }
                 
