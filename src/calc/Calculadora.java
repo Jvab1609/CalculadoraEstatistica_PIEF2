@@ -20,6 +20,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.DoubleStream;
 import javax.swing.JFrame;
+import java.util.Arrays;
 import javax.swing.WindowConstants;
 
 /*
@@ -888,41 +889,78 @@ public class Calculadora extends javax.swing.JFrame {
     }
     
     public void construirFreq (double[] dados, javax.swing.JTable tabelaPrinc, javax.swing.JTable tabFreq) {
-        DefaultTableModel tabela1 = ((DefaultTableModel) tabelaPrinc.getModel());
+        
         DefaultTableModel tabela2 = ((DefaultTableModel) tabFreq.getModel());
         tabela2.setRowCount(0);
         
-        //double[][] freqDados = new double[2][tabela1.getRowCount()];
-        ArrayList<Double> da = new ArrayList<Double>();
+        double[][] freqDados = new double[2][dados.length];
+        //ArrayList<Double> da = new ArrayList<Double>();
         
-        ArrayList<Double> fr = new ArrayList<Double>();
+        //ArrayList<Double> fr = new ArrayList<Double>();
         
-        
-        for (int i = 0; i < da.size(); i++) {
+        int contZeros = 0;
+        for (int i = 0; i < freqDados[0].length; i++) {
             double num = dados[i];
             
             int contador = 0;
-            if(da.indexOf(num) == -1) {
-                da.add(2.0);
+            if(DoubleStream.of(freqDados[0]).anyMatch(x -> x == num) == false ) {
+                freqDados[0][i] = num;
+                
+                for (int j = 0; j < freqDados[0].length; j++) {
+                    if(freqDados[0][i] == dados[j]){
+                        contador++;
+                    }
+                }
                 
             }
-            
-            for (int j = 0; j < da.size(); j++) {
-                if(da.get(i) == dados[j]){
-                    contador++;
-                }
+            if(num == 0.0) {
+               for (int j = 0; j < i; j++) {
+                    if(freqDados[0][j] == 0){
+                        contZeros++;
+                    }
+               }
+               if (contZeros == 0) {
+                    freqDados[0][i] = 0;
+                    
+                    for (int j = 0; j < freqDados[0].length; j++) {
+                        if(freqDados[0][i] == dados[j]){
+                            contador++;
+                        }
+                    }
+               }
             }
-            
-            fr.add(Double.valueOf(contador));
-            
+
+            //fr.add(Double.valueOf(contador));
+            freqDados[1][i] = contador;
             
         }
-        System.out.println(da);
-        System.out.println(fr);
-        for (int i = 0; i < da.size(); i++) {
-            String[] linhaFreq = {String.valueOf(da.get(i)),String.valueOf(fr.get(i))};
+        
+        for (int i = 0; i < freqDados[0].length; i++) {
+            for (int j = 0; j < freqDados[0].length -1; j++) {
+                if (freqDados[0][j] > freqDados[0][j+1]) {
+                    double menor = freqDados[0][j+1];
+                    double menorFreq = freqDados[1][j+1];
+                    freqDados[0][j+1] = freqDados[0][j];
+                    freqDados[0][j] = menor;
+                    freqDados[1][j+1] = freqDados[1][j];
+                    freqDados[1][j] = menorFreq;
+                }
+            }
+        }
+        
+        
+        for (int i = 0; i < freqDados[0].length; i++) {
+            System.out.println(freqDados[0][i] + " " + freqDados[1][i]);
+        }
+        //System.out.println(da);
+        //System.out.println(fr);
+        for (int i = 0; i < freqDados[0].length; i++) {
+            String[] linhaFreq = {String.valueOf(freqDados[0][i]),String.valueOf(freqDados[1][i])};
             //System.out.println(linhaFreq);
-            tabela2.addRow(linhaFreq);
+            if(freqDados[1][i] != 0) {
+                tabela2.addRow(linhaFreq);
+            }
+            
         }
         
        
