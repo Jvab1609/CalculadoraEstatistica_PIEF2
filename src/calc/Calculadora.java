@@ -66,6 +66,7 @@ public class Calculadora extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
         jPopupMenu2 = new javax.swing.JPopupMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -155,6 +156,14 @@ public class Calculadora extends javax.swing.JFrame {
             }
         });
         jPopupMenu1.add(jMenuItem3);
+
+        jMenuItem5.setText("Salvar no histórico");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(jMenuItem5);
 
         jMenuItem4.setText("Visualizar histórico");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
@@ -363,6 +372,7 @@ public class Calculadora extends javax.swing.JFrame {
 
             }
         ));
+        jTable1.setShowGrid(true);
         jScrollPane1.setViewportView(jTable1);
 
         jTextField1.setEditable(false);
@@ -456,6 +466,7 @@ public class Calculadora extends javax.swing.JFrame {
                 "Xi", "Fi"
             }
         ));
+        jTable4.setShowGrid(true);
         jScrollPane5.setViewportView(jTable4);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -589,6 +600,7 @@ public class Calculadora extends javax.swing.JFrame {
 
             }
         ));
+        jTable2.setShowGrid(true);
         jScrollPane2.setViewportView(jTable2);
 
         jButton2.setText("OK");
@@ -691,6 +703,7 @@ public class Calculadora extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable3.setShowHorizontalLines(true);
         jTable3.getTableHeader().setReorderingAllowed(false);
         jScrollPane3.setViewportView(jTable3);
 
@@ -800,7 +813,15 @@ public class Calculadora extends javax.swing.JFrame {
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         // Mostra o submenu quando o usuário clica em "Arquivo" no canto superior direito
-        jPopupMenu1.show(this,10,50);
+        jPopupMenu1.show(this,10,40);
+        if(jTabbedPane1.getSelectedIndex() != 3) {
+            jMenuItem5.setEnabled(true);
+            jMenuItem3.setEnabled(true);
+        }
+        else {
+            jMenuItem5.setEnabled(false);
+            jMenuItem3.setEnabled(false);
+        }
     }//GEN-LAST:event_jMenu1MouseClicked
     
     
@@ -1842,7 +1863,7 @@ public class Calculadora extends javax.swing.JFrame {
 
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
         // Abre o submenu para abrir o histórico
-        jPopupMenu2.show(this,10,50);
+        jPopupMenu2.show(this,10,40);
     }//GEN-LAST:event_jMenu2MouseClicked
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
@@ -2005,6 +2026,10 @@ public class Calculadora extends javax.swing.JFrame {
     private void jButton4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseEntered
  
     }//GEN-LAST:event_jButton4MouseEntered
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        escreverHistorico(operacoes, operacoesHide);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
     
     /**
      * @param args the command line arguments
@@ -2072,6 +2097,7 @@ public class Calculadora extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
