@@ -23,6 +23,7 @@ import java.util.Set;
 import java.util.stream.DoubleStream;
 import javax.swing.JFrame;
 import java.util.Arrays;
+import javax.swing.JDesktopPane;
 import javax.swing.WindowConstants;
 
 /*
@@ -69,6 +70,7 @@ public class Calculadora extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
         jPopupMenu2 = new javax.swing.JPopupMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -111,6 +113,7 @@ public class Calculadora extends javax.swing.JFrame {
         jTable4 = new javax.swing.JTable();
         jCheckBox9 = new javax.swing.JCheckBox();
         jCheckBox7 = new javax.swing.JCheckBox();
+        jButton13 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -136,11 +139,11 @@ public class Calculadora extends javax.swing.JFrame {
         jCheckBox14 = new javax.swing.JCheckBox();
         jCheckBox15 = new javax.swing.JCheckBox();
         jPanel4 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
         jButton8 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
-        jPanel7 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
@@ -205,6 +208,21 @@ public class Calculadora extends javax.swing.JFrame {
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jDesktopPane1.setBackground(new java.awt.Color(242, 242, 242));
+
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 612, Short.MAX_VALUE)
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 575, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jPanel6.setBackground(new java.awt.Color(0, 102, 204));
 
@@ -510,6 +528,13 @@ public class Calculadora extends javax.swing.JFrame {
             }
         });
 
+        jButton13.setText("Ajuda");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -517,7 +542,10 @@ public class Calculadora extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -567,6 +595,25 @@ public class Calculadora extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel1))
+                                    .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jButton1)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jCheckBox1)
+                                    .addComponent(jCheckBox3))
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton6)
+                                    .addComponent(jButton13)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel4))
@@ -584,24 +631,7 @@ public class Calculadora extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton11)
                                 .addGap(12, 12, 12)
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel1))
-                                    .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jButton1)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jCheckBox1)
-                                    .addComponent(jCheckBox3))
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton6))
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -828,6 +858,20 @@ public class Calculadora extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("tab2", jPanel3);
 
+        jButton8.setText("Carregar");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
+        jButton10.setText("Limpar histórico");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -844,66 +888,49 @@ public class Calculadora extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable3.setShowGrid(true);
         jTable3.setShowHorizontalLines(true);
         jTable3.getTableHeader().setReorderingAllowed(false);
         jScrollPane3.setViewportView(jTable3);
 
-        jButton8.setText("Carregar");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
-
-        jButton10.setText("Limpar histórico");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
-            }
-        });
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calc/img/GradienteG0.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(37, 37, 37)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 921, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton10))
-                .addContainerGap(835, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jButton10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3)))
+                .addContainerGap(307, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jButton8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton10))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(451, Short.MAX_VALUE))
+                        .addGap(537, 537, 537)
+                        .addComponent(jButton10)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(597, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(120, 120, 120))
         );
 
         jTabbedPane1.addTab("tab4", jPanel4);
 
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, 1920, 1100));
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jMenuBar1.setBackground(new java.awt.Color(0, 102, 204));
 
@@ -1032,7 +1059,6 @@ public class Calculadora extends javax.swing.JFrame {
         combo.removeAllItems();
         operacoes = "";
         operacoesHide = "";
-        jPanel5.setVisible(false);
         ((DefaultTableModel) tabFreq.getModel()).setRowCount(0);
         panelFreq.setVisible(false);
         salvarBtn.setEnabled(false);
@@ -1066,36 +1092,67 @@ public class Calculadora extends javax.swing.JFrame {
         
     }
     
-    public double[] selecaoColunas(javax.swing.JTable tabela) {
-        String colunaSel = String.valueOf(jComboBox1.getSelectedItem());
-        DefaultTableModel tabela1 = ((DefaultTableModel) tabela.getModel());
-        double coluna[] = new double[tabela1.getRowCount()];
-        int indiceColuna = 0;
-        for (int i = 0; i < tabela1.getColumnCount(); i++) {
-            if(colunaSel.equals(tabela1.getColumnName(i))){
-                indiceColuna = i;
-            }
-        }
+    public double[] selecaoColunas(javax.swing.JTable tabela, javax.swing.JComboBox combo) {
+        try {
+            
         
-        for (int j = 0; j < coluna.length; j++) {
-            coluna[j] = Double.parseDouble(((String) tabela.getValueAt(j, indiceColuna)).replace(",", "."));
-           
-        }
- 
-        return coluna;
+            String colunaSel = String.valueOf(combo.getSelectedItem());
+            DefaultTableModel tabela1 = ((DefaultTableModel) tabela.getModel());
+            double coluna[] = new double[tabela1.getRowCount()];
+            int indiceColuna = 0;
+            for (int i = 0; i < tabela1.getColumnCount(); i++) {
+                if(colunaSel.equals(tabela1.getColumnName(i))){
+                    indiceColuna = i;
+                }
+            }
+
+            for (int j = 0; j < coluna.length; j++) {
+                if(tabela.getValueAt(j, indiceColuna) == null) {
+                    throw new Exception("Há valores nulos na coluna selecionada. Por favor revise-a!");
+                    
+                }
+                else {
+                    coluna[j] = Double.parseDouble(((String) tabela.getValueAt(j, indiceColuna)).replace(",", "."));
+                }
+            }
+            
+            return coluna;
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(this, 
+                    e.getMessage(),
+                    "ERRO",
+                    JOptionPane.ERROR_MESSAGE);
+        } 
+        return null;
     }
     public double[][] colunasFreq(javax.swing.JTable tabela) {
-        DefaultTableModel tabela1 = ((DefaultTableModel) tabela.getModel());
-        double[][] colunas = new double[2][tabela1.getRowCount()];
-        for (int i = 0; i < tabela1.getRowCount(); i++) {
-            colunas[0][i] = Double.parseDouble(((String) tabela.getValueAt(i, 0)).replace(",", "."));
-            
-        }
-        for (int j = 0; j < tabela1.getRowCount(); j++) {
-            colunas[1][j] = Double.parseDouble(((String) tabela.getValueAt(j, 1)).replace(",", "."));
-            
-        }
-        return colunas;
+        try {
+            DefaultTableModel tabela1 = ((DefaultTableModel) tabela.getModel());
+            if (tabelaFreq == true && tabela1.getColumnCount() >= 2) {
+                double[][] colunas = new double[2][tabela1.getRowCount()];
+                for (int i = 0; i < tabela1.getRowCount(); i++) {
+                    if(tabela.getValueAt(i, 0) == null) {
+                        throw new Exception("Há valores nulos nas colunas selecionadas. Por favor revise-as!");
+                    }
+                    colunas[0][i] = Double.parseDouble(((String) tabela.getValueAt(i, 0)).replace(",", "."));
+
+                }
+                for (int j = 0; j < tabela1.getRowCount(); j++) {
+                    if(tabela.getValueAt(j, 1) == null) {
+                        throw new Exception("Há valores nulos nas colunas selecionadas. Por favor revise-as!");
+                    }
+                    colunas[1][j] = Double.parseDouble(((String) tabela.getValueAt(j, 1)).replace(",", "."));
+
+                }
+                return colunas;
+            }
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(this, 
+                    e.getMessage(),
+                    "ERRO",
+                    JOptionPane.ERROR_MESSAGE);
+        } 
+        return null;
     }
     
     public double media(double[] dados, double[][] dadosfreq) {
@@ -1323,71 +1380,78 @@ public class Calculadora extends javax.swing.JFrame {
     String operacoesHide = "";
     DecimalFormat df = new DecimalFormat("0.000");
    
-    public void calcular(javax.swing.JCheckBox medianaCheck,javax.swing.JCheckBox mediaCheck, javax.swing.JCheckBox modaCheck, javax.swing.JCheckBox desvioCheck, javax.swing.JCheckBox freqCheck, javax.swing.JTextArea areaTxt, javax.swing.JCheckBox cvCheck, javax.swing.JPanel panelFreq) {
+    public void calcular(javax.swing.JCheckBox medianaCheck,javax.swing.JCheckBox mediaCheck, javax.swing.JCheckBox modaCheck, javax.swing.JCheckBox desvioCheck, javax.swing.JCheckBox freqCheck, javax.swing.JTextArea areaTxt, javax.swing.JCheckBox cvCheck, javax.swing.JPanel panelFreq, javax.swing.JTable tabelaPrinc, javax.swing.JTable tabFreq, javax.swing.JComboBox combo) {
         try {
             areaTxt.setText("");
             operacoes = "";
             operacoesHide = "";
-            double[] dados = selecaoColunas(jTable1);
-            double[][] dadosfreq = colunasFreq(jTable1);
+            double[] dados = selecaoColunas(tabelaPrinc, combo);
+            double[][] dadosfreq = colunasFreq(tabelaPrinc);
 
+            if(dados != null) {
+                if(medianaCheck.isSelected()&& tabelaFreq==false) {
+                    areaTxt.append("MEDIANA = "+df.format(mediana(dados, null))+"\n");
+                    operacoes += " Mediana;";
+                    operacoesHide +="a";
+                }
+                if(mediaCheck.isSelected()&&tabelaFreq==false) {
+                    areaTxt.append("MÉDIA = "+df.format(media(dados, null))+"\n");
+                    operacoes += " Média;";
+                    operacoesHide +="b";
+                }
+                if(modaCheck.isSelected()&& tabelaFreq==false) {
+                    areaTxt.append("MODA = "+df.format(moda(dados,null))+"\n");
+                    operacoes += " Moda;";
+                    operacoesHide +="c";
+                }
+                if(desvioCheck.isSelected()&&tabelaFreq==false) {
+                    areaTxt.append("DESVIO PADRÃO = "+df.format(desviopadrao(dados, null))+"\n");
+                    operacoes += " Desvio  padrão;";
+                    operacoesHide +="d";
+                }
+                if(cvCheck.isSelected()&&tabelaFreq==false) {
+                    areaTxt.append("COEF. DE VARIAÇÃO = "+df.format(desviopadrao(dados, null)/media(dados, null)*100)+"%\n");
+                    operacoes += " Coef. Var.;";
+                    operacoesHide +="f";
+                }
 
-            if(medianaCheck.isSelected()&& tabelaFreq==false) {
-                areaTxt.append("MEDIANA = "+df.format(mediana(dados, null))+"\n");
-                operacoes += " Mediana;";
-                operacoesHide +="a";
+                if(freqCheck.isSelected()) {
+                    operacoes += " Tab. Freq.;";
+                    operacoesHide +="e";
+                    panelFreq.setVisible(true);
+                    construirFreq(dados, tabelaPrinc, tabFreq);
+                }
+                else {
+                    panelFreq.setVisible(false);
+                }
             }
-            else if(medianaCheck.isSelected()&& tabelaFreq==true) {
-                areaTxt.append("MEDIANA = "+df.format(mediana(null, dadosfreq))+"\n");
-                operacoes += " Mediana;";
-                operacoesHide +="a";
-            }
-            if(mediaCheck.isSelected()&&tabelaFreq==false) {
-                areaTxt.append("MÉDIA = "+df.format(media(dados, null))+"\n");
-                operacoes += " Média;";
-                operacoesHide +="b";
-            }
-            else if(mediaCheck.isSelected()&&tabelaFreq==true) {
-                areaTxt.append("MÉDIA = "+df.format(media(null, dadosfreq))+"\n");
-                operacoes += " Média;";
-                operacoesHide +="b";
-            }
+            
+            if(dadosfreq != null) {
+                if(medianaCheck.isSelected()&& tabelaFreq==true) {
+                    areaTxt.append("MEDIANA = "+df.format(mediana(null, dadosfreq))+"\n");
+                    operacoes += " Mediana;";
+                    operacoesHide +="a";
+                }
 
-            if(modaCheck.isSelected()&& tabelaFreq==false) {
-                areaTxt.append("MODA = "+df.format(moda(dados,null))+"\n");
-                operacoes += " Moda;";
-                operacoesHide +="c";
+                if(mediaCheck.isSelected()&&tabelaFreq==true) {
+                    areaTxt.append("MÉDIA = "+df.format(media(null, dadosfreq))+"\n");
+                    operacoes += " Média;";
+                    operacoesHide +="b";
+                }     
+                if(modaCheck.isSelected()&&tabelaFreq==true) {
+                    areaTxt.append("MODA = "+df.format(moda(null,dadosfreq))+"\n");
+                    operacoes += " Moda;";
+                    operacoesHide +="c";
+                }
+                if(desvioCheck.isSelected()&&tabelaFreq==true) {
+                    areaTxt.append("DESVIO PADRÃO = "+df.format(desviopadrao(null, dadosfreq))+"\n");
+                    operacoes += " Desvio  padrão;";
+                    operacoesHide +="d";
+                }
             }
-            else if(modaCheck.isSelected()&&tabelaFreq==true) {
-                areaTxt.append("MODA = "+df.format(moda(null,dadosfreq))+"\n");
-                operacoes += " Moda;";
-                operacoesHide +="c";
-            }
-            if(desvioCheck.isSelected()&&tabelaFreq==true) {
-                areaTxt.append("DESVIO PADRÃO = "+df.format(desviopadrao(null, dadosfreq))+"\n");
-                operacoes += " Desvio  padrão;";
-                operacoesHide +="d";
-            }
-            else if(desvioCheck.isSelected()&&tabelaFreq==false) {
-                areaTxt.append("DESVIO PADRÃO = "+df.format(desviopadrao(dados, null))+"\n");
-                operacoes += " Desvio  padrão;";
-                operacoesHide +="d";
-            }
-            if(freqCheck.isSelected()) {
-                operacoes += " Tab. Freq.;";
-                operacoesHide +="e";
-                panelFreq.setVisible(true);
-                construirFreq(dados, jTable1, jTable4);
-            }
-            else {
-                panelFreq.setVisible(false);
-            }
-            if(cvCheck.isSelected()&&tabelaFreq==false) {
-                areaTxt.append("COEF. DE VARIAÇÃO = "+df.format(desviopadrao(dados, null)/media(dados, null)*100)+"\n");
-                operacoes += " Coef. Var.;";
-                operacoesHide +="f";
-            }
-            else if(cvCheck.isSelected()&&tabelaFreq==true) {
+            
+            
+            if(cvCheck.isSelected()&&tabelaFreq==true) {
                 areaTxt.append("COEF. DE VARIAÇÃO = "+df.format(desviopadrao(null, dadosfreq)/media(null, dadosfreq)*100)+"%\n");
                 operacoes += " Coef. Var.;";
                 operacoesHide +="f";
@@ -1563,6 +1627,7 @@ public class Calculadora extends javax.swing.JFrame {
                         String tipoHide = null;
                         String previewShow = null;
                         String previewHide = null;
+                        String comboIndex = "";
                         int colunasArquivo = 0;
                         int freq = 0;
                         if (operacoes.equals("")) {
@@ -1591,7 +1656,8 @@ public class Calculadora extends javax.swing.JFrame {
                                 else {
                                     freq = 0;
                                 }
-
+                                comboIndex = String.valueOf(jComboBox2.getSelectedIndex());
+                                
                                 break;
 
                             case 2:
@@ -1604,12 +1670,12 @@ public class Calculadora extends javax.swing.JFrame {
                                     freq = 0;
                                 }
                                 previewShow = String.valueOf(((DefaultTableModel) jTable2.getModel()).getDataVector());
-
+                                comboIndex = String.valueOf(jComboBox2.getSelectedIndex());
                                 break;     
                         }
 
                         String linha = "";
-                        String[] parametrosHide = {nome, tipoHide, operacoesHide, String.valueOf(colunasArquivo), String.valueOf(freq), String.valueOf(jComboBox1.getSelectedIndex())};
+                        String[] parametrosHide = {nome, tipoHide, operacoesHide, String.valueOf(colunasArquivo), String.valueOf(freq), comboIndex};
                         for (int i = 0; i < parametrosHide.length; i++) {
 
                             linha += parametrosHide[i];
@@ -1823,8 +1889,6 @@ public class Calculadora extends javax.swing.JFrame {
                 if (parametros[2].contains("e")) {
                     if (jCheckBox7.isSelected() == false) {
                         jCheckBox7.doClick();
-                        System.out.println("aaaaa");
-                        
                     }
                 } else {
                     if (jCheckBox7.isSelected() == true) {
@@ -1863,15 +1927,11 @@ public class Calculadora extends javax.swing.JFrame {
 
                 }
                 
-                
-                
-                
-                
                 itensCombo(jComboBox1, jTable1, jCheckBox7);
                 
                 jComboBox1.setSelectedIndex(Integer.parseInt(parametros[5]));
                 // Arquivo
-                calcular(jCheckBox4, jCheckBox5, jCheckBox6, jCheckBox8, jCheckBox7, jTextArea1, jCheckBox9, jPanel5);
+                calcular(jCheckBox4, jCheckBox5, jCheckBox6, jCheckBox8, jCheckBox7, jTextArea1, jCheckBox9, jPanel5, jTable1, jTable4, jComboBox1);
             }
             else {
                 jTabbedPane1.setSelectedIndex(2);
@@ -1923,6 +1983,94 @@ public class Calculadora extends javax.swing.JFrame {
                 }
                 jSpinner1.setValue(((DefaultTableModel) jTable2.getModel()).getColumnCount());
                 jSpinner2.setValue(((DefaultTableModel) jTable2.getModel()).getRowCount());
+                criarDigitar((int)jSpinner2.getValue(), (int)jSpinner1.getValue());
+
+                // Checa mediana
+                if (parametros[2].contains("a")) {
+                if (jCheckBox12.isSelected() == false) {
+                    jCheckBox12.doClick();
+                }
+                } else {
+                    if (jCheckBox12.isSelected() == true) {
+                        jCheckBox12.doClick();
+                    }
+                }
+                // Checa média
+                if (parametros[2].contains("b")) {
+                    if (jCheckBox14.isSelected() == false) {
+                        jCheckBox14.doClick();
+                    }
+                } else {
+                    if (jCheckBox14.isSelected() == true) {
+                        jCheckBox14.doClick();
+                    }
+                }
+                if (parametros[2].contains("c")) {
+                    if (jCheckBox10.isSelected() == false) {
+                        jCheckBox10.doClick();
+                    }
+                } else {
+                    if (jCheckBox10.isSelected() == true) {
+                        jCheckBox10.doClick();
+                    }
+                }
+                if (parametros[2].contains("d")) {
+                    if (jCheckBox11.isSelected() == false) {
+                        jCheckBox11.doClick();
+                    }
+                } else {
+                    if (jCheckBox11.isSelected() == true) {
+                        jCheckBox11.doClick();
+                    }
+                }
+
+                if (parametros[2].contains("e")) {
+                    if (jCheckBox15.isSelected() == false) {
+                        jCheckBox15.doClick();
+                    }
+                } else {
+                    if (jCheckBox15.isSelected() == true) {
+                        jCheckBox15.doClick();
+                    }
+                }
+                if (parametros[2].contains("f")) {
+                    if (jCheckBox13.isSelected() == false) {
+                        jCheckBox13.doClick();
+                    }
+                } else {
+                    if (jCheckBox13.isSelected() == true) {
+                        jCheckBox13.doClick();
+                    }
+                }
+                
+                if (parametros[2].equals("#")) {
+                    if (jCheckBox12.isSelected() == true) {
+                        jCheckBox12.doClick();
+                    }
+                    if (jCheckBox14.isSelected() == true) {
+                        jCheckBox14.doClick();
+                    }
+                    if (jCheckBox10.isSelected() == true) {
+                        jCheckBox10.doClick();
+                    }
+                    if (jCheckBox11.isSelected() == true) {
+                        jCheckBox11.doClick();
+                    }
+                    if (jCheckBox15.isSelected() == true) {
+                        jCheckBox15.doClick();
+                    }
+                    if (jCheckBox13.isSelected() == true) {
+                        jCheckBox13.doClick();
+                    }
+
+                }
+                
+                itensCombo(jComboBox2, jTable2, jCheckBox15);
+                jComboBox2.setSelectedIndex(Integer.parseInt(parametros[5]));
+
+                calcular(jCheckBox12, jCheckBox14, jCheckBox10, jCheckBox11, jCheckBox15, jTextArea2, jCheckBox13, jPanel8, jTable2, jTable5, jComboBox2);
+            
+            
             }
             
         } catch (Exception e) {
@@ -1937,8 +2085,8 @@ public class Calculadora extends javax.swing.JFrame {
             if (((DefaultTableModel) jTable3.getModel()).getRowCount() != 0) {
                 UIManager.put("OptionPane.cancelButtonText", "Cancelar");
                 UIManager.put("OptionPane.okButtonText", "OK");
-                var nomeSave = JOptionPane.showInputDialog(this, "Não será possível recuperar os dados uma vez que o histórico seja deletado.\nPara confirmar a limpeza do histórico, digite 'LIMPAR' abaixo:", "Limpar histórico?", JOptionPane.WARNING_MESSAGE, null, null, DISPOSE_ON_CLOSE);
-                if (nomeSave.toString().equals("LIMPAR")) {
+                var limpar = JOptionPane.showInputDialog(this, "Não será possível recuperar os dados uma vez que o histórico seja deletado.\nPara confirmar a limpeza do histórico, digite 'LIMPAR' abaixo:", "Limpar histórico?", JOptionPane.WARNING_MESSAGE, null, null, DISPOSE_ON_CLOSE);
+                if (limpar.toString().equals("LIMPAR")) {
                     writerShow = new FileWriter(historicoShow,false);
                     writerHide = new FileWriter(historicoHide,false);
                     writerHide.write("");
@@ -1989,8 +2137,6 @@ public class Calculadora extends javax.swing.JFrame {
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // Muda para a digitação de dados e reseta a tabela
         if(confirmacaoMudar(2) == 1) {
-            jSpinner1.setValue(0);
-            jSpinner2.setValue(0);
             ((DefaultTableModel) jTable2.getModel()).setColumnCount(0);
             ((DefaultTableModel) jTable2.getModel()).setRowCount(0);
             jTabbedPane1.setSelectedIndex(2);
@@ -1999,12 +2145,16 @@ public class Calculadora extends javax.swing.JFrame {
             jSpinner2.setValue(1);
             jMenuBar1.setVisible(true);
             limparTela(jCheckBox12, jCheckBox14, jCheckBox10, jCheckBox11, jCheckBox15, jTextArea2, jComboBox2, jTable5, jCheckBox13, jPanel8, jButton7);
-            
+            jComboBox2.setEnabled(false);
+            jButton12.setEnabled(false);
             if(jCheckBox3.isSelected() == true) {
                     jCheckBox3.doClick();
             }
             if(jCheckBox1.isSelected() == true) {
                     jCheckBox1.doClick();
+            }
+            if(jCheckBox2.isSelected() == true) {
+                    jCheckBox2.doClick();
             }
         }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
@@ -2051,6 +2201,8 @@ public class Calculadora extends javax.swing.JFrame {
 
         ((DefaultTableModel) jTable2.getModel()).setColumnCount(0);
         ((DefaultTableModel) jTable2.getModel()).setRowCount(0);
+        jComboBox2.setEnabled(false);
+        jButton12.setEnabled(false);
         jTabbedPane1.setSelectedIndex(2);
         if (jCheckBox2.isSelected()) {
             jCheckBox2.doClick();
@@ -2097,13 +2249,8 @@ public class Calculadora extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // Escreve as informações no histórico
-        escreverHistorico("********", "*******");
+        escreverHistorico(operacoes, operacoesHide);
     }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // Carrega os dados armazenados no arquivo oculto
-        carregarHistorico();
-    }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
         
@@ -2156,15 +2303,9 @@ public class Calculadora extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenu3MouseClicked
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-
-        limparHistorico();
-        lerHistorico();
-    }//GEN-LAST:event_jButton10ActionPerformed
-
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // Arquivo
-        calcular(jCheckBox4, jCheckBox5, jCheckBox6, jCheckBox8, jCheckBox7, jTextArea1, jCheckBox9, jPanel5);
+        calcular(jCheckBox4, jCheckBox5, jCheckBox6, jCheckBox8, jCheckBox7, jTextArea1, jCheckBox9, jPanel5, jTable1, jTable4, jComboBox1);
         
     }//GEN-LAST:event_jButton11ActionPerformed
     
@@ -2209,9 +2350,10 @@ public class Calculadora extends javax.swing.JFrame {
         } 
         else if (jTabbedPane1.getSelectedIndex() == 3) {
             jTabbedPane1.setSelectedIndex(index);
+            return 1;
         }
-            
-        return 0;
+        return 0;    
+        
     }
     
     
@@ -2277,6 +2419,8 @@ public class Calculadora extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         jMenuBar1.setVisible(false);
+        jDesktopPane1.setVisible(false);
+
     }//GEN-LAST:event_formWindowOpened
 
     private void jCheckBox9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox9ActionPerformed
@@ -2296,7 +2440,7 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_jCheckBox7ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        calcular(jCheckBox12, jCheckBox14, jCheckBox10, jCheckBox11, jCheckBox15, jTextArea2, jCheckBox13, jPanel8);
+        calcular(jCheckBox12, jCheckBox14, jCheckBox10, jCheckBox11, jCheckBox15, jTextArea2, jCheckBox13, jPanel8, jTable2, jTable5, jComboBox2);
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jCheckBox11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox11ActionPerformed
@@ -2310,6 +2454,21 @@ public class Calculadora extends javax.swing.JFrame {
     private void jCheckBox15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox15ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox15ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+
+        limparHistorico();
+        lerHistorico();
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // Carrega os dados armazenados no arquivo oculto
+        carregarHistorico();
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton13ActionPerformed
     
     /**
      * @param args the command line arguments
@@ -2321,13 +2480,13 @@ public class Calculadora extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
 
         /* Create and display the form */
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Calculadora().setVisible(true);
-                
             }
         });
     }
@@ -2337,6 +2496,7 @@ public class Calculadora extends javax.swing.JFrame {
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -2362,6 +2522,7 @@ public class Calculadora extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox9;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2372,6 +2533,7 @@ public class Calculadora extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -2393,7 +2555,6 @@ public class Calculadora extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
