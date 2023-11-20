@@ -507,7 +507,13 @@
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="jButton16" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jButton11" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="jButton11" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jSpinner4" min="-2" pref="55" max="-2" attributes="0"/>
+                          </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jCheckBox5" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -559,7 +565,13 @@
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="jCheckBox7" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jButton11" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jButton11" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                                              <Component id="jSpinner4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel29" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
                                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                                       <Component id="jScrollPane4" min="-2" pref="109" max="-2" attributes="0"/>
                                   </Group>
@@ -585,14 +597,13 @@
                                       <Component id="jButton6" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                               <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="407" max="32767" attributes="0"/>
+                      <EmptySpace pref="1531" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -719,7 +730,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButton11">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Fazer opera&#xe7;&#xf5;es"/>
+                <Property name="text" type="java.lang.String" value="Calcular"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton11ActionPerformed"/>
@@ -847,6 +858,21 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton16ActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JLabel" name="jLabel29">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Casas decimais"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JSpinner" name="jSpinner4">
+              <Properties>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Default Cursor"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSpinner4StateChanged"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel3">
@@ -885,36 +911,48 @@
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jComboBox2" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButton12" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jButton17" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jSpinner3" min="-2" pref="55" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jButton12" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jCheckBox14" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox10" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jCheckBox13" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jCheckBox12" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jCheckBox11" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jComboBox2" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jCheckBox14" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jCheckBox10" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jCheckBox13" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jCheckBox12" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jButton17" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jCheckBox11" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Component id="jCheckBox15" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane6" alignment="0" min="-2" pref="259" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace min="0" pref="1" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="jCheckBox15" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jScrollPane6" alignment="0" min="-2" pref="259" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="585" max="32767" attributes="0"/>
+                      <EmptySpace pref="919" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -938,36 +976,44 @@
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                               <Component id="jScrollPane2" min="-2" pref="508" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jButton17" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jButton17" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jCheckBox12" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jCheckBox14" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jCheckBox11" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jCheckBox10" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jCheckBox13" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jCheckBox15" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jButton12" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jSpinner3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                      <Component id="jScrollPane6" min="-2" pref="109" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jPanel8" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jCheckBox12" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox14" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox11" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jCheckBox10" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox13" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jCheckBox15" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jButton12" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                              <Component id="jScrollPane6" min="-2" pref="109" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jPanel8" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jButton7" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="413" max="32767" attributes="0"/>
+                      <EmptySpace pref="1533" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1059,7 +1105,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButton12">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Fazer opera&#xe7;&#xf5;es"/>
+                <Property name="text" type="java.lang.String" value="Calcular"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
@@ -1214,6 +1260,21 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton17ActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JSpinner" name="jSpinner3">
+              <Properties>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Default Cursor"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSpinner3StateChanged"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel18">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Casas decimais"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel4">
@@ -1259,7 +1320,7 @@
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="437" max="32767" attributes="0"/>
+                      <EmptySpace pref="1557" max="32767" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
                   </Group>
@@ -1389,7 +1450,7 @@
                       <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jPanel9" min="-2" pref="509" max="-2" attributes="0"/>
-                      <EmptySpace pref="369" max="32767" attributes="0"/>
+                      <EmptySpace pref="1489" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
