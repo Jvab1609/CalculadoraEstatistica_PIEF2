@@ -37,6 +37,7 @@ import org.jfree.chart.plot.XYPlot;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
+import org.jfree.data.statistics.HistogramDataset;
 import org.jfree.data.category.CategoryDataset; 
 import org.jfree.data.category.DefaultCategoryDataset; 
 
@@ -1832,31 +1833,45 @@ public class Calculadora extends javax.swing.JFrame {
                 return dataset;
     }
             
-    private DefaultCategoryDataset createDataset(javax.swing.JTable tabFreq, javax.swing.JTable tabelaPrinc, double[] dados, javax.swing.JComboBox combo) {
+    private HistogramDataset criarDatasetHist(javax.swing.JTable tabFreq, javax.swing.JTable tabelaPrinc, double[] dados, javax.swing.JComboBox combo) {
                 
                 
-                DefaultCategoryDataset dataset = new DefaultCategoryDataset( );
+                HistogramDataset dataset = new HistogramDataset();
+                double[][] colunas = null;
                 //Inserir o conjunto de valores, um para cada linha da tabela. Ex.:
                 if (tabelaFreq == false) {
-                    
                     construirFreq(dados, tabelaPrinc, tabFreq);
                     int n = ((DefaultTableModel) tabFreq.getModel()).getRowCount();
-                    double[][] colunas = colunasFreq(tabFreq);
-                    
-                        for (int i = 0; i < n; i++) {
-                            dataset.setValue(colunas[0][i], colunas[1][i], 1);
-                        }
+                    colunas = colunasFreq(tabFreq);
+                    //dataset.addSeries("Dados", colunas[0], 100);
+                        
                         
                 }
                 else {
                     int n = ((DefaultTableModel) tabelaPrinc.getModel()).getRowCount();
-                    double[][] colunas = colunasFreq(tabelaPrinc);
-                    for (int i = 0; i < n; i++) {
-                            dataset.setValue(colunas[0][i], colunas[1][i], 1);
-                    }
+                    colunas = colunasFreq(tabelaPrinc);
+                    //dataset.addSeries("Dados", colunas[0], 100);
                 } 
-                   
-
+                int contador = 0;
+                for (int i = 0; i < colunas[0].length; i++) {
+                    for (int j = 0; j < colunas[1][i]; j++) {
+                        contador++;
+                    }
+                }
+                double[] vetor = new double[contador];
+                System.out.println(contador);
+                int c = 0;
+                for (int i = 0; i < colunas[0].length; i++) {
+                    int valorJ = 0;
+                    for (int j = 0; j < colunas[1][i]; j++) {
+                        
+                        vetor[c+j] = colunas[0][i];
+                        valorJ++;
+                    }
+                    c += valorJ;
+                }
+                
+                dataset.addSeries("Dados", vetor, colunas[0].length);
                 //dataset.addSeries(series);
                 return dataset;
     }
@@ -1886,10 +1901,10 @@ public class Calculadora extends javax.swing.JFrame {
                 plot.setDomainGridlinePaint(Color.white);
                 plot.setRangeGridlinePaint(Color.white);
                 //Configuração dos eixos e escalas
-                NumberAxis axis = (NumberAxis) plot.getDomainAxis();
-                double[] amp = amplitude(dados);
-                axis.setRange(amp[0],amp[1]);
-                axis.setTickUnit(new NumberTickUnit(amp[2]/10));
+//                NumberAxis axis = (NumberAxis) plot.getDomainAxis();
+//                double[] amp = amplitude(dados);
+//                axis.setRange(amp[0],amp[1]);
+//                axis.setTickUnit(new NumberTickUnit(amp[2]/10));
                 //Criação do painel do gráfico e inserção no painel (jPainel1) da janela
                 ChartPanel chartPanel = new ChartPanel(chart);
                 chartPanel.setPreferredSize(panelPol.getSize());
@@ -1911,14 +1926,15 @@ public class Calculadora extends javax.swing.JFrame {
             //Instância da classe apropriada do JFreeChart
             System.out.println("batatat");
            
-            JFreeChart chart = ChartFactory.createXYBarChart(
-                        "Histograma",
-                        "Dados",
-                        false,
-                        "Frequência",
-                        createXYDataset(tabFreq, tabelaPrinc, dados, combo),
-
-                );
+            JFreeChart chart = ChartFactory.createHistogram("JFreeChart Histogram",
+                               "Data", "Frequency", criarDatasetHist(tabFreq, 
+                                       tabelaPrinc, 
+                                       dados, 
+                                       combo), 
+                                       PlotOrientation.VERTICAL,
+                                       true,
+                                       true,
+                                       false);
                 //Algumas customizações (cores)
                 chart.setBackgroundPaint(Color.white);
                 XYPlot plot = chart.getXYPlot();
@@ -1929,7 +1945,7 @@ public class Calculadora extends javax.swing.JFrame {
                 NumberAxis axis = (NumberAxis) plot.getDomainAxis();
                 double[] amp = amplitude(dados);
                 axis.setRange(amp[0],amp[1]);
-                axis.setTickUnit(new NumberTickUnit(amp[2]/10));
+                axis.setTickUnit(new NumberTickUnit(1));
                 //Criação do painel do gráfico e inserção no painel (jPainel1) da janela
                 ChartPanel chartPanel = new ChartPanel(chart);
                 chartPanel.setPreferredSize(panelHist.getSize());
