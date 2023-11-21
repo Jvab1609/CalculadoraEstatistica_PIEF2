@@ -37,6 +37,8 @@ import org.jfree.chart.plot.XYPlot;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
+import org.jfree.data.category.CategoryDataset; 
+import org.jfree.data.category.DefaultCategoryDataset; 
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -1802,8 +1804,7 @@ public class Calculadora extends javax.swing.JFrame {
     }
     
     private XYDataset createXYDataset(javax.swing.JTable tabFreq, javax.swing.JTable tabelaPrinc, double[] dados, javax.swing.JComboBox combo) {
-                //XYSeriesCollection dataset = new XYSeriesCollection();
-                //XYSeries serie = new XYSeries("varr");
+                
                 XYSeriesCollection dataset = new XYSeriesCollection();
                 XYSeries series = new XYSeries(combo.getSelectedItem().toString());
                 //Inserir o conjunto de valores, um para cada linha da tabela. Ex.:
@@ -1812,7 +1813,7 @@ public class Calculadora extends javax.swing.JFrame {
                     construirFreq(dados, tabelaPrinc, tabFreq);
                     int n = ((DefaultTableModel) tabFreq.getModel()).getRowCount();
                     double[][] colunas = colunasFreq(tabFreq);
-                    //panelPol.setVisible(true);
+                    
                         for (int i = 0; i < n; i++) {
                             series.add(colunas[0][i], colunas[1][i]);
                         }
@@ -1826,25 +1827,39 @@ public class Calculadora extends javax.swing.JFrame {
                     }
                 } 
                    
-                    
-                
-                //Adicionar a série ao dataset e retornar
-                //dataset.addSeries(serie);
-                //System.out.println(dataset);
-                //XYSeriesCollection dataset = new XYSeriesCollection(series);
-                
-                
-                //XYSeries serie = new XYSeries("variação da temperatura");
-                //Inserir o conjunto de valores, um para cada linha da tabela. Ex.:
-                
-                //Adicionar a série ao dataset e retornar
-                
-                //Adicionar a série ao dataset e retornar
+
                 dataset.addSeries(series);
                 return dataset;
     }
             
-    
+    private DefaultCategoryDataset createDataset(javax.swing.JTable tabFreq, javax.swing.JTable tabelaPrinc, double[] dados, javax.swing.JComboBox combo) {
+                
+                
+                DefaultCategoryDataset dataset = new DefaultCategoryDataset( );
+                //Inserir o conjunto de valores, um para cada linha da tabela. Ex.:
+                if (tabelaFreq == false) {
+                    
+                    construirFreq(dados, tabelaPrinc, tabFreq);
+                    int n = ((DefaultTableModel) tabFreq.getModel()).getRowCount();
+                    double[][] colunas = colunasFreq(tabFreq);
+                    
+                        for (int i = 0; i < n; i++) {
+                            dataset.setValue(colunas[0][i], colunas[1][i], 1);
+                        }
+                        
+                }
+                else {
+                    int n = ((DefaultTableModel) tabelaPrinc.getModel()).getRowCount();
+                    double[][] colunas = colunasFreq(tabelaPrinc);
+                    for (int i = 0; i < n; i++) {
+                            dataset.setValue(colunas[0][i], colunas[1][i], 1);
+                    }
+                } 
+                   
+
+                //dataset.addSeries(series);
+                return dataset;
+    }
     
     
     
@@ -1878,8 +1893,47 @@ public class Calculadora extends javax.swing.JFrame {
                 //Criação do painel do gráfico e inserção no painel (jPainel1) da janela
                 ChartPanel chartPanel = new ChartPanel(chart);
                 chartPanel.setPreferredSize(panelPol.getSize());
-                
                 panelPol.add(chartPanel, java.awt.BorderLayout.CENTER);
+                this.getContentPane().validate();
+                this.getContentPane().repaint();
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(this, 
+                    e.getMessage(),
+                    "ERRO",
+                    JOptionPane.ERROR_MESSAGE);
+        } 
+    }
+    
+    private void histograma (javax.swing.JTable tabFreq, javax.swing.JTable tabelaPrinc, double[] dados, javax.swing.JComboBox combo, javax.swing.JPanel panelHist) {
+        try {
+            
+            panelHist.removeAll();
+            //Instância da classe apropriada do JFreeChart
+            System.out.println("batatat");
+           
+            JFreeChart chart = ChartFactory.createXYBarChart(
+                        "Histograma",
+                        "Dados",
+                        false,
+                        "Frequência",
+                        createXYDataset(tabFreq, tabelaPrinc, dados, combo),
+
+                );
+                //Algumas customizações (cores)
+                chart.setBackgroundPaint(Color.white);
+                XYPlot plot = chart.getXYPlot();
+                plot.setBackgroundPaint(Color.lightGray);
+                plot.setDomainGridlinePaint(Color.white);
+                plot.setRangeGridlinePaint(Color.white);
+                //Configuração dos eixos e escalas
+                NumberAxis axis = (NumberAxis) plot.getDomainAxis();
+                double[] amp = amplitude(dados);
+                axis.setRange(amp[0],amp[1]);
+                axis.setTickUnit(new NumberTickUnit(amp[2]/10));
+                //Criação do painel do gráfico e inserção no painel (jPainel1) da janela
+                ChartPanel chartPanel = new ChartPanel(chart);
+                chartPanel.setPreferredSize(panelHist.getSize());
+                panelHist.add(chartPanel, java.awt.BorderLayout.CENTER);
                 this.getContentPane().validate();
                 this.getContentPane().repaint();
         } catch(Exception e) {
@@ -1900,7 +1954,8 @@ public class Calculadora extends javax.swing.JFrame {
     public void calcular(javax.swing.JCheckBox medianaCheck,javax.swing.JCheckBox mediaCheck, javax.swing.JCheckBox modaCheck, 
             javax.swing.JCheckBox desvioCheck, javax.swing.JCheckBox freqCheck, javax.swing.JTextArea areaTxt, 
             javax.swing.JCheckBox cvCheck, javax.swing.JPanel panelFreq, javax.swing.JTable tabelaPrinc, javax.swing.JTable tabFreq,
-            javax.swing.JComboBox combo, javax.swing.JCheckBox polCheck, javax.swing.JPanel panelPol) {
+            javax.swing.JComboBox combo, javax.swing.JCheckBox polCheck, javax.swing.JPanel panelPol,
+            javax.swing.JCheckBox histCheck, javax.swing.JPanel panelHist) {
         try {
             areaTxt.setText("");
             operacoes = "";
@@ -1986,7 +2041,14 @@ public class Calculadora extends javax.swing.JFrame {
                     operacoes += " Pol. Freq.;";
                     operacoesHide +="g";
                     panelPol.setVisible(true);
-                    System.out.println("GRAPH");
+                    
+                }
+            if(histCheck.isSelected()) {
+                    histograma(tabFreq, tabelaPrinc, dados, combo, panelHist);
+                    operacoes += " Histograma;";
+                    operacoesHide +="h";
+                    panelHist.setVisible(true);
+                    
                 }
             
         } catch(NumberFormatException e) {
@@ -2487,7 +2549,7 @@ public class Calculadora extends javax.swing.JFrame {
                 }
                 jComboBox1.setSelectedIndex(comboSel);
                 // Arquivo
-                calcular(jCheckBox4, jCheckBox5, jCheckBox6, jCheckBox8, jCheckBox7, jTextArea1, jCheckBox9, jPanel5, jTable1, jTable4, jComboBox1, jCheckBox16, jPanel10);
+                calcular(jCheckBox4, jCheckBox5, jCheckBox6, jCheckBox8, jCheckBox7, jTextArea1, jCheckBox9, jPanel5, jTable1, jTable4, jComboBox1, jCheckBox17, jPanel10, jCheckBox16, jPanel11);
             }
             else {
                 jTabbedPane1.setSelectedIndex(2);
@@ -2878,7 +2940,7 @@ public class Calculadora extends javax.swing.JFrame {
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // Arquivo
-        calcular(jCheckBox4, jCheckBox5, jCheckBox6, jCheckBox8, jCheckBox7, jTextArea1, jCheckBox9, jPanel5, jTable1, jTable4, jComboBox1, jCheckBox16, jPanel10);
+        calcular(jCheckBox4, jCheckBox5, jCheckBox6, jCheckBox8, jCheckBox7, jTextArea1, jCheckBox9, jPanel5, jTable1, jTable4, jComboBox1, jCheckBox16, jPanel10, jCheckBox17, jPanel11);
         
     }//GEN-LAST:event_jButton11ActionPerformed
     
