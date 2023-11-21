@@ -2445,6 +2445,15 @@ public class Calculadora extends javax.swing.JFrame {
                         jCheckBox9.doClick();
                     }
                 }
+                if (parametros[2].contains("g")) {
+                    if (jCheckBox16.isSelected() == false) {
+                        jCheckBox16.doClick();
+                    }
+                } else {
+                    if (jCheckBox16.isSelected() == true) {
+                        jCheckBox16.doClick();
+                    }
+                }
                 
                 if (parametros[2].equals("#")) {
                     if (jCheckBox4.isSelected() == true) {
@@ -2465,12 +2474,18 @@ public class Calculadora extends javax.swing.JFrame {
                     if (jCheckBox9.isSelected() == true) {
                         jCheckBox9.doClick();
                     }
+                    if (jCheckBox16.isSelected() == true) {
+                        jCheckBox16.doClick();
+                    }
 
                 }
                 
                 itensCombo(jComboBox1, jTable1, jCheckBox7);
-                
-                jComboBox1.setSelectedIndex(Integer.parseInt(parametros[5]));
+                int comboSel = Integer.parseInt(parametros[5]);
+                if(comboSel == -1) {
+                    comboSel = 0;
+                }
+                jComboBox1.setSelectedIndex(comboSel);
                 // Arquivo
                 calcular(jCheckBox4, jCheckBox5, jCheckBox6, jCheckBox8, jCheckBox7, jTextArea1, jCheckBox9, jPanel5, jTable1, jTable4, jComboBox1, jCheckBox16, jPanel10);
             }
@@ -2583,6 +2598,15 @@ public class Calculadora extends javax.swing.JFrame {
                         jCheckBox13.doClick();
                     }
                 }
+                if (parametros[2].contains("g")) {
+                    if (jCheckBox18.isSelected() == false) {
+                        jCheckBox18.doClick();
+                    }
+                } else {
+                    if (jCheckBox18.isSelected() == true) {
+                        jCheckBox18.doClick();
+                    }
+                }
                 
                 if (parametros[2].equals("#")) {
                     if (jCheckBox12.isSelected() == true) {
@@ -2603,11 +2627,18 @@ public class Calculadora extends javax.swing.JFrame {
                     if (jCheckBox13.isSelected() == true) {
                         jCheckBox13.doClick();
                     }
+                    if (jCheckBox18.isSelected() == true) {
+                        jCheckBox18.doClick();
+                    }
 
                 }
                 
                 itensCombo(jComboBox2, jTable2, jCheckBox15);
-                jComboBox2.setSelectedIndex(Integer.parseInt(parametros[5]));
+                int comboSel = Integer.parseInt(parametros[5]);
+                if(comboSel == -1) {
+                    comboSel = 0;
+                }
+                jComboBox2.setSelectedIndex(comboSel);
 
                 calcular(jCheckBox12, jCheckBox14, jCheckBox10, jCheckBox11, jCheckBox15, jTextArea2, jCheckBox13, jPanel8, jTable2, jTable5, jComboBox2, jCheckBox18, jPanel12);
             
@@ -2654,7 +2685,6 @@ public class Calculadora extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // Abre a tela de escolha de arquivo e muda de tela
         
-        limparTela(jCheckBox4, jCheckBox5, jCheckBox6, jCheckBox8, jCheckBox7, jTextArea1, jComboBox1, jTable4, jCheckBox9, jPanel5, jButton6, jCheckBox16, jCheckBox17);
         UIManager.put("OptionPane.noButtonText", "Não");
         UIManager.put("OptionPane.yesButtonText", "Sim");
         //int indAtual = jTabbedPane1.getSelectedIndex();
@@ -2666,12 +2696,16 @@ public class Calculadora extends javax.swing.JFrame {
 
                 if(confirmacaoMudar(1) == 1) {
                     escolherArquivo();
+                    limparTela(jCheckBox4, jCheckBox5, jCheckBox6, jCheckBox8, jCheckBox7, jTextArea1, jComboBox1, jTable4, jCheckBox9, jPanel5, jButton6, jCheckBox16, jCheckBox17);
+
                     jSpinner4.setValue(3);
                 }
             }
         }
         else {
                     escolherArquivo();
+                    limparTela(jCheckBox4, jCheckBox5, jCheckBox6, jCheckBox8, jCheckBox7, jTextArea1, jComboBox1, jTable4, jCheckBox9, jPanel5, jButton6, jCheckBox16, jCheckBox17);
+
                     jSpinner4.setValue(3);
         }
         
@@ -2915,9 +2949,6 @@ public class Calculadora extends javax.swing.JFrame {
                 else {
                     setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 }
-                
-                
-                
                 
             }
             else if (dialogResult == JOptionPane.NO_OPTION ) {
