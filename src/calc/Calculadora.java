@@ -963,19 +963,17 @@ public class Calculadora extends javax.swing.JFrame {
                                     .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(322, 322, 322))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jTabbedPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTabbedPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(506, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5)
@@ -988,9 +986,8 @@ public class Calculadora extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton7)
-                        .addGap(6, 6, 6))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jButton7))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -1021,9 +1018,9 @@ public class Calculadora extends javax.swing.JFrame {
                                     .addComponent(jButton12))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jTabbedPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(1511, Short.MAX_VALUE))
+                .addContainerGap(1505, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab2", jPanel3);
@@ -2232,7 +2229,10 @@ public class Calculadora extends javax.swing.JFrame {
             else {
                 if(nomeSave.toString().equals("")) {
                     throw new Exception("O nome não pode ser nulo!");
-                }    
+                } 
+                else if (nomeSave.toString().contains("|")) {
+                    throw new Exception("| é um caracter não permitido.");
+                }
                 else {    
                     FileReader reader = new FileReader(historicoHide);
                     BufferedReader bf = new BufferedReader(reader);
@@ -2620,15 +2620,18 @@ public class Calculadora extends javax.swing.JFrame {
                 linha = bf.readLine();
                 tk = new StringTokenizer(linha, ";");
                 String[] linhaRead = new String[tk.countTokens()];
-               
+                
                 ((DefaultTableModel) jTable2.getModel()).setColumnCount(tk.countTokens());
+                
                 if (tabelaFreq == true) {
                     jTable2.getColumnModel().getColumn(0).setHeaderValue("Xi");
                     jTable2.getColumnModel().getColumn(1).setHeaderValue("Fi");
                 }
                 else {
                     jTable2.getColumnModel().getColumn(0).setHeaderValue("A");
-                    jTable2.getColumnModel().getColumn(1).setHeaderValue("B");
+                    if(tk.countTokens() > 1) {
+                        jTable2.getColumnModel().getColumn(1).setHeaderValue("B");
+                    }
                 }
                 int numLinhas = 0;
                 
@@ -2637,12 +2640,10 @@ public class Calculadora extends javax.swing.JFrame {
                     tk = new StringTokenizer(linha, ";");
                     
                     for (int i = 0; i < linhaRead.length; i++) {
-                        if(tk.countTokens() > 1){
-                            linhaRead[i] = tk.nextToken();
-                        }
-                        else {
-                            linhaRead[i] = linha;
-                        }
+                       
+                        linhaRead[i] = tk.nextToken();
+                        
+                        
                         if (linhaRead[i].endsWith("&zz")) {
                             linhaRead[i] = linhaRead[i].substring(0, linhaRead[i].length() - 3);
                             finalSeq = true;
@@ -2847,7 +2848,7 @@ public class Calculadora extends javax.swing.JFrame {
             jTabbedPane1.setSelectedIndex(2);
             
             jSpinner1.setValue(1);
-            jSpinner2.setValue(1);
+            jSpinner2.setValue(2);
             jSpinner3.setValue(3);
             
             jMenuBar1.setVisible(true);
@@ -2908,7 +2909,7 @@ public class Calculadora extends javax.swing.JFrame {
             jCheckBox2.doClick();
         }
         jSpinner1.setValue(1);
-        jSpinner2.setValue(1);
+        jSpinner2.setValue(2);
         jSpinner3.setValue(3);
         jMenuBar1.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -2960,8 +2961,8 @@ public class Calculadora extends javax.swing.JFrame {
     private void jSpinner2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner2StateChanged
         // Previne o spinner das linhas de tomar valores negativos
         int s2 = (int) jSpinner2.getValue();
-        if (s2 < 1) {
-            jSpinner2.setValue(1);
+        if (s2 < 2) {
+            jSpinner2.setValue(2);
         }
     }//GEN-LAST:event_jSpinner2StateChanged
 
