@@ -1,9 +1,7 @@
 package calc;
 
-
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import java.awt.Color;
-import java.awt.List;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -19,14 +17,8 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.stream.DoubleStream;
 import javax.swing.JFrame;
-import java.util.Arrays;
-import javax.swing.JDesktopPane;
-import javax.swing.WindowConstants;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -38,8 +30,7 @@ import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 import org.jfree.data.statistics.HistogramDataset;
-import org.jfree.data.category.CategoryDataset; 
-import org.jfree.data.category.DefaultCategoryDataset; 
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -733,7 +724,7 @@ public class Calculadora extends javax.swing.JFrame {
                                     .addComponent(jLabel29))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
+                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(1493, Short.MAX_VALUE))
@@ -1367,8 +1358,7 @@ public class Calculadora extends javax.swing.JFrame {
             jMenuItem3.setEnabled(false);
         }
     }//GEN-LAST:event_jMenu1MouseClicked
-    
-    
+
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem3ActionPerformed
@@ -1532,7 +1522,6 @@ public class Calculadora extends javax.swing.JFrame {
                         throw new Exception("Há valores nulos nas colunas selecionadas. Por favor revise-as!");
                     }
                     colunas[0][i] = Double.parseDouble(((String) tabela.getValueAt(i, 0)).replace(",", "."));
-
                 }
                 for (int j = 0; j < tabela1.getRowCount(); j++) {
                     if(tabela.getValueAt(j, 1) == null) {
@@ -1656,13 +1645,12 @@ public class Calculadora extends javax.swing.JFrame {
         
     }
     public double mediana(double[] dados, double[][]dadosfreq) {
-        
+
         if (tabelaFreq==true){
             double somafi = 0;
             double classemediana = 0;
              for (int i = 0; i < jTable1.getRowCount(); i++) {
                 somafi += dadosfreq[1][i];
-                
             }
              
             double md = somafi/2;
@@ -1704,7 +1692,6 @@ public class Calculadora extends javax.swing.JFrame {
         
         
         for (int i = 0; i < dados.length; i++) {
-            //dados[i] = Math.rint(dados[i]);
             String dadosStr = Double.toString(Math.abs(dados[i]));
             int decimais = dadosStr.length() - dadosStr.indexOf('.') - 1;
             System.out.println(decimais);
@@ -1714,10 +1701,6 @@ public class Calculadora extends javax.swing.JFrame {
         }
         
         double[][] freqDados = new double[2][dados.length];
-        //ArrayList<Double> da = new ArrayList<Double>();
-        
-        //ArrayList<Double> fr = new ArrayList<Double>();
-        
         int contZeros = 0;
         for (int i = 0; i < freqDados[0].length; i++) {
             double num = dados[i];
@@ -1749,8 +1732,6 @@ public class Calculadora extends javax.swing.JFrame {
                     }
                }
             }
-
-            //fr.add(Double.valueOf(contador));
             freqDados[1][i] = contador;
             
         }
@@ -1768,12 +1749,8 @@ public class Calculadora extends javax.swing.JFrame {
             }
         }
         
-      
-        //System.out.println(da);
-        //System.out.println(fr);
         for (int i = 0; i < freqDados[0].length; i++) {
             String[] linhaFreq = {String.valueOf(freqDados[0][i]),String.valueOf(freqDados[1][i])};
-            //System.out.println(linhaFreq);
             if(freqDados[1][i] != 0) {
                 tabela2.addRow(linhaFreq);
             }
@@ -1783,7 +1760,7 @@ public class Calculadora extends javax.swing.JFrame {
        
     }
     
-    
+    // Calcula a amplitude dos dados
     public double[] amplitude (double[] dados) {
         for (int i = 0; i < dados.length; i++) {
             for (int j = 0; j < dados.length - 1; j++) {
@@ -2002,7 +1979,6 @@ public class Calculadora extends javax.swing.JFrame {
                     operacoes += " Coef. Var.;";
                     operacoesHide +="f";
                 }
-                
 
                 if(freqCheck.isSelected()) {
                     operacoes += " Tab. Freq.;";
@@ -2292,7 +2268,7 @@ public class Calculadora extends javax.swing.JFrame {
                                 else {
                                     freq = 0;
                                 }
-                                comboIndex = String.valueOf(jComboBox2.getSelectedIndex());
+                                comboIndex = String.valueOf(jComboBox1.getSelectedIndex());
                                 
                                 break;
 
