@@ -516,6 +516,8 @@ public class Calculadora extends javax.swing.JFrame {
 
         jLabel4.setText("Coluna:");
 
+        jButton11.setBackground(new java.awt.Color(0, 102, 204));
+        jButton11.setForeground(new java.awt.Color(255, 255, 255));
         jButton11.setText("Calcular");
         jButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -726,7 +728,7 @@ public class Calculadora extends javax.swing.JFrame {
                                     .addComponent(jLabel29))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
+                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(1493, Short.MAX_VALUE))
@@ -789,6 +791,8 @@ public class Calculadora extends javax.swing.JFrame {
 
         jLabel17.setText("Coluna:");
 
+        jButton12.setBackground(new java.awt.Color(0, 102, 204));
+        jButton12.setForeground(new java.awt.Color(255, 255, 255));
         jButton12.setText("Calcular");
         jButton12.setEnabled(false);
         jButton12.addActionListener(new java.awt.event.ActionListener() {
@@ -1018,6 +1022,8 @@ public class Calculadora extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("tab2", jPanel3);
 
+        jButton8.setBackground(new java.awt.Color(0, 102, 204));
+        jButton8.setForeground(new java.awt.Color(255, 255, 255));
         jButton8.setText("Carregar");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1311,7 +1317,7 @@ public class Calculadora extends javax.swing.JFrame {
                     .addComponent(jTextArea14, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextArea17, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel14Layout.createSequentialGroup()
@@ -1372,7 +1378,7 @@ public class Calculadora extends javax.swing.JFrame {
                         .addComponent(jLabel31)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(248, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab4", jPanel7);
