@@ -97,7 +97,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="title" type="java.lang.String" value="Calculadora Estat&#xed;stica"/>
+    <Property name="title" type="java.lang.String" value="CalcuL&#xe1;grimas"/>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
       <Color blue="cc" green="66" red="0" type="rgb"/>
     </Property>
@@ -1539,33 +1539,56 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jButton15" min="-2" pref="144" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel21" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jPanel9" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel21" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jPanel9" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel20" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jLabel27" min="-2" pref="506" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel31" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jPanel14" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="1416" max="32767" attributes="0"/>
+                      <EmptySpace pref="806" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton15" min="-2" pref="37" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jPanel9" min="-2" pref="509" max="-2" attributes="0"/>
-                      <EmptySpace pref="1489" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                              <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel31" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jPanel14" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="248" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1619,88 +1642,54 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="436" max="32767" attributes="0"/>
-                      <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jScrollPane10" min="-2" pref="318" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jScrollPane11" min="-2" pref="318" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel27" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel28" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jScrollPane12" min="-2" pref="318" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel23" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel22" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jScrollPane8" min="-2" pref="309" max="-2" attributes="0"/>
-                                          <Component id="jScrollPane9" min="-2" pref="318" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel23" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel22" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel24" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextArea8" alignment="0" min="-2" pref="102" max="-2" attributes="0"/>
+                              <Component id="jTextArea9" alignment="0" min="-2" pref="102" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jTextArea7" min="-2" pref="318" max="-2" attributes="0"/>
+                              <Component id="jTextArea6" min="-2" pref="318" max="-2" attributes="0"/>
+                              <Component id="jTextArea3" min="-2" pref="309" max="-2" attributes="0"/>
+                              <Component id="jTextArea4" min="-2" pref="318" max="-2" attributes="0"/>
+                              <Component id="jTextArea5" alignment="0" min="-2" pref="331" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="18" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jScrollPane8" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jScrollPane9" min="-2" pref="102" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel24" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jScrollPane10" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="jScrollPane11" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="jScrollPane12" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextArea3" alignment="3" min="-2" pref="67" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextArea4" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextArea5" alignment="3" min="-2" pref="67" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jTextArea6" min="-2" pref="45" max="-2" attributes="0"/>
+                              <Component id="jTextArea8" min="-2" pref="55" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jTextArea7" min="-2" pref="49" max="-2" attributes="0"/>
+                              <Component id="jTextArea9" min="-2" pref="55" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -1715,14 +1704,6 @@
                     <Property name="text" type="java.lang.String" value="Moda:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel28">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI Semibold" size="18" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="de Varia&#xe7;&#xe3;o:"/>
-                  </Properties>
-                </Component>
                 <Component class="javax.swing.JLabel" name="jLabel24">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -1731,215 +1712,29 @@
                     <Property name="text" type="java.lang.String" value="Mediana:"/>
                   </Properties>
                 </Component>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane10">
+                <Component class="javax.swing.JTextArea" name="jTextArea3">
                   <Properties>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="null"/>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                  </AuxValues>
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                  <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="jTextArea5">
-                      <Properties>
-                        <Property name="editable" type="boolean" value="false"/>
-                        <Property name="columns" type="int" value="20"/>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Segoe UI" size="14" style="0"/>
-                        </Property>
-                        <Property name="rows" type="int" value="5"/>
-                        <Property name="text" type="java.lang.String" value="Ao colocar os valores em um rol (ordem crescente),&#xa;&#xe9; aquele que est&#xe1; na posi&#xe7;&#xe3;o central ou a m&#xe9;dia &#xa;dos que est&#xe3;o &#x2014; caso o n&#xfa;mero de dados seja par.&#xa;&#xa;"/>
-                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                            <EmptyBorder/>
-                          </Border>
-                        </Property>
-                        <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="f2" green="f2" red="f2" type="rgb"/>
-                        </Property>
-                        <Property name="focusable" type="boolean" value="false"/>
-                        <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                          <ComponentRef name="null"/>
-                        </Property>
-                      </Properties>
-                    </Component>
-                  </SubComponents>
-                </Container>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane8">
-                  <Properties>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="null"/>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                  </AuxValues>
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                  <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="jTextArea3">
-                      <Properties>
-                        <Property name="editable" type="boolean" value="false"/>
-                        <Property name="columns" type="int" value="20"/>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Segoe UI" size="14" style="0"/>
-                        </Property>
-                        <Property name="rows" type="int" value="5"/>
-                        <Property name="text" type="java.lang.String" value="Valor que demonstra a concentra&#xe7;&#xe3;o dos dados.&#xa;Obtido ao dividir a somat&#xf3;ria dos valores pelo &#xa;n&#xfa;mero de dados no conjunto analisado.&#xa;"/>
-                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                            <EmptyBorder/>
-                          </Border>
-                        </Property>
-                        <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="f2" green="f2" red="f2" type="rgb"/>
-                        </Property>
-                        <Property name="focusable" type="boolean" value="false"/>
-                        <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                          <ComponentRef name="null"/>
-                        </Property>
-                      </Properties>
-                    </Component>
-                  </SubComponents>
-                </Container>
-                <Component class="javax.swing.JLabel" name="jLabel25">
-                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                    <Property name="columns" type="int" value="20"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI Semibold" size="18" style="0"/>
+                      <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Desvio"/>
+                    <Property name="rows" type="int" value="5"/>
+                    <Property name="text" type="java.lang.String" value="Valor que demonstra a concentra&#xe7;&#xe3;o dos dados.&#xa;Obtido ao dividir a somat&#xf3;ria dos valores pelo &#xa;n&#xfa;mero de dados no conjunto analisado.&#xa;"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                        <EmptyBorder/>
+                      </Border>
+                    </Property>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="f2" green="f2" red="f2" type="rgb"/>
+                    </Property>
+                    <Property name="focusable" type="boolean" value="false"/>
+                    <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                      <ComponentRef name="null"/>
+                    </Property>
                   </Properties>
                 </Component>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane11">
-                  <Properties>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="null"/>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                  </AuxValues>
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                  <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="jTextArea6">
-                      <Properties>
-                        <Property name="editable" type="boolean" value="false"/>
-                        <Property name="columns" type="int" value="20"/>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Segoe UI" size="14" style="0"/>
-                        </Property>
-                        <Property name="rows" type="int" value="5"/>
-                        <Property name="text" type="java.lang.String" value="Mede a dist&#xe2;ncia dos valores do conjunto em&#xa;rela&#xe7;&#xe3;o &#xe0; m&#xe9;dia"/>
-                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                            <EmptyBorder/>
-                          </Border>
-                        </Property>
-                        <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="f2" green="f2" red="f2" type="rgb"/>
-                        </Property>
-                        <Property name="focusable" type="boolean" value="false"/>
-                        <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                          <ComponentRef name="null"/>
-                        </Property>
-                      </Properties>
-                    </Component>
-                  </SubComponents>
-                </Container>
-                <Component class="javax.swing.JLabel" name="jLabel26">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI Semibold" size="18" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Padr&#xe3;o:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel27">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI Semibold" size="18" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Coeficiente"/>
-                  </Properties>
-                </Component>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane9">
-                  <Properties>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="null"/>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                  </AuxValues>
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                  <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="jTextArea4">
-                      <Properties>
-                        <Property name="editable" type="boolean" value="false"/>
-                        <Property name="columns" type="int" value="20"/>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Segoe UI" size="14" style="0"/>
-                        </Property>
-                        <Property name="rows" type="int" value="5"/>
-                        <Property name="text" type="java.lang.String" value="&#xc9; o valor mais frequente da distribui&#xe7;&#xe3;o de dados.&#xa;&#xa;"/>
-                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                            <EmptyBorder/>
-                          </Border>
-                        </Property>
-                        <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="f2" green="f2" red="f2" type="rgb"/>
-                        </Property>
-                        <Property name="focusable" type="boolean" value="false"/>
-                        <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                          <ComponentRef name="null"/>
-                        </Property>
-                      </Properties>
-                    </Component>
-                  </SubComponents>
-                </Container>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane12">
-                  <Properties>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="null"/>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                  </AuxValues>
-
-                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                  <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="jTextArea7">
-                      <Properties>
-                        <Property name="editable" type="boolean" value="false"/>
-                        <Property name="columns" type="int" value="20"/>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Segoe UI" size="14" style="0"/>
-                        </Property>
-                        <Property name="rows" type="int" value="5"/>
-                        <Property name="text" type="java.lang.String" value="Mede a dist&#xe2;ncia dos valores do conjunto em&#xa;rela&#xe7;&#xe3;o &#xe0; m&#xe9;dia"/>
-                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
-                            <EmptyBorder/>
-                          </Border>
-                        </Property>
-                        <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="f2" green="f2" red="f2" type="rgb"/>
-                        </Property>
-                        <Property name="focusable" type="boolean" value="false"/>
-                        <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                          <ComponentRef name="null"/>
-                        </Property>
-                      </Properties>
-                    </Component>
-                  </SubComponents>
-                </Container>
                 <Component class="javax.swing.JLabel" name="jLabel22">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -1948,8 +1743,327 @@
                     <Property name="text" type="java.lang.String" value="M&#xe9;dia:"/>
                   </Properties>
                 </Component>
+                <Component class="javax.swing.JTextArea" name="jTextArea4">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                    <Property name="columns" type="int" value="20"/>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="14" style="0"/>
+                    </Property>
+                    <Property name="rows" type="int" value="5"/>
+                    <Property name="text" type="java.lang.String" value="&#xc9; o valor mais frequente da distribui&#xe7;&#xe3;o de dados.&#xa;&#xa;"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                        <EmptyBorder/>
+                      </Border>
+                    </Property>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="f2" green="f2" red="f2" type="rgb"/>
+                    </Property>
+                    <Property name="focusable" type="boolean" value="false"/>
+                    <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                      <ComponentRef name="null"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextArea" name="jTextArea5">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                    <Property name="columns" type="int" value="20"/>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="14" style="0"/>
+                    </Property>
+                    <Property name="rows" type="int" value="5"/>
+                    <Property name="text" type="java.lang.String" value="Ao colocar os valores em um rol (ordem crescente),&#xa;&#xe9; aquele que est&#xe1; na posi&#xe7;&#xe3;o central ou a m&#xe9;dia &#xa;dos que est&#xe3;o &#x2014; caso o n&#xfa;mero de dados seja par.&#xa;&#xa;"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                        <EmptyBorder/>
+                      </Border>
+                    </Property>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="f2" green="f2" red="f2" type="rgb"/>
+                    </Property>
+                    <Property name="focusable" type="boolean" value="false"/>
+                    <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                      <ComponentRef name="null"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextArea" name="jTextArea6">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                    <Property name="columns" type="int" value="20"/>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="14" style="0"/>
+                    </Property>
+                    <Property name="rows" type="int" value="5"/>
+                    <Property name="text" type="java.lang.String" value="Mede a dist&#xe2;ncia dos valores do conjunto em&#xa;rela&#xe7;&#xe3;o &#xe0; m&#xe9;dia"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                        <EmptyBorder/>
+                      </Border>
+                    </Property>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="f2" green="f2" red="f2" type="rgb"/>
+                    </Property>
+                    <Property name="focusable" type="boolean" value="false"/>
+                    <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                      <ComponentRef name="null"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextArea" name="jTextArea7">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                    <Property name="columns" type="int" value="20"/>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="14" style="0"/>
+                    </Property>
+                    <Property name="rows" type="int" value="5"/>
+                    <Property name="text" type="java.lang.String" value="Mede a dist&#xe2;ncia dos valores do conjunto em&#xa;rela&#xe7;&#xe3;o &#xe0; m&#xe9;dia"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                        <EmptyBorder/>
+                      </Border>
+                    </Property>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="f2" green="f2" red="f2" type="rgb"/>
+                    </Property>
+                    <Property name="focusable" type="boolean" value="false"/>
+                    <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                      <ComponentRef name="null"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextArea" name="jTextArea8">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                    <Property name="columns" type="int" value="20"/>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI Semibold" size="18" style="0"/>
+                    </Property>
+                    <Property name="rows" type="int" value="5"/>
+                    <Property name="text" type="java.lang.String" value="Desvio&#xa;Padr&#xe3;o:"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                        <EmptyBorder/>
+                      </Border>
+                    </Property>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="f2" green="f2" red="f2" type="rgb"/>
+                    </Property>
+                    <Property name="focusable" type="boolean" value="false"/>
+                    <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                      <ComponentRef name="null"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextArea" name="jTextArea9">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                    <Property name="columns" type="int" value="20"/>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI Semibold" size="18" style="0"/>
+                    </Property>
+                    <Property name="rows" type="int" value="5"/>
+                    <Property name="text" type="java.lang.String" value="Coeficiente&#xa;de Varia&#xe7;&#xe3;o:"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                        <EmptyBorder/>
+                      </Border>
+                    </Property>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="f2" green="f2" red="f2" type="rgb"/>
+                    </Property>
+                    <Property name="focusable" type="boolean" value="false"/>
+                    <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                      <ComponentRef name="null"/>
+                    </Property>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
+            <Container class="javax.swing.JPanel" name="jPanel14">
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="jTextArea16" min="-2" pref="107" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="jTextArea14" min="-2" pref="318" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jTextArea17" min="-2" pref="107" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="jTextArea15" min="-2" pref="318" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="jLabel26" alignment="0" min="-2" pref="551" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                  <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace pref="90" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jTextArea16" alignment="3" min="-2" pref="55" max="-2" attributes="0"/>
+                              <Component id="jTextArea14" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel25" min="-2" pref="242" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jTextArea17" min="-2" pref="55" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
+                                  <Component id="jTextArea15" min="-2" pref="45" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel26" min="-2" pref="234" max="-2" attributes="0"/>
+                          <EmptySpace pref="160" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JTextArea" name="jTextArea14">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                    <Property name="columns" type="int" value="20"/>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="14" style="0"/>
+                    </Property>
+                    <Property name="rows" type="int" value="5"/>
+                    <Property name="text" type="java.lang.String" value="Gr&#xe1;fico de linha que tem, como eixo horizontal,&#xa;os dados, e vertical, a frequ&#xea;ncia deles."/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                        <EmptyBorder/>
+                      </Border>
+                    </Property>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="f2" green="f2" red="f2" type="rgb"/>
+                    </Property>
+                    <Property name="focusable" type="boolean" value="false"/>
+                    <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                      <ComponentRef name="null"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextArea" name="jTextArea16">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                    <Property name="columns" type="int" value="20"/>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI Semibold" size="18" style="0"/>
+                    </Property>
+                    <Property name="rows" type="int" value="5"/>
+                    <Property name="text" type="java.lang.String" value="Pol&#xed;gono de&#xa;frequ&#xea;ncia:"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                        <EmptyBorder/>
+                      </Border>
+                    </Property>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="f2" green="f2" red="f2" type="rgb"/>
+                    </Property>
+                    <Property name="focusable" type="boolean" value="false"/>
+                    <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                      <ComponentRef name="null"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel25">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/calc/img/polFreq.png"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextArea" name="jTextArea17">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                    <Property name="columns" type="int" value="20"/>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI Semibold" size="18" style="0"/>
+                    </Property>
+                    <Property name="rows" type="int" value="5"/>
+                    <Property name="text" type="java.lang.String" value="Histograma:"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                        <EmptyBorder/>
+                      </Border>
+                    </Property>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="f2" green="f2" red="f2" type="rgb"/>
+                    </Property>
+                    <Property name="focusable" type="boolean" value="false"/>
+                    <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                      <ComponentRef name="null"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextArea" name="jTextArea15">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                    <Property name="columns" type="int" value="20"/>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="14" style="0"/>
+                    </Property>
+                    <Property name="rows" type="int" value="5"/>
+                    <Property name="text" type="java.lang.String" value="Gr&#xe1;fico de representa, por meio de barras, a&#xa;a frequ&#xea;ncia dos dados."/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                        <EmptyBorder/>
+                      </Border>
+                    </Property>
+                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="f2" green="f2" red="f2" type="rgb"/>
+                    </Property>
+                    <Property name="focusable" type="boolean" value="false"/>
+                    <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                      <ComponentRef name="null"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel26">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/calc/img/hist.png"/>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JLabel" name="jLabel31">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI Semibold" size="24" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Gr&#xe1;ficos"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel27">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/calc/img/GradienteG0.png"/>
+                </Property>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
       </SubComponents>

@@ -173,22 +173,24 @@ public class Calculadora extends javax.swing.JFrame {
         jButton15 = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        jScrollPane10 = new javax.swing.JScrollPane();
-        jTextArea5 = new javax.swing.JTextArea();
-        jScrollPane8 = new javax.swing.JScrollPane();
         jTextArea3 = new javax.swing.JTextArea();
-        jLabel25 = new javax.swing.JLabel();
-        jScrollPane11 = new javax.swing.JScrollPane();
-        jTextArea6 = new javax.swing.JTextArea();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        jScrollPane9 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
-        jScrollPane12 = new javax.swing.JScrollPane();
-        jTextArea7 = new javax.swing.JTextArea();
         jLabel22 = new javax.swing.JLabel();
+        jTextArea4 = new javax.swing.JTextArea();
+        jTextArea5 = new javax.swing.JTextArea();
+        jTextArea6 = new javax.swing.JTextArea();
+        jTextArea7 = new javax.swing.JTextArea();
+        jTextArea8 = new javax.swing.JTextArea();
+        jTextArea9 = new javax.swing.JTextArea();
+        jPanel14 = new javax.swing.JPanel();
+        jTextArea14 = new javax.swing.JTextArea();
+        jTextArea16 = new javax.swing.JTextArea();
+        jLabel25 = new javax.swing.JLabel();
+        jTextArea17 = new javax.swing.JTextArea();
+        jTextArea15 = new javax.swing.JTextArea();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
@@ -236,7 +238,7 @@ public class Calculadora extends javax.swing.JFrame {
         jPopupMenu2.add(jMenuItem4);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Calculadora Estatística");
+        setTitle("CalcuLágrimas");
         setBackground(new java.awt.Color(0, 102, 204));
         setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         setMinimumSize(new java.awt.Dimension(1280, 720));
@@ -724,7 +726,7 @@ public class Calculadora extends javax.swing.JFrame {
                                     .addComponent(jLabel29))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(1493, Short.MAX_VALUE))
@@ -1111,26 +1113,8 @@ public class Calculadora extends javax.swing.JFrame {
         jLabel23.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         jLabel23.setText("Moda:");
 
-        jLabel28.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jLabel28.setText("de Variação:");
-
         jLabel24.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         jLabel24.setText("Mediana:");
-
-        jScrollPane10.setBorder(null);
-
-        jTextArea5.setEditable(false);
-        jTextArea5.setColumns(20);
-        jTextArea5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextArea5.setRows(5);
-        jTextArea5.setText("Ao colocar os valores em um rol (ordem crescente),\né aquele que está na posição central ou a média \ndos que estão — caso o número de dados seja par.\n\n");
-        jTextArea5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jTextArea5.setDisabledTextColor(new java.awt.Color(242, 242, 242));
-        jTextArea5.setFocusable(false);
-        jTextArea5.setHighlighter(null);
-        jScrollPane10.setViewportView(jTextArea5);
-
-        jScrollPane8.setBorder(null);
 
         jTextArea3.setEditable(false);
         jTextArea3.setColumns(20);
@@ -1141,31 +1125,9 @@ public class Calculadora extends javax.swing.JFrame {
         jTextArea3.setDisabledTextColor(new java.awt.Color(242, 242, 242));
         jTextArea3.setFocusable(false);
         jTextArea3.setHighlighter(null);
-        jScrollPane8.setViewportView(jTextArea3);
 
-        jLabel25.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jLabel25.setText("Desvio");
-
-        jScrollPane11.setBorder(null);
-
-        jTextArea6.setEditable(false);
-        jTextArea6.setColumns(20);
-        jTextArea6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextArea6.setRows(5);
-        jTextArea6.setText("Mede a distância dos valores do conjunto em\nrelação à média");
-        jTextArea6.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jTextArea6.setDisabledTextColor(new java.awt.Color(242, 242, 242));
-        jTextArea6.setFocusable(false);
-        jTextArea6.setHighlighter(null);
-        jScrollPane11.setViewportView(jTextArea6);
-
-        jLabel26.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jLabel26.setText("Padrão:");
-
-        jLabel27.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jLabel27.setText("Coeficiente");
-
-        jScrollPane9.setBorder(null);
+        jLabel22.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        jLabel22.setText("Média:");
 
         jTextArea4.setEditable(false);
         jTextArea4.setColumns(20);
@@ -1176,9 +1138,26 @@ public class Calculadora extends javax.swing.JFrame {
         jTextArea4.setDisabledTextColor(new java.awt.Color(242, 242, 242));
         jTextArea4.setFocusable(false);
         jTextArea4.setHighlighter(null);
-        jScrollPane9.setViewportView(jTextArea4);
 
-        jScrollPane12.setBorder(null);
+        jTextArea5.setEditable(false);
+        jTextArea5.setColumns(20);
+        jTextArea5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextArea5.setRows(5);
+        jTextArea5.setText("Ao colocar os valores em um rol (ordem crescente),\né aquele que está na posição central ou a média \ndos que estão — caso o número de dados seja par.\n\n");
+        jTextArea5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jTextArea5.setDisabledTextColor(new java.awt.Color(242, 242, 242));
+        jTextArea5.setFocusable(false);
+        jTextArea5.setHighlighter(null);
+
+        jTextArea6.setEditable(false);
+        jTextArea6.setColumns(20);
+        jTextArea6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextArea6.setRows(5);
+        jTextArea6.setText("Mede a distância dos valores do conjunto em\nrelação à média");
+        jTextArea6.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jTextArea6.setDisabledTextColor(new java.awt.Color(242, 242, 242));
+        jTextArea6.setFocusable(false);
+        jTextArea6.setHighlighter(null);
 
         jTextArea7.setEditable(false);
         jTextArea7.setColumns(20);
@@ -1189,79 +1168,164 @@ public class Calculadora extends javax.swing.JFrame {
         jTextArea7.setDisabledTextColor(new java.awt.Color(242, 242, 242));
         jTextArea7.setFocusable(false);
         jTextArea7.setHighlighter(null);
-        jScrollPane12.setViewportView(jTextArea7);
 
-        jLabel22.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jLabel22.setText("Média:");
+        jTextArea8.setEditable(false);
+        jTextArea8.setColumns(20);
+        jTextArea8.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        jTextArea8.setRows(5);
+        jTextArea8.setText("Desvio\nPadrão:");
+        jTextArea8.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jTextArea8.setDisabledTextColor(new java.awt.Color(242, 242, 242));
+        jTextArea8.setFocusable(false);
+        jTextArea8.setHighlighter(null);
+
+        jTextArea9.setEditable(false);
+        jTextArea9.setColumns(20);
+        jTextArea9.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        jTextArea9.setRows(5);
+        jTextArea9.setText("Coeficiente\nde Variação:");
+        jTextArea9.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jTextArea9.setDisabledTextColor(new java.awt.Color(242, 242, 242));
+        jTextArea9.setFocusable(false);
+        jTextArea9.setHighlighter(null);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 436, Short.MAX_VALUE)
-            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel9Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel9Layout.createSequentialGroup()
-                            .addComponent(jLabel24)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel25)
-                                .addComponent(jLabel26))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel27)
-                                .addComponent(jLabel28))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel9Layout.createSequentialGroup()
-                            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel23)
-                                .addComponent(jLabel22))
-                            .addGap(50, 50, 50)
-                            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel23)
+                    .addComponent(jLabel22)
+                    .addComponent(jLabel24)
+                    .addComponent(jTextArea8, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextArea9, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextArea7, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextArea6, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextArea3, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextArea4, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextArea5, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel9Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel22)
-                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel23)
-                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel24)
-                        .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel9Layout.createSequentialGroup()
-                            .addComponent(jLabel25)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabel26))
-                        .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel9Layout.createSequentialGroup()
-                            .addComponent(jLabel27)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabel28))
-                        .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(jTextArea3, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel23)
+                    .addComponent(jTextArea4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel24)
+                    .addComponent(jTextArea5, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextArea6, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextArea8, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextArea7, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextArea9, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
+
+        jTextArea14.setEditable(false);
+        jTextArea14.setColumns(20);
+        jTextArea14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextArea14.setRows(5);
+        jTextArea14.setText("Gráfico de linha que tem, como eixo horizontal,\nos dados, e vertical, a frequência deles.");
+        jTextArea14.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jTextArea14.setDisabledTextColor(new java.awt.Color(242, 242, 242));
+        jTextArea14.setFocusable(false);
+        jTextArea14.setHighlighter(null);
+
+        jTextArea16.setEditable(false);
+        jTextArea16.setColumns(20);
+        jTextArea16.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        jTextArea16.setRows(5);
+        jTextArea16.setText("Polígono de\nfrequência:");
+        jTextArea16.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jTextArea16.setDisabledTextColor(new java.awt.Color(242, 242, 242));
+        jTextArea16.setFocusable(false);
+        jTextArea16.setHighlighter(null);
+
+        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calc/img/polFreq.png"))); // NOI18N
+
+        jTextArea17.setEditable(false);
+        jTextArea17.setColumns(20);
+        jTextArea17.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        jTextArea17.setRows(5);
+        jTextArea17.setText("Histograma:");
+        jTextArea17.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jTextArea17.setDisabledTextColor(new java.awt.Color(242, 242, 242));
+        jTextArea17.setFocusable(false);
+        jTextArea17.setHighlighter(null);
+
+        jTextArea15.setEditable(false);
+        jTextArea15.setColumns(20);
+        jTextArea15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextArea15.setRows(5);
+        jTextArea15.setText("Gráfico de representa, por meio de barras, a\na frequência dos dados.");
+        jTextArea15.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jTextArea15.setDisabledTextColor(new java.awt.Color(242, 242, 242));
+        jTextArea15.setFocusable(false);
+        jTextArea15.setHighlighter(null);
+
+        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calc/img/hist.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
+        jPanel14.setLayout(jPanel14Layout);
+        jPanel14Layout.setHorizontalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel14Layout.createSequentialGroup()
+                                .addComponent(jTextArea16, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextArea14, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel14Layout.createSequentialGroup()
+                                .addComponent(jTextArea17, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextArea15, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(jLabel25)))
+                .addContainerGap(90, Short.MAX_VALUE))
+        );
+        jPanel14Layout.setVerticalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextArea16, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextArea14, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextArea17, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jTextArea15, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(160, Short.MAX_VALUE))
+        );
+
+        jLabel31.setFont(new java.awt.Font("Segoe UI Semibold", 0, 24)); // NOI18N
+        jLabel31.setText("Gráficos");
+
+        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calc/img/GradienteG0.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -1271,28 +1335,44 @@ public class Calculadora extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel20)
-                            .addComponent(jLabel19)
-                            .addComponent(jLabel21)
-                            .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(1416, Short.MAX_VALUE))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addGap(68, 68, 68)
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel19)
+                                    .addComponent(jLabel21)
+                                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel20)))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(153, 153, 153)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel31)
+                            .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(806, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel19)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel21)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel20)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1489, Short.MAX_VALUE))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel21)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45)
+                        .addComponent(jLabel27))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel31)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(248, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab4", jPanel7);
@@ -3304,9 +3384,9 @@ public class Calculadora extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -3327,6 +3407,7 @@ public class Calculadora extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -3338,17 +3419,12 @@ public class Calculadora extends javax.swing.JFrame {
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane10;
-    private javax.swing.JScrollPane jScrollPane11;
-    private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;
     private javax.swing.JSpinner jSpinner3;
@@ -3362,12 +3438,18 @@ public class Calculadora extends javax.swing.JFrame {
     private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea14;
+    private javax.swing.JTextArea jTextArea15;
+    private javax.swing.JTextArea jTextArea16;
+    private javax.swing.JTextArea jTextArea17;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextArea jTextArea4;
     private javax.swing.JTextArea jTextArea5;
     private javax.swing.JTextArea jTextArea6;
     private javax.swing.JTextArea jTextArea7;
+    private javax.swing.JTextArea jTextArea8;
+    private javax.swing.JTextArea jTextArea9;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
