@@ -1632,10 +1632,10 @@ public class Calculadora extends javax.swing.JFrame {
         if(tabelaFreq==true){
             double somafi = 0;
             double soma = 0;
-            for (int i = 0; i < jTable1.getRowCount(); i++) {
+            for (int i = 0; i < dadosfreq[0].length; i++) {
                 somafi += dadosfreq[1][i];   
             }
-            for (int i = 0; i < jTable1.getRowCount(); i++) {
+            for (int i = 0; i < dadosfreq[0].length; i++) {
                     soma = soma +(dadosfreq[0][i]*dadosfreq[1][i]);                    
                 }
                 
@@ -1690,44 +1690,110 @@ public class Calculadora extends javax.swing.JFrame {
         
     }
     
-    public double moda(double[] dados, double[][]dadosfreq) {
-        
+    public String moda(double[] dados, double[][]dadosfreq, javax.swing.JTable tabelaPrinc, javax.swing.JTable tabFreq) {
+        String classif = "";
+        String moda = "";
         if (tabelaFreq==true){
             double maior = 0;
-            double moda = 0;
-            for (int i = 0; i < jTable1.getRowCount(); i++) {
+            for (int i = 0; i < dadosfreq[0].length; i++) {
                 if (dadosfreq[1][i]>maior){
                     maior = dadosfreq[1][i];
-                    
-                    moda = dadosfreq[0][i];
-                
+                }
+            }
+            int contadorModas = 0;
+            if (maior > 1) {
+                for (int i = 0; i < dadosfreq[0].length; i++) {
+                    if (dadosfreq[1][i] == maior) {
+                        contadorModas++;
+                    }
+                }
+                String vetorModa[] = new String[contadorModas];
+                int c = 0;
+                for (int i = 0; i < dadosfreq[0].length; i++) {
+                    if (dadosfreq[1][i] == maior) {
+                        vetorModa[c] = String.valueOf(df.format(dadosfreq[0][i]));
+                        c++;
+                    }
                 }
                 
+                if (contadorModas == dadosfreq[0].length) {
+                    classif = "Distribuição Amodal";
+                }
+                else if (contadorModas == 2) {
+                    classif = "(Distr. BIMODAL)";
+                }
+                else if (contadorModas == 3) {
+                    classif = "(Distr. TRIMODAL)";
+                }
+                else if (contadorModas >= 4) {
+                    classif = "(Distr. MULTIMODAL)";
+                }
                 
+                for (int i = 0; i < vetorModa.length; i++) {
+                    moda = moda + vetorModa[i];
+                    if(i < vetorModa.length -1) {
+                        moda = moda + "; ";
+                    }
+                }
+            }
+            else {
+                return "Distribuição AMODAL";
             }
             
-            return moda;
         }
         else{
-            int contadorMax = 0;
-            double moda = 0;
-            for (int i = 0; i < dados.length; i++) {
-                int contador = 0;
-                for (int j = 0; j < dados.length; j++) {
-                    if (dados[i]==dados[j]){
-                        contador++;
-                    
-                    }
-                    
+            construirFreq (dados, tabelaPrinc, tabFreq);
+            double[][] colunas = colunasFreq(tabFreq);
+            double maior = 0;
+            for (int i = 0; i < colunas[0].length; i++) {
+                if (colunas[1][i]>maior){
+                    maior = colunas[1][i];
                 }
-                if (contador>contadorMax){
-                     moda = dados[i];
-                    contadorMax = contador;
+            }
+            int contadorModas = 0;
+            if (maior > 1) {
+                for (int i = 0; i < colunas[0].length; i++) {
+                    if (colunas[1][i] == maior) {
+                        contadorModas++;
+                    }
+                }
+                String vetorModa[] = new String[contadorModas];
+                int c = 0;
+                for (int i = 0; i < colunas[0].length; i++) {
+                    if (colunas[1][i] == maior) {
+                        vetorModa[c] = String.valueOf(df.format(colunas[0][i]));
+                        c++;
+                    }
+                }
+                
+                if (contadorModas == colunas[0].length) {
+                    return "Distribuição AMODAL";
+                }
+                else if (contadorModas == 2) {
+                    classif = "(Distr. BIMODAL)";
+                }
+                else if (contadorModas == 3) {
+                    classif = "(Distr. TRIMODAL)";
+                }
+                else if (contadorModas >= 4) {
+                    classif = "(Distr. MULTIMODAL)";
+                }
+                
+                for (int i = 0; i < vetorModa.length; i++) {
+                    moda = moda + vetorModa[i];
+                    if(i < vetorModa.length -1) {
+                        moda = moda + "; ";
+                    }
                 }
                 
             }
-            return moda;
+            else {
+                return "Distribuição AMODAL";
+            }
+            
         }
+        moda = moda + " " + classif;
+        return moda;
         
     }
     public double mediana(double[] dados, double[][]dadosfreq) {
@@ -1735,22 +1801,17 @@ public class Calculadora extends javax.swing.JFrame {
         if (tabelaFreq==true){
             double somafi = 0;
             double classemediana = 0;
-             for (int i = 0; i < jTable1.getRowCount(); i++) {
+            for (int i = 0; i < dadosfreq[0].length; i++) {
                 somafi += dadosfreq[1][i];
             }
-             
             double md = somafi/2;
             somafi = 0;
-            
-            for (int i = 0; i < jTable1.getRowCount(); i++) {
+            for (int i = 0; i < dadosfreq[0].length; i++) {
                 somafi += dadosfreq[1][i];
-                
                 if (somafi>md){
                     classemediana = dadosfreq[0][i];
                     break;
-                    
                 }
-                
             }
             
             
@@ -2051,7 +2112,7 @@ public class Calculadora extends javax.swing.JFrame {
                     operacoesHide +="b";
                 }
                 if(modaCheck.isSelected()&& tabelaFreq==false) {
-                    areaTxt.append("MODA = "+df.format(moda(dados,null))+"\n");
+                    areaTxt.append("MODA = "+ moda(dados, null, tabelaPrinc, tabFreq)+"\n");
                     operacoes += " Moda;";
                     operacoesHide +="c";
                 }
@@ -2092,7 +2153,7 @@ public class Calculadora extends javax.swing.JFrame {
                     operacoesHide +="b";
                 }     
                 if(modaCheck.isSelected()&&tabelaFreq==true) {
-                    areaTxt.append("MODA = "+df.format(moda(null,dadosfreq))+"\n");
+                    areaTxt.append("MODA = "+moda(null, dadosfreq, tabelaPrinc, tabFreq)+"\n");
                     operacoes += " Moda;";
                     operacoesHide +="c";
                 }
