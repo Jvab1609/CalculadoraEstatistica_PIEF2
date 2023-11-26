@@ -1,5 +1,5 @@
 # CalculadoraEstatistica_PIEF2
-Olá! 
+
 Seja bem-vindo ao repositório da CalcuLágrimas, a calculadora estatística desenvolvida para o PIEF (Projeto Integrado de Engenharia da FACAMP) do 2º semestre de Engenharia da Computação.
 
 O PIEF-II visa, por meio deste projeto, à integração das disciplinas de Estatística, Laboratório de Programação, Gestão de Projetos e Matemática Discreta por meio do desenvolvimento de um software que aplicasse todos esses conhecimentos: uma calculadora estatística. Para tanto, a programação foi feita em Java, utilizando Swing para construir as janelas gráficas através da IDE Apache Netbeans, com o trabalho dos membros da equipe baseando-se na metodologia Scrum.
