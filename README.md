@@ -9,3 +9,9 @@ O desenvolvimento — desde as primeiras concepções de layouts até as otimiza
 Em suma, o projeto mais do que atendeu a seus requisitos: forneceu também conhecimento aos participantes, aproximação deles para com os professores e tornou-os os mais aptos à execução dos conhecimentos aprendidos em sala de aula por meio da construção de um software aplicável no mundo real.
 
 Obrigado pela atenção.
+
+Membros do grupo/Contribuidores do repositório:
+- Anna Bergamaschi
+- Gabriel Palace
+- João Albergaria
+- Tiago Badan
