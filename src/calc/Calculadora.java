@@ -73,7 +73,6 @@ public class Calculadora extends javax.swing.JFrame {
         jPopupMenu1 = new javax.swing.JPopupMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jPopupMenu2 = new javax.swing.JPopupMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -212,14 +211,6 @@ public class Calculadora extends javax.swing.JFrame {
             }
         });
         jPopupMenu1.add(jMenuItem2);
-
-        jMenuItem3.setText("Limpar dados");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        jPopupMenu1.add(jMenuItem3);
 
         jMenuItem5.setText("Salvar no histórico");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
@@ -728,7 +719,7 @@ public class Calculadora extends javax.swing.JFrame {
                                     .addComponent(jLabel29))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(1493, Short.MAX_VALUE))
@@ -1434,35 +1425,35 @@ public class Calculadora extends javax.swing.JFrame {
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         // Mostra o submenu quando o usuário clica em "Arquivo" no canto superior direito
-        jPopupMenu1.show(this,10,40);
+        jPopupMenu1.show(this,10,35);
+        // Desabilita a opção de acessar o histórico caso o usuário já esteja nessa tela
         if(jTabbedPane1.getSelectedIndex() != 3) {
             jMenuItem5.setEnabled(true);
-            jMenuItem3.setEnabled(true);
+
         }
         else {
             jMenuItem5.setEnabled(false);
-            jMenuItem3.setEnabled(false);
+
         }
     }//GEN-LAST:event_jMenu1MouseClicked
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
-
-    
-    // Gerencia a criação da tabela para digitação manual de dados
+    // Gerencia a criação e atualização da tabela para digitação manual de dados
     public void criarDigitar(int numLinha, int numCol) {
+        // Checa se o usuário selecionou o modelo tabela de frequência
         if (jCheckBox2.isSelected() == true) {
+            // Muda o número de colunas da tabela para 2 e seus respectivos nomes
             jSpinner1.setValue(2);
             jSpinner1.setEnabled(false);
             ((DefaultTableModel) jTable2.getModel()).setColumnCount(2);
             ((DefaultTableModel) jTable2.getModel()).setRowCount(numLinha);
-            jTable2.getColumnModel().getColumn(0).setHeaderValue("Xi");
-            jTable2.getColumnModel().getColumn(1).setHeaderValue("Fi");
+            jTable2.getColumnModel().getColumn(0).setHeaderValue("Valores");
+            jTable2.getColumnModel().getColumn(1).setHeaderValue("Frequência");
+            // Desabilita a construção de tabela de frequência, e coloca como verdadeira a variável tabelaFreq
             jCheckBox15.setEnabled(false);
             tabelaFreq = true;
         }
         else {
+            // Reverte o que foi realizado caso a condição tenha sido verdadeira anteriormente
             jSpinner1.setEnabled(true);
             ((DefaultTableModel) jTable2.getModel()).setColumnCount(numCol);
             ((DefaultTableModel) jTable2.getModel()).setRowCount(numLinha);
@@ -1475,6 +1466,7 @@ public class Calculadora extends javax.swing.JFrame {
             tabelaFreq = false;
         }
         
+        // Habilita ou desabilita as operações caso a tabela esteja vazia ou não
         if(numLinha != 0 && numCol != 0) {
             jButton7.setEnabled(true);
             jButton12.setEnabled(true);
@@ -1504,6 +1496,7 @@ public class Calculadora extends javax.swing.JFrame {
         
     }
     
+    // Método que limpa a tela (desabilita botões e checkboxes, zera tabelas, etc) e reseta as variáveis para mudança de página
     public void limparTela(javax.swing.JCheckBox medianaCheck,javax.swing.JCheckBox mediaCheck, javax.swing.JCheckBox modaCheck,
             javax.swing.JCheckBox desvioCheck, javax.swing.JCheckBox freqCheck, javax.swing.JTextArea areaTxt,
             javax.swing.JComboBox combo, javax.swing.JTable tabFreq, javax.swing.JCheckBox cvCheck, javax.swing.JPanel panelFreq,
@@ -1540,7 +1533,7 @@ public class Calculadora extends javax.swing.JFrame {
     
    
     
-    // Executa a criação da tabela para digitação
+    // Executa a criação da tabela para digitação, pegando o número de colunas e linhas dos spinners
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int numCol = (int) jSpinner1.getValue();
         int numLinha = (int) jSpinner2.getValue();
@@ -1548,47 +1541,53 @@ public class Calculadora extends javax.swing.JFrame {
         itensCombo(jComboBox2, jTable2, jCheckBox15);
     }//GEN-LAST:event_jButton2ActionPerformed
     
+    // Coloca os nomes das colunas da tabela como itens da combobox
     public void itensCombo(javax.swing.JComboBox combo, javax.swing.JTable tabela, javax.swing.JCheckBox freqCheck) {
+        // Limpa o componente antes de começar
         combo.removeAllItems();
         if (tabelaFreq == false) {
+            // Caso não seja uma tabela de frequência, percorre e adiciona os nomes das colunas com um for 
             for (int i = 0; i < ((DefaultTableModel) tabela.getModel()).getColumnCount(); i++) {
                 combo.addItem(((DefaultTableModel) tabela.getModel()).getColumnName(i));
             }
+            // Habilita a combobox e o checkbox para construir tabela de frequência
             combo.setEnabled(true);
             freqCheck.setEnabled(true);
         }
         else {
+            // Adiciona o nome da primeira coluna
             combo.addItem(String.valueOf(tabela.getColumnModel().getColumn(0).getHeaderValue()));
+            // Desabilita a combobox e o checkbox para construir tabela de frequência
             combo.setEnabled(false);
             freqCheck.setEnabled(false);
         }
         
     }
     
+    // Compara o nome selecionado no combobox com as colunas da tabela, retornando os valores da coluna selecionada em um array
     public double[] selecaoColunas(javax.swing.JTable tabela, javax.swing.JComboBox combo) {
         try {
-            
-        
             String colunaSel = String.valueOf(combo.getSelectedItem());
             DefaultTableModel tabela1 = ((DefaultTableModel) tabela.getModel());
+            // Declara um array do tipo double do tamanho da coluna
             double coluna[] = new double[tabela1.getRowCount()];
             int indiceColuna = 0;
+            // Percorre a tabela procurando por uma coluna com o nome daquela selecionada na combobox, armazenando seu índice
             for (int i = 0; i < tabela1.getColumnCount(); i++) {
                 if(colunaSel.equals(tabela1.getColumnName(i))){
                     indiceColuna = i;
                 }
             }
-
+            // Armazena os valores da coluna no array criado
             for (int j = 0; j < coluna.length; j++) {
+                // Caso haja valores nulos, coloca uma exceção
                 if(tabela.getValueAt(j, indiceColuna) == null) {
                     throw new Exception("Há valores nulos na coluna selecionada. Por favor revise-a!");
-                    
                 }
                 else {
                     coluna[j] = Double.parseDouble(((String) tabela.getValueAt(j, indiceColuna)).replace(",", "."));
                 }
             }
-            
             return coluna;
         } catch(Exception e) {
             JOptionPane.showMessageDialog(this, 
@@ -1598,23 +1597,30 @@ public class Calculadora extends javax.swing.JFrame {
         } 
         return null;
     }
+    
+    // Usado para casos em que o input é uma tabela de frequência. Retorna um array de doubles bidimensional
     public double[][] colunasFreq(javax.swing.JTable tabela) {
         try {
             DefaultTableModel tabela1 = ((DefaultTableModel) tabela.getModel());
+            // Checa se o número de colunas é maior ou igual a dois
             if (tabela1.getColumnCount() >= 2) {
+                // Cria um array bidimensional, do tamanho das colunas
                 double[][] colunas = new double[2][tabela1.getRowCount()];
                 for (int i = 0; i < tabela1.getRowCount(); i++) {
+                    // Checa se há valores nulos. Se sim, lança uma exceção
                     if(tabela.getValueAt(i, 0) == null) {
                         throw new Exception("Há valores nulos nas colunas selecionadas. Por favor revise-as!");
                     }
+                    // Armazena os valores na posição 0 do bidimensional
                     colunas[0][i] = Double.parseDouble(((String) tabela.getValueAt(i, 0)).replace(",", "."));
                 }
                 for (int j = 0; j < tabela1.getRowCount(); j++) {
+                    // Checa se há valores nulos. Se sim, lança uma exceção
                     if(tabela.getValueAt(j, 1) == null) {
                         throw new Exception("Há valores nulos nas colunas selecionadas. Por favor revise-as!");
                     }
+                    // Armazena as frequências na posição 1 do bidimensional
                     colunas[1][j] = Double.parseDouble(((String) tabela.getValueAt(j, 1)).replace(",", "."));
-
                 }
                 return colunas;
             }
@@ -1627,29 +1633,34 @@ public class Calculadora extends javax.swing.JFrame {
         return null;
     }
     
+    // Calcula a média dos dados
     public double media(double[] dados, double[][] dadosfreq) {
-        
+        // Se for uma tabela de frequência, usa os dados do array bidimensional
         if(tabelaFreq==true){
             double somafi = 0;
             double soma = 0;
+            // Percorre ambas as posições do array, criando duas somatórias
             for (int i = 0; i < dadosfreq[0].length; i++) {
                 somafi += dadosfreq[1][i];   
             }
             for (int i = 0; i < dadosfreq[0].length; i++) {
                     soma = soma +(dadosfreq[0][i]*dadosfreq[1][i]);                    
                 }
-                
+            // Divide a somatória dos dados pela das frequências e retorna o valor
             double resultado = soma/somafi;
             return resultado;
             
-        }else{
+        }
+        // Se não for uma tabela de frequência, usa os dados do array unidimensional
+        else{
             int contador = 0;
             double soma = 0;
-        
+            // Percorre o array, somando dados e incrementando um contador a cada repetição
             for (int i = 0; i < dados.length; i++) {
                  soma += dados[i];
                  contador +=1;
             }
+            // Divide o somatório pelo contador
             double resultado = soma/contador;
             return resultado;
         }
@@ -2254,6 +2265,9 @@ public class Calculadora extends javax.swing.JFrame {
         try {
             ((DefaultTableModel) jTable1.getModel()).setColumnCount(0);
             ((DefaultTableModel) jTable1.getModel()).setRowCount(0);
+            if (arquivo.exists() == false) {
+                throw new Exception("O caminho do arquivo " + arquivo.getAbsolutePath() + " não pôde ser encontrado.");
+            }
             FileReader reader = new FileReader(arquivo);
             BufferedReader bf = new BufferedReader(reader);
             String linha = bf.readLine();
@@ -3045,7 +3059,7 @@ public class Calculadora extends javax.swing.JFrame {
 
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
         // Abre o submenu para abrir o histórico
-        jPopupMenu2.show(this,10,40);
+        jPopupMenu2.show(this,10,35);
     }//GEN-LAST:event_jMenu2MouseClicked
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
@@ -3053,6 +3067,12 @@ public class Calculadora extends javax.swing.JFrame {
         if (confirmacaoMudar(3) == 1) {
             
             lerHistorico();
+            if(jTable3.getRowCount() == 0) {
+            jButton8.setEnabled(false);
+            }
+            else {
+                jButton8.setEnabled(true);
+            }
         }
         jMenuBar1.setVisible(true);
         
@@ -3102,6 +3122,12 @@ public class Calculadora extends javax.swing.JFrame {
         jTabbedPane1.setSelectedIndex(3);
         jMenuBar1.setVisible(true);
         lerHistorico();
+        if(jTable3.getRowCount() == 0) {
+            jButton8.setEnabled(false);
+        }
+        else {
+            jButton8.setEnabled(true);
+        }
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
@@ -3135,16 +3161,13 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton11ActionPerformed
     
     public int confirmacaoMudar(int index) {
-        // usar jTabbedPane1.getSelectedIndex(); para ver se ele está nas janelas de digitar dados (1 e 2) com if
-        // se sim, executar esse método
-        // se o usuário escolher salvar, chamar o método escreverHistorico(operacoes);
         UIManager.put("OptionPane.noButtonText", "Não");
         UIManager.put("OptionPane.yesButtonText", "Sim");
         UIManager.put("OptionPane.cancelButtonText", "Cancelar");
         if(jTabbedPane1.getSelectedIndex() != 0 && jTabbedPane1.getSelectedIndex() !=3) {
             if (jButton6.isEnabled() || jButton7.isEnabled()) {
                 int dialogButton = JOptionPane.YES_NO_CANCEL_OPTION;
-                int dialogResult = JOptionPane.showConfirmDialog (this, "Deseja salvar antes de trocar de aba?","Salvar antes trocar?",dialogButton);
+                int dialogResult = JOptionPane.showConfirmDialog (this, "Deseja salvar antes?","Salvar antes de trocar?",dialogButton);
                 if(dialogResult == JOptionPane.YES_OPTION){
                     //System.exit(1);
                     if(escreverHistorico(operacoes, operacoesHide) == 1) {
@@ -3163,7 +3186,6 @@ public class Calculadora extends javax.swing.JFrame {
                     jButton6.setEnabled(false);
                     jButton7.setEnabled(false);
                     return 1;
-                    
                 }
             }
             else {
@@ -3466,7 +3488,6 @@ public class Calculadora extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
