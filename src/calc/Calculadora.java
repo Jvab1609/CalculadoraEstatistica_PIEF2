@@ -1664,43 +1664,40 @@ public class Calculadora extends javax.swing.JFrame {
             double resultado = soma/contador;
             return resultado;
         }
-       
-        
     }
-    public double desviopadrao(double[] dados,double[][]dadosfreq ) {
+    
+    // Método para calcular o desvio padrão para AMOSTRAS
+    public double desvioPadrao(double[] dados, double[][] dadosFreq ) {
+        // Checa se o input é uma tabela de frequência
         if (tabelaFreq==true){
             double somafi = 0;
             double somaxi = 0 ;
-            
-            for (int i = 0; i < dadosfreq[0].length; i++) {
-               somaxi+= Math.pow((dadosfreq[0][i]-media(null, dadosfreq)),2);
-               somafi += dadosfreq[1][i];
-              
-                
+            // Faz o somatório do quadrado da diferença entre cada valor e a média, multiplicada pela frequência desse valor
+            for (int i = 0; i < dadosFreq[0].length; i++) {
+               somaxi+= Math.pow((dadosFreq[0][i]-media(null, dadosFreq)),2)*dadosFreq[1][i];
+               // Somatório das frequências
+               somafi += dadosFreq[1][i];
             }
+            // Calcula a variância e, em seguida, o desvio padrão.
             double variancia = somaxi/(somafi-1);
             double dv = Math.sqrt(variancia);
             return dv;
         }
         else{
-            
             double somaxi = 0 ;
-            
+            // Faz o somatório do quadrado da diferença entre cada valor e a média,
             for (int i = 0; i < dados.length; i++) {
                somaxi+= Math.pow((dados[i]-media(dados, null)),2);
-               
-              
-                
             }
-            
+            // Calcula a variância (Somatório/Número de dados na amostra)
             double variancia = somaxi/(dados.length-1);
-            
+            // Calcula o desvio (raiz quadrada da variância)
             double dv = Math.sqrt(variancia);
             return dv;
         }
-        
     }
     
+    // Calcula a moda (valor mais frequente na amostra)
     public String moda(double[] dados, double[][]dadosfreq, javax.swing.JTable tabelaPrinc, javax.swing.JTable tabFreq) {
         String classif = "";
         String moda = "";
@@ -2012,7 +2009,6 @@ public class Calculadora extends javax.swing.JFrame {
             
             panelPol.removeAll();
             //Instância da classe apropriada do JFreeChart
-            System.out.println("batatat");
             JFreeChart chart = ChartFactory.createXYLineChart(
                         "Polígono de frequência",
                         "Dados",
@@ -2106,9 +2102,9 @@ public class Calculadora extends javax.swing.JFrame {
             operacoes = "";
             operacoesHide = "";
             double[] dados = selecaoColunas(tabelaPrinc, combo);
-            double[][] dadosfreq = null;
+            double[][] dadosFreq = null;
             if(tabelaFreq == true) {
-                dadosfreq = colunasFreq(tabelaPrinc);
+                dadosFreq = colunasFreq(tabelaPrinc);
             }
 
             if(dados != null) {
@@ -2128,12 +2124,12 @@ public class Calculadora extends javax.swing.JFrame {
                     operacoesHide +="c";
                 }
                 if(desvioCheck.isSelected()&&tabelaFreq==false) {
-                    areaTxt.append("DESVIO PADRÃO = "+df.format(desviopadrao(dados, null))+"\n");
+                    areaTxt.append("DESVIO PADRÃO = "+df.format(desvioPadrao(dados, null))+"\n");
                     operacoes += " Desvio  padrão;";
                     operacoesHide +="d";
                 }
                 if(cvCheck.isSelected()&&tabelaFreq==false) {
-                    areaTxt.append("COEF. DE VARIAÇÃO = "+df.format(desviopadrao(dados, null)/media(dados, null)*100)+"%\n");
+                    areaTxt.append("COEF. DE VARIAÇÃO = "+df.format(desvioPadrao(dados, null)/media(dados, null)*100)+"%\n");
                     operacoes += " Coef. Var.;";
                     operacoesHide +="f";
                 }
@@ -2151,31 +2147,31 @@ public class Calculadora extends javax.swing.JFrame {
                 
             }
             
-            if(dadosfreq != null) {
+            if(dadosFreq != null) {
                 if(medianaCheck.isSelected()&& tabelaFreq==true) {
-                    areaTxt.append("MEDIANA = "+df.format(mediana(null, dadosfreq))+"\n");
+                    areaTxt.append("MEDIANA = "+df.format(mediana(null, dadosFreq))+"\n");
                     operacoes += " Mediana;";
                     operacoesHide +="a";
                 }
 
                 if(mediaCheck.isSelected()&&tabelaFreq==true) {
-                    areaTxt.append("MÉDIA = "+df.format(media(null, dadosfreq))+"\n");
+                    areaTxt.append("MÉDIA = "+df.format(media(null, dadosFreq))+"\n");
                     operacoes += " Média;";
                     operacoesHide +="b";
                 }     
                 if(modaCheck.isSelected()&&tabelaFreq==true) {
-                    areaTxt.append("MODA = "+moda(null, dadosfreq, tabelaPrinc, tabFreq)+"\n");
+                    areaTxt.append("MODA = "+moda(null, dadosFreq, tabelaPrinc, tabFreq)+"\n");
                     operacoes += " Moda;";
                     operacoesHide +="c";
                 }
                 if(desvioCheck.isSelected()&&tabelaFreq==true) {
-                    areaTxt.append("DESVIO PADRÃO = "+df.format(desviopadrao(null, dadosfreq))+"\n");
+                    areaTxt.append("DESVIO PADRÃO = "+df.format(desvioPadrao(null, dadosFreq))+"\n");
                     operacoes += " Desvio  padrão;";
                     operacoesHide +="d";
                 }
 
                 if(cvCheck.isSelected()&&tabelaFreq==true) {
-                    areaTxt.append("COEF. DE VARIAÇÃO = "+df.format(desviopadrao(null, dadosfreq)/media(null, dadosfreq)*100)+"%\n");
+                    areaTxt.append("COEF. DE VARIAÇÃO = "+df.format(desvioPadrao(null, dadosFreq)/media(null, dadosFreq)*100)+"%\n");
                     operacoes += " Coef. Var.;";
                     operacoesHide +="f";
                 }
@@ -3401,6 +3397,7 @@ public class Calculadora extends javax.swing.JFrame {
 
         try {
             UIManager.setLookAndFeel(new FlatIntelliJLaf());
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
