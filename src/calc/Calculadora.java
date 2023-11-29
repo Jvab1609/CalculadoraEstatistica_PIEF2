@@ -719,7 +719,7 @@ public class Calculadora extends javax.swing.JFrame {
                                     .addComponent(jLabel29))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
+                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(1493, Short.MAX_VALUE))
@@ -1545,11 +1545,13 @@ public class Calculadora extends javax.swing.JFrame {
     public void itensCombo(javax.swing.JComboBox combo, javax.swing.JTable tabela, javax.swing.JCheckBox freqCheck) {
         // Limpa o componente antes de começar
         combo.removeAllItems();
+        
         if (tabelaFreq == false) {
             // Caso não seja uma tabela de frequência, percorre e adiciona os nomes das colunas com um for 
             for (int i = 0; i < ((DefaultTableModel) tabela.getModel()).getColumnCount(); i++) {
                 combo.addItem(((DefaultTableModel) tabela.getModel()).getColumnName(i));
             }
+            
             // Habilita a combobox e o checkbox para construir tabela de frequência
             combo.setEnabled(true);
             freqCheck.setEnabled(true);
@@ -1557,6 +1559,7 @@ public class Calculadora extends javax.swing.JFrame {
         else {
             // Adiciona o nome da primeira coluna
             combo.addItem(String.valueOf(tabela.getColumnModel().getColumn(0).getHeaderValue()));
+            
             // Desabilita a combobox e o checkbox para construir tabela de frequência
             combo.setEnabled(false);
             freqCheck.setEnabled(false);
@@ -1569,15 +1572,18 @@ public class Calculadora extends javax.swing.JFrame {
         try {
             String colunaSel = String.valueOf(combo.getSelectedItem());
             DefaultTableModel tabela1 = ((DefaultTableModel) tabela.getModel());
+            
             // Declara um array do tipo double do tamanho da coluna
             double coluna[] = new double[tabela1.getRowCount()];
             int indiceColuna = 0;
+            
             // Percorre a tabela procurando por uma coluna com o nome daquela selecionada na combobox, armazenando seu índice
             for (int i = 0; i < tabela1.getColumnCount(); i++) {
                 if(colunaSel.equals(tabela1.getColumnName(i))){
                     indiceColuna = i;
                 }
             }
+            
             // Armazena os valores da coluna no array criado
             for (int j = 0; j < coluna.length; j++) {
                 // Caso haja valores nulos, coloca uma exceção
@@ -1602,10 +1608,12 @@ public class Calculadora extends javax.swing.JFrame {
     public double[][] colunasFreq(javax.swing.JTable tabela) {
         try {
             DefaultTableModel tabela1 = ((DefaultTableModel) tabela.getModel());
+            
             // Checa se o número de colunas é maior ou igual a dois
             if (tabela1.getColumnCount() >= 2) {
                 // Cria um array bidimensional, do tamanho das colunas
                 double[][] colunas = new double[2][tabela1.getRowCount()];
+                
                 for (int i = 0; i < tabela1.getRowCount(); i++) {
                     // Checa se há valores nulos. Se sim, lança uma exceção
                     if(tabela.getValueAt(i, 0) == null) {
@@ -1614,6 +1622,7 @@ public class Calculadora extends javax.swing.JFrame {
                     // Armazena os valores na posição 0 do bidimensional
                     colunas[0][i] = Double.parseDouble(((String) tabela.getValueAt(i, 0)).replace(",", "."));
                 }
+                
                 for (int j = 0; j < tabela1.getRowCount(); j++) {
                     // Checa se há valores nulos. Se sim, lança uma exceção
                     if(tabela.getValueAt(j, 1) == null) {
@@ -1639,6 +1648,7 @@ public class Calculadora extends javax.swing.JFrame {
         if(tabelaFreq==true){
             double somafi = 0;
             double soma = 0;
+            
             // Percorre ambas as posições do array, criando duas somatórias
             for (int i = 0; i < dadosfreq[0].length; i++) {
                 somafi += dadosfreq[1][i];   
@@ -1646,6 +1656,7 @@ public class Calculadora extends javax.swing.JFrame {
             for (int i = 0; i < dadosfreq[0].length; i++) {
                     soma = soma +(dadosfreq[0][i]*dadosfreq[1][i]);                    
                 }
+            
             // Divide a somatória dos dados pela das frequências e retorna o valor
             double resultado = soma/somafi;
             return resultado;
@@ -1655,11 +1666,13 @@ public class Calculadora extends javax.swing.JFrame {
         else{
             int contador = 0;
             double soma = 0;
+            
             // Percorre o array, somando dados e incrementando um contador a cada repetição
             for (int i = 0; i < dados.length; i++) {
                  soma += dados[i];
                  contador +=1;
             }
+            
             // Divide o somatório pelo contador
             double resultado = soma/contador;
             return resultado;
@@ -1672,12 +1685,14 @@ public class Calculadora extends javax.swing.JFrame {
         if (tabelaFreq==true){
             double somafi = 0;
             double somaxi = 0 ;
+            
             // Faz o somatório do quadrado da diferença entre cada valor e a média, multiplicada pela frequência desse valor
             for (int i = 0; i < dadosFreq[0].length; i++) {
                somaxi+= Math.pow((dadosFreq[0][i]-media(null, dadosFreq)),2)*dadosFreq[1][i];
                // Somatório das frequências
                somafi += dadosFreq[1][i];
             }
+            
             // Calcula a variância e, em seguida, o desvio padrão.
             double variancia = somaxi/(somafi-1);
             double dv = Math.sqrt(variancia);
@@ -1685,12 +1700,15 @@ public class Calculadora extends javax.swing.JFrame {
         }
         else{
             double somaxi = 0 ;
+            
             // Faz o somatório do quadrado da diferença entre cada valor e a média,
             for (int i = 0; i < dados.length; i++) {
                somaxi+= Math.pow((dados[i]-media(dados, null)),2);
             }
+            
             // Calcula a variância (Somatório/Número de dados na amostra)
             double variancia = somaxi/(dados.length-1);
+            
             // Calcula o desvio (raiz quadrada da variância)
             double dv = Math.sqrt(variancia);
             return dv;
@@ -1699,24 +1717,34 @@ public class Calculadora extends javax.swing.JFrame {
     
     // Calcula a moda (valor mais frequente na amostra)
     public String moda(double[] dados, double[][]dadosfreq, javax.swing.JTable tabelaPrinc, javax.swing.JTable tabFreq) {
+        // Esvazia as variáveis String que armazenam a classificação (Amodal, Bimodal, etc) e a moda completa, respectivamente
         String classif = "";
         String moda = "";
+        
+        // Verifica se a tabela de frequência já foi fornecida
         if (tabelaFreq==true){
+            // Encontrar a maior frequência na tabela de frequência
             double maior = 0;
             for (int i = 0; i < dadosfreq[0].length; i++) {
                 if (dadosfreq[1][i]>maior){
                     maior = dadosfreq[1][i];
                 }
             }
+            
             int contadorModas = 0;
+            // Conta quantas modas existem (valores com a maior frequência)
             if (maior > 1) {
                 for (int i = 0; i < dadosfreq[0].length; i++) {
                     if (dadosfreq[1][i] == maior) {
                         contadorModas++;
                     }
                 }
+                
+                // Cria um vetor para armazenar as modas
                 String vetorModa[] = new String[contadorModas];
                 int c = 0;
+                
+                // Preenche o vetor de modas com os valores correspondentes
                 for (int i = 0; i < dadosfreq[0].length; i++) {
                     if (dadosfreq[1][i] == maior) {
                         vetorModa[c] = String.valueOf(df.format(dadosfreq[0][i]));
@@ -1724,6 +1752,7 @@ public class Calculadora extends javax.swing.JFrame {
                     }
                 }
                 
+                // Determina a classificação com base no número de modas
                 if (contadorModas == dadosfreq[0].length) {
                     classif = "Distribuição Amodal";
                 }
@@ -1737,6 +1766,7 @@ public class Calculadora extends javax.swing.JFrame {
                     classif = "(Distr. MULTIMODAL)";
                 }
                 
+                // Constrói a string da moda concatenando os valores do vetor
                 for (int i = 0; i < vetorModa.length; i++) {
                     moda = moda + vetorModa[i];
                     if(i < vetorModa.length -1) {
@@ -1745,28 +1775,38 @@ public class Calculadora extends javax.swing.JFrame {
                 }
             }
             else {
+                // Se a maior frequência for 1, a distribuição é amodal
                 return "Distribuição AMODAL";
             }
             
         }
         else{
+            // Se a tabela de frequência não foi fornecida, construa-a
             construirFreq (dados, tabelaPrinc, tabFreq);
             double[][] colunas = colunasFreq(tabFreq);
+            
+            // Encontrar a maior frequência na tabela de frequência
             double maior = 0;
             for (int i = 0; i < colunas[0].length; i++) {
                 if (colunas[1][i]>maior){
                     maior = colunas[1][i];
                 }
             }
+            
             int contadorModas = 0;
+            // Conta quantas modas existem (valores com a maior frequência)
             if (maior > 1) {
                 for (int i = 0; i < colunas[0].length; i++) {
                     if (colunas[1][i] == maior) {
                         contadorModas++;
                     }
                 }
+                
+                // Cria um vetor para armazenar as modas
                 String vetorModa[] = new String[contadorModas];
                 int c = 0;
+                
+                // Preenche o vetor de modas com os valores correspondentes
                 for (int i = 0; i < colunas[0].length; i++) {
                     if (colunas[1][i] == maior) {
                         vetorModa[c] = String.valueOf(df.format(colunas[0][i]));
@@ -1774,6 +1814,7 @@ public class Calculadora extends javax.swing.JFrame {
                     }
                 }
                 
+                // Determina a classificação com base no número de modas
                 if (contadorModas == colunas[0].length) {
                     return "Distribuição AMODAL";
                 }
@@ -1787,33 +1828,42 @@ public class Calculadora extends javax.swing.JFrame {
                     classif = "(Distr. MULTIMODAL)";
                 }
                 
+                // Constrói a string da moda concatenando os valores do vetor
                 for (int i = 0; i < vetorModa.length; i++) {
                     moda = moda + vetorModa[i];
                     if(i < vetorModa.length -1) {
                         moda = moda + "; ";
                     }
-                }
-                
+                } 
             }
             else {
+                // Se a maior frequência for 1, a distribuição é amodal
                 return "Distribuição AMODAL";
             }
-            
         }
+        // Adiciona a classificação à string da moda
         moda = moda + " " + classif;
-        return moda;
         
+        // Retorna a string final da moda
+        return moda;
     }
+    
     public double mediana(double[] dados, double[][]dadosfreq) {
-
+        // Verifica se a tabela de frequência já foi fornecida pelo usuário
         if (tabelaFreq==true){
             double somafi = 0;
             double classemediana = 0;
+            
+            // Calcula a soma das frequências absolutas na tabela de frequência
             for (int i = 0; i < dadosfreq[0].length; i++) {
                 somafi += dadosfreq[1][i];
             }
+            
+            // Calcula a soma das frequências absolutas na tabela de frequência
             double md = somafi/2;
             somafi = 0;
+            
+            // Encontra a classe mediana percorrendo as frequências acumuladas
             for (int i = 0; i < dadosfreq[0].length; i++) {
                 somafi += dadosfreq[1][i];
                 if (somafi>md){
@@ -1822,30 +1872,31 @@ public class Calculadora extends javax.swing.JFrame {
                 }
             }
             
-            
+            // A classe mediana é a mediana na tabela de frequência
             double mediana = classemediana;
             return mediana;
         }
         else{
+            // Se a tabela de frequência não foi fornecida, calcula a mediana diretamente nos dados
             double mediana = 0;
+            // Verifica se a quantidade de dados é ímpar
             if (dados.length%2!=0){
                 mediana = dados[dados.length/2];
             }
             else {
-             mediana = (dados[dados.length/2]+dados[(dados.length/2)-1])/2;
+                // Se a quantidade de dados é par, calcula a média dos dois valores do meio
+                mediana = (dados[dados.length/2]+dados[(dados.length/2)-1])/2;
             }           
-        return mediana;
-       
-        }
-        
+            return mediana;
+        } 
     }
     
     public void construirFreq (double[] dados, javax.swing.JTable tabelaPrinc, javax.swing.JTable tabFreq) {
-        
+        // Limpa as linhas da tabela de frequência
         DefaultTableModel tabela2 = ((DefaultTableModel) tabFreq.getModel());
         tabela2.setRowCount(0);
         
-        
+        // Arredonda os dados para o número de adequado de casas decimais
         for (int i = 0; i < dados.length; i++) {
             String dadosStr = Double.toString(Math.abs(dados[i]));
             int decimais = dadosStr.length() - dadosStr.indexOf('.') - 1;
@@ -1855,42 +1906,52 @@ public class Calculadora extends javax.swing.JFrame {
             dados[i] = bd.doubleValue();
         }
         
+        // Inicializa um array bidimensional/matriz para armazenar os valores únicos e suas contagens de frequência
         double[][] freqDados = new double[2][dados.length];
         int contZeros = 0;
+        
+        // Percorre os dados para preencher a matriz de frequência
         for (int i = 0; i < freqDados[0].length; i++) {
             double num = dados[i];
-            
             int contador = 0;
+            
+            // Verifica se o valor já foi registrado na matriz de frequência
             if(DoubleStream.of(freqDados[0]).anyMatch(x -> x == num) == false ) {
                 freqDados[0][i] = num;
                 
+                // Conta a frequência do valor nos dados originais
                 for (int j = 0; j < freqDados[0].length; j++) {
                     if(freqDados[0][i] == dados[j]){
                         contador++;
                     }
                 }
-                
             }
+            
+            // Lida com o caso especial de zeros (exceção)
             if(num == 0.0) {
-               for (int j = 0; j < i; j++) {
+                for (int j = 0; j < i; j++) {
                     if(freqDados[0][j] == 0){
                         contZeros++;
                     }
-               }
+                }
                if (contZeros == 0) {
+                    // Se não houver zero na matriz até o índice i, conta a frequência
                     freqDados[0][i] = 0;
                     
+                    // Conta a frequência do zero nos dados originais
                     for (int j = 0; j < freqDados[0].length; j++) {
                         if(freqDados[0][i] == dados[j]){
                             contador++;
                         }
                     }
-               }
+                }
             }
-            freqDados[1][i] = contador;
             
+            // Armazena a frequência do valor na matriz
+            freqDados[1][i] = contador;
         }
         
+        // Ordena a matriz de frequência em ordem crescente dos dados
         for (int i = 0; i < freqDados[0].length; i++) {
             for (int j = 0; j < freqDados[0].length -1; j++) {
                 if (freqDados[0][j] > freqDados[0][j+1]) {
@@ -1904,15 +1965,13 @@ public class Calculadora extends javax.swing.JFrame {
             }
         }
         
+        // Adiciona as linhas ordenadas na tabela de frequência
         for (int i = 0; i < freqDados[0].length; i++) {
             String[] linhaFreq = {String.valueOf(freqDados[0][i]),String.valueOf(freqDados[1][i])};
             if(freqDados[1][i] != 0) {
                 tabela2.addRow(linhaFreq);
             }
-            
         }
-        
-       
     }
     
     // Calcula a amplitude dos dados
