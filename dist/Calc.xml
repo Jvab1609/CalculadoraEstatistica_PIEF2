@@ -13,7 +13,7 @@
   <stayAlive>false</stayAlive>
   <restartOnCrash>false</restartOnCrash>
   <manifest></manifest>
-  <icon>C:\Users\jvalb\OneDrive\Documentos (OneDrive)\NetBeansProjects\Calc\src\calc\img\iconeCalcv20.ico</icon>
+  <icon>C:\Users\jvalb\OneDrive\Documentos (OneDrive)\NetBeansProjects\Calc\src\calc\img\iconeCalcv20_1.ico</icon>
   <singleInstance>
     <mutexName>CalcuLagrimas</mutexName>
     <windowTitle>CalcuLágrimas</windowTitle>
