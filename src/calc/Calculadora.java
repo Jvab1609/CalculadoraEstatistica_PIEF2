@@ -234,9 +234,6 @@ public class Calculadora extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setPreferredSize(new java.awt.Dimension(1366, 768));
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosed(java.awt.event.WindowEvent evt) {
-                formWindowClosed(evt);
-            }
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
@@ -254,11 +251,6 @@ public class Calculadora extends javax.swing.JFrame {
         jButton4.setText("Abrir arquivo");
         jButton4.setBorderPainted(false);
         jButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButton4MouseEntered(evt);
-            }
-        });
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -477,11 +469,6 @@ public class Calculadora extends javax.swing.JFrame {
         });
 
         jCheckBox1.setText("Primeira linha como nome das colunas");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
-            }
-        });
 
         jButton6.setText("Salvar no histórico");
         jButton6.setEnabled(false);
@@ -492,11 +479,6 @@ public class Calculadora extends javax.swing.JFrame {
         });
 
         jCheckBox3.setText("Formato tabela de frequência");
-        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox3ActionPerformed(evt);
-            }
-        });
 
         jCheckBox4.setText("Mediana");
 
@@ -522,11 +504,6 @@ public class Calculadora extends javax.swing.JFrame {
         jScrollPane4.setViewportView(jTextArea1);
 
         jCheckBox8.setText("Desvio Padrão");
-        jCheckBox8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox8ActionPerformed(evt);
-            }
-        });
 
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -553,18 +530,8 @@ public class Calculadora extends javax.swing.JFrame {
         );
 
         jCheckBox9.setText("Coeficiente de variação");
-        jCheckBox9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox9ActionPerformed(evt);
-            }
-        });
 
         jCheckBox7.setText("Construir tabela de frequência");
-        jCheckBox7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox7ActionPerformed(evt);
-            }
-        });
 
         jButton16.setBackground(new java.awt.Color(242, 242, 242));
         jButton16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -588,11 +555,6 @@ public class Calculadora extends javax.swing.JFrame {
         });
 
         jCheckBox16.setText("Polígono de frequência");
-        jCheckBox16.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox16ActionPerformed(evt);
-            }
-        });
 
         jCheckBox17.setText("Histograma");
 
@@ -799,11 +761,6 @@ public class Calculadora extends javax.swing.JFrame {
 
         jCheckBox11.setText("Desvio padrão");
         jCheckBox11.setEnabled(false);
-        jCheckBox11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox11ActionPerformed(evt);
-            }
-        });
 
         jTable5.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -838,22 +795,12 @@ public class Calculadora extends javax.swing.JFrame {
 
         jCheckBox13.setText("Coeficiente de variação");
         jCheckBox13.setEnabled(false);
-        jCheckBox13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox13ActionPerformed(evt);
-            }
-        });
 
         jCheckBox14.setText("Média");
         jCheckBox14.setEnabled(false);
 
         jCheckBox15.setText("Construir tabela de frequência");
         jCheckBox15.setEnabled(false);
-        jCheckBox15.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox15ActionPerformed(evt);
-            }
-        });
 
         jButton17.setBackground(new java.awt.Color(242, 242, 242));
         jButton17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -878,11 +825,6 @@ public class Calculadora extends javax.swing.JFrame {
 
         jCheckBox18.setText("Polígono de frequência");
         jCheckBox18.setEnabled(false);
-        jCheckBox18.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox18ActionPerformed(evt);
-            }
-        });
 
         jCheckBox19.setText("Histograma");
         jCheckBox19.setEnabled(false);
@@ -1159,7 +1101,7 @@ public class Calculadora extends javax.swing.JFrame {
         jTextArea7.setColumns(20);
         jTextArea7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextArea7.setRows(5);
-        jTextArea7.setText("Mede a distância dos valores do conjunto em\nrelação à média");
+        jTextArea7.setText("Mede a distância dos valores do conjunto em\nrelação à média em porcentagem");
         jTextArea7.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jTextArea7.setDisabledTextColor(new java.awt.Color(242, 242, 242));
         jTextArea7.setFocusable(false);
@@ -1966,58 +1908,75 @@ public class Calculadora extends javax.swing.JFrame {
         return amp;
     }
 
+    // Cria o dataset do polígono de frequência
     private XYDataset criarXYDataset(javax.swing.JTable tabFreq, javax.swing.JTable tabelaPrinc, double[] dados, javax.swing.JComboBox combo) {
-
+        // Cria um conjunto de séries para armazenar os dados XY
         XYSeriesCollection dataset = new XYSeriesCollection();
         XYSeries series = new XYSeries(combo.getSelectedItem().toString());
-        //Inserir o conjunto de valores, um para cada linha da tabela. Ex.:
+        
+        // Verifica se a tabela de frequência já foi fornectida
         if (tabelaFreq == false) {
-
+            // Se não foi construída, constrói a tabela de frequência
             construirFreq(dados, tabelaPrinc, tabFreq);
             int n = ((DefaultTableModel) tabFreq.getModel()).getRowCount();
             double[][] colunas = colunasFreq(tabFreq);
 
+            // Adiciona os valores da tabela de frequência à série
             for (int i = 0; i < n; i++) {
                 series.add(colunas[0][i], colunas[1][i]);
             }
 
         } else {
+            // Se a tabela de frequência já foi fornecida como input, obtém os dados diretamente dela
             int n = ((DefaultTableModel) tabelaPrinc.getModel()).getRowCount();
             double[][] colunas = colunasFreq(tabelaPrinc);
+            
+            // Adiciona os valores da tabela principal à série
             for (int i = 0; i < n; i++) {
                 series.add(colunas[0][i], colunas[1][i]);
             }
         }
 
+        // Adiciona a série ao conjunto de dados XY
         dataset.addSeries(series);
+        
+        // Retorna o conjunto de dados XY
         return dataset;
     }
 
+    // Cria o dataset do histograma
     private HistogramDataset criarDatasetHist(javax.swing.JTable tabFreq, javax.swing.JTable tabelaPrinc, double[] dados, javax.swing.JComboBox combo) {
-
+        // Cria um conjunto de dados para histograma
         HistogramDataset dataset = new HistogramDataset();
         double[][] colunas = null;
-        //Inserir o conjunto de valores, um para cada linha da tabela. Ex.:
+        
+        // Verifica se a tabela de frequência já foi fornecida
         if (tabelaFreq == false) {
+            // Se não foi construída, constrói a tabela de frequência
             construirFreq(dados, tabelaPrinc, tabFreq);
             int n = ((DefaultTableModel) tabFreq.getModel()).getRowCount();
             colunas = colunasFreq(tabFreq);
-            //dataset.addSeries("Dados", colunas[0], 100);
-
         } else {
+            // Se a tabela de frequência já foi fornecida, obtém os dados diretamente dela
             int n = ((DefaultTableModel) tabelaPrinc.getModel()).getRowCount();
             colunas = colunasFreq(tabelaPrinc);
-            //dataset.addSeries("Dados", colunas[0], 100);
+            
         }
+        
+        // Conta o número total de elementos nos dados
         int contador = 0;
         for (int i = 0; i < colunas[0].length; i++) {
             for (int j = 0; j < colunas[1][i]; j++) {
                 contador++;
             }
         }
+        
+        // Cria um vetor para armazenar os elementos dos dados
         double[] vetor = new double[contador];
         System.out.println(contador);
         int c = 0;
+        
+        // Preenche o vetor com os elementos dos dados, considerando as frequências
         for (int i = 0; i < colunas[0].length; i++) {
             int valorJ = 0;
             for (int j = 0; j < colunas[1][i]; j++) {
@@ -2028,16 +1987,20 @@ public class Calculadora extends javax.swing.JFrame {
             c += valorJ;
         }
 
+        // Adiciona a série ao conjunto de dados do histograma
         dataset.addSeries(combo.getSelectedItem().toString(), vetor, colunas[0].length);
-        //dataset.addSeries(series);
+        
+        // Retorna o conjunto de dados do histograma
         return dataset;
     }
 
+    // Cria o polígono de frequência
     private void polFreq(javax.swing.JTable tabFreq, javax.swing.JTable tabelaPrinc, double[] dados, javax.swing.JComboBox combo, javax.swing.JPanel panelPol) {
         try {
-
+            // Limpa o conteúdo atual do painel
             panelPol.removeAll();
-            //Instância da classe apropriada do JFreeChart
+            
+            // Cria um gráfico de linhas XY
             JFreeChart chart = ChartFactory.createXYLineChart(
                     "Polígono de frequência",
                     "Dados",
@@ -2048,21 +2011,20 @@ public class Calculadora extends javax.swing.JFrame {
                     true,
                     false
             );
-            //Algumas customizações (cores)
+            
+            // Customizações visuais do gráfico (cores)
             chart.setBackgroundPaint(Color.white);
             XYPlot plot = chart.getXYPlot();
             plot.setBackgroundPaint(Color.lightGray);
             plot.setDomainGridlinePaint(Color.white);
             plot.setRangeGridlinePaint(Color.white);
-            //Configuração dos eixos e escalas
-//                NumberAxis axis = (NumberAxis) plot.getDomainAxis();
-//                double[] amp = amplitude(dados);
-//                axis.setRange(amp[0],amp[1]);
-//                axis.setTickUnit(new NumberTickUnit(amp[2]/10));
-            //Criação do painel do gráfico e inserção no painel (jPainel1) da janela
+            
+            // Cria um painel para o gráfico e adiciona ao painel que mostrará o polígono de freq.
             ChartPanel chartPanel = new ChartPanel(chart);
             chartPanel.setPreferredSize(panelPol.getSize());
             panelPol.add(chartPanel, java.awt.BorderLayout.CENTER);
+            
+            // Atualiza o layout do conteúdo e repinta o painel
             this.getContentPane().validate();
             this.getContentPane().repaint();
         } catch (Exception e) {
@@ -2073,13 +2035,13 @@ public class Calculadora extends javax.swing.JFrame {
         }
     }
 
+    // Cria o gráfico de histograma
     private void histograma(javax.swing.JTable tabFreq, javax.swing.JTable tabelaPrinc, double[] dados, javax.swing.JComboBox combo, javax.swing.JPanel panelHist) {
         try {
-
+            // Limpa o conteúdo atual do painel
             panelHist.removeAll();
-            //Instância da classe apropriada do JFreeChart
-            System.out.println("batatat");
 
+            // Cria um gráfico de histograma usando JFreeChart
             JFreeChart chart = ChartFactory.createHistogram("Histograma",
                     "Dados", "Frequência", criarDatasetHist(tabFreq,
                             tabelaPrinc,
@@ -2089,21 +2051,26 @@ public class Calculadora extends javax.swing.JFrame {
                     true,
                     true,
                     false);
-            //Algumas customizações (cores)
+            
+            // Configurações visuais do gráfico
             chart.setBackgroundPaint(Color.white);
             XYPlot plot = chart.getXYPlot();
             plot.setBackgroundPaint(Color.lightGray);
             plot.setDomainGridlinePaint(Color.white);
             plot.setRangeGridlinePaint(Color.white);
+            
             //Configuração dos eixos e escalas
             NumberAxis axis = (NumberAxis) plot.getDomainAxis();
             double[] amp = amplitude(dados);
             axis.setRange(amp[0], amp[1]);
             axis.setTickUnit(new NumberTickUnit(1));
-            //Criação do painel do gráfico e inserção no painel (jPainel1) da janela
+            
+            //Criação do painel do gráfico e inserção no painel (panelHist) da janela
             ChartPanel chartPanel = new ChartPanel(chart);
             chartPanel.setPreferredSize(panelHist.getSize());
             panelHist.add(chartPanel, java.awt.BorderLayout.CENTER);
+            
+            // Atualiza o layout do conteúdo e repinta o painel
             this.getContentPane().validate();
             this.getContentPane().repaint();
         } catch (Exception e) {
@@ -2113,7 +2080,8 @@ public class Calculadora extends javax.swing.JFrame {
                     JOptionPane.ERROR_MESSAGE);
         }
     }
-
+    
+    // Cria variáveis que serão utilizadas para os cálculos
     String operacoes = "";
     String operacoesHide = "";
     String casas = "0.000";
@@ -2125,16 +2093,26 @@ public class Calculadora extends javax.swing.JFrame {
             javax.swing.JComboBox combo, javax.swing.JCheckBox polCheck, javax.swing.JPanel panelPol,
             javax.swing.JCheckBox histCheck, javax.swing.JPanel panelHist, javax.swing.JTabbedPane tabGraf) {
         try {
+            // Limpa a área de texto antes de exibir os resultados
             areaTxt.setText("");
+            
+            // Limpa as strings de operações para serem salvas no histórico
             operacoes = "";
             operacoesHide = "";
+            
+            // Obtém os dados com base na seleção do usuário
             double[] dados = selecaoColunas(tabelaPrinc, combo);
             double[][] dadosFreq = null;
+            
+            // Se a tabela de frequência tiver sido fornecida como input, obtém os dados dela
             if (tabelaFreq == true) {
                 dadosFreq = colunasFreq(tabelaPrinc);
             }
-
+            
             if (dados != null) {
+                // Verifica quais operações foram selecionadas nas checkboxes e realiza os cálculos correspondentes
+                // Mostra os resultados na área de texto
+                // Para cada uma, adiciona uma letra diferente em operacoesHide, que será usada para carregar salvamentos
                 if (medianaCheck.isSelected() && tabelaFreq == false) {
                     areaTxt.append("MEDIANA = " + df.format(mediana(dados, null)) + "\n");
                     operacoes += " Mediana;";
@@ -2169,16 +2147,17 @@ public class Calculadora extends javax.swing.JFrame {
                 } else {
                     panelFreq.setVisible(false);
                 }
-
             }
 
             if (dadosFreq != null) {
+                // Verifica quais operações foram selecionadas nas checkboxes e realiza os cálculos correspondentes
+                // Mostra os resultados na área de texto
+                // Para cada uma, adiciona uma letra diferente em operacoesHide, que será usada para carregar salvamentos
                 if (medianaCheck.isSelected() && tabelaFreq == true) {
                     areaTxt.append("MEDIANA = " + df.format(mediana(null, dadosFreq)) + "\n");
                     operacoes += " Mediana;";
                     operacoesHide += "a";
                 }
-
                 if (mediaCheck.isSelected() && tabelaFreq == true) {
                     areaTxt.append("MÉDIA = " + df.format(media(null, dadosFreq)) + "\n");
                     operacoes += " Média;";
@@ -2194,7 +2173,6 @@ public class Calculadora extends javax.swing.JFrame {
                     operacoes += " Desvio  padrão;";
                     operacoesHide += "d";
                 }
-
                 if (cvCheck.isSelected() && tabelaFreq == true) {
                     areaTxt.append("COEF. DE VARIAÇÃO = " + df.format(desvioPadrao(null, dadosFreq) / media(null, dadosFreq) * 100) + "%\n");
                     operacoes += " Coef. Var.;";
@@ -2202,32 +2180,42 @@ public class Calculadora extends javax.swing.JFrame {
                 }
             }
 
+            // Verifica se as opções de gráficos estão selecionadas
             if (polCheck.isSelected() || histCheck.isSelected()) {
+                // Se sim, deixa o tabbed pane visível
                 tabGraf.setVisible(true);
 
             } else {
                 tabGraf.setVisible(false);
             }
-
+            
+             // Se a opção de polígono de frequência estiver selecionada
             if (polCheck.isSelected()) {
                 polFreq(tabFreq, tabelaPrinc, dados, combo, panelPol);
                 operacoes += " Pol. Freq.;";
                 operacoesHide += "g";
                 panelPol.setVisible(true);
+                
+                // Adiciona uma nova aba ao JTabbedPane
                 tabGraf.add("Polígono de frequência", panelPol);
 
             } else {
+                // Se não, limpa o painel e remove do JTabbedPane
                 panelPol.removeAll();
                 panelPol.setVisible(false);
                 tabGraf.remove(panelPol);
             }
+            
+            // Se a opção de histograma estiver selecionada
             if (histCheck.isSelected()) {
                 histograma(tabFreq, tabelaPrinc, dados, combo, panelHist);
                 operacoes += " Histograma;";
                 operacoesHide += "h";
                 panelHist.setVisible(true);
+                // Adiciona o painel de histograma à aba correspondente no JTabbedPane
                 tabGraf.add("Histograma", panelHist);
             } else {
+                // Se a opção não estiver selecionada, remove o painel de histograma
                 panelHist.removeAll();
                 panelHist.setVisible(false);
                 tabGraf.remove(panelHist);
@@ -2249,25 +2237,33 @@ public class Calculadora extends javax.swing.JFrame {
 // Gerencia a escolha do arquivo a ser carregado
     public void escolherArquivo() {
         try {
-
+            // Cria um seletor de arquivo
             JFileChooser chooser = new JFileChooser();
+            
+            // Verifica se o usuário selecionou um arquivo
             if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+                // Obtém o arquivo selecionado e define seu caminho no jTextField1
                 arquivo = chooser.getSelectedFile();
                 jTextField1.setText(arquivo.getAbsolutePath());
+                
+                // Habilita botões e campos relevantes para carregar na tabela
                 jButton1.setEnabled(true);
                 jCheckBox1.setEnabled(true);
                 jTextField2.setEnabled(true);
+                
+                // Limpa a tabela jTable1 e muda para a tela de input de dados por arquivo
                 ((DefaultTableModel) jTable1.getModel()).setColumnCount(0);
                 ((DefaultTableModel) jTable1.getModel()).setRowCount(0);
                 jTabbedPane1.setSelectedIndex(1);
+                
+                // Limpa e desabilita elementos da interface que não podem ser usados ainda
                 limparTela(jCheckBox4, jCheckBox5, jCheckBox6, jCheckBox8, jCheckBox7, jTextArea1, jComboBox1, jTable4, jCheckBox9, jPanel5, jButton6, jCheckBox16, jCheckBox17);
+                
+                // Torna visível a barra de menu e desabilita a combobox de seleção de coluna e o botão de calcular
                 jMenuBar1.setVisible(true);
-                //jTable4.setEnabled(false);
-                //jTable4.setVisible(false);
                 jButton11.setEnabled(false);
                 jComboBox1.setEnabled(false);
             }
-
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this,
                     e.getMessage(),
@@ -2277,29 +2273,39 @@ public class Calculadora extends javax.swing.JFrame {
 
     }
 
-    // Lê o arquivo escolhido
+    // Lê o arquivo escolhido e carrega na tabela
     public void lerArquivo() {
         try {
+            // Limpa a tabela
             ((DefaultTableModel) jTable1.getModel()).setColumnCount(0);
             ((DefaultTableModel) jTable1.getModel()).setRowCount(0);
+            
+            // Verifica se o arquivo existe
             if (arquivo.exists() == false) {
                 throw new Exception("O caminho do arquivo " + arquivo.getAbsolutePath() + " não pôde ser encontrado.");
             }
+            
+            // Cria o FileReader e o BufferedReader
             FileReader reader = new FileReader(arquivo);
             BufferedReader bf = new BufferedReader(reader);
+            
+            // Lê a primeira linha do arquivo e cria um tokenizer usando o delimitador especificado pelo usuário
             String linha = bf.readLine();
             StringTokenizer tk = new StringTokenizer(linha, jTextField2.getText());
 
+            // Obtém o número de colunas e verifica se é válido
             int numCol = (int) tk.countTokens();
-
             if (numCol == 0) {
                 throw new Exception("Arquivo inválido. Tente com outro.");
             }
 
+            // Verifica se a opção de tabela de frequência está selecionada
             if (jCheckBox3.isSelected() == true) {
+                // Se tiver apenas duas colunas, é possível formatar como tab. de freq.
                 if (numCol == 2) {
                     tabelaFreq = true;
                 } else {
+                    // Se não, joga uma exceção
                     tabelaFreq = false;
                     throw new Exception("O número de colunas do arquivo é diferente de 2. Impossível colocar no modelo tabela de frequência.");
                 }
@@ -2307,23 +2313,33 @@ public class Calculadora extends javax.swing.JFrame {
                 tabelaFreq = false;
             }
 
+            // Verifica se a opção de nomear colunas pela primeira linha do arquivo foi selecionada
             if (jCheckBox1.isSelected() == true) {
                 String colunas[] = new String[numCol];
+                
+                // Adiciona as colunas à tabela com seus respectivos nomes
                 for (int i = 0; i < colunas.length; i++) {
                     colunas[i] = tk.nextToken();
                     ((DefaultTableModel) jTable1.getModel()).addColumn(colunas[i]);
                 }
+                
+                // Lê a próxima linha do arquivo
                 linha = bf.readLine();
             } else {
-
+                // Configura a quantidade de colunas da tabela sem nomes
                 ((DefaultTableModel) jTable1.getModel()).setColumnCount(tk.countTokens());
+                
+                // Se for uma tabela de frequência, define os cabeçalhos para Xi e Fi
                 if (tabelaFreq == true) {
                     jTable1.getColumnModel().getColumn(0).setHeaderValue("Xi");
                     jTable1.getColumnModel().getColumn(1).setHeaderValue("Fi");
                 }
             }
 
+            // Array para armazenar os valores da linha lida
             String linhaRead[] = new String[numCol];
+            
+            // Lê o restante do arquivo e adiciona as linhas à jTable1
             while (linha != null) {
                 tk = new StringTokenizer(linha, jTextField2.getText());
                 for (int i = 0; i < linhaRead.length; i++) {
@@ -2333,7 +2349,8 @@ public class Calculadora extends javax.swing.JFrame {
 
                 linha = bf.readLine();
             }
-
+            
+            // Habilita elementos e prepara as funções para os cálculos
             jButton11.setEnabled(true);
             jComboBox1.setEnabled(true);
             jButton6.setEnabled(true);
@@ -2361,17 +2378,21 @@ public class Calculadora extends javax.swing.JFrame {
     // Salva as informações em ambos os arquivos de Histórico
     public int escreverHistorico(String operacoes, String operacoesHide) {
         try {
+            // Cria FileWriter para os arquivos de histórico (visualizado e oculto)
             writerShow = new FileWriter(historicoShow, true);
             writerHide = new FileWriter(historicoHide, true);
+            
+            // Configura os textos dos botões do JOptionPane e solicita o nome do salvamento ao usuário, salvando-o
             UIManager.put("OptionPane.cancelButtonText", "Cancelar");
             UIManager.put("OptionPane.okButtonText", "OK");
             var nomeSave = JOptionPane.showInputDialog(this, "Nome do salvamento: ", "Salvar no histórico", JOptionPane.QUESTION_MESSAGE, null, null, DISPOSE_ON_CLOSE);
             boolean nomeDisp = true;
+            
+            // Verifica se o usuário cancelou o salvamento
             if (nomeSave == null) {
-
                 throw new Exception("Salvamento cancelado!");
-
             } else {
+                // Verifica se o nome é nulo ou contém o caractere '|'
                 if (nomeSave.toString().equals("")) {
                     throw new Exception("O nome não pode ser nulo!");
                 } else if (nomeSave.toString().contains("|")) {
@@ -2380,13 +2401,13 @@ public class Calculadora extends javax.swing.JFrame {
                     FileReader reader = new FileReader(historicoHide);
                     BufferedReader bf = new BufferedReader(reader);
                     String linhaHide = bf.readLine();
-
+                    
+                    // Verifica se o nome já está em uso
                     while (linhaHide != null) {
                         StringTokenizer tk = new StringTokenizer(linhaHide, "|");
                         String parametros[] = new String[tk.countTokens()];
                         for (int i = 0; i < tk.countTokens(); i++) {;
                             parametros[i] = tk.nextToken();
-
                         }
                         if (nomeSave.toString().equals(parametros[0])) {
                             nomeDisp = false;
@@ -2396,6 +2417,7 @@ public class Calculadora extends javax.swing.JFrame {
                         linhaHide = bf.readLine();
                     }
 
+                    // Se o nome estiver disponível, continua o processo de salvamento
                     if (nomeDisp == true) {
                         String nome = nomeSave.toString();
                         String tipoShow = null;
@@ -2412,6 +2434,7 @@ public class Calculadora extends javax.swing.JFrame {
                             operacoesHide = "#";
                         }
 
+                        // Verifica o tipo de dados selecionado na janela principal
                         switch (jTabbedPane1.getSelectedIndex()) {
                             case 1:
                                 tipoShow = "Arquivo aberto";
@@ -2446,21 +2469,22 @@ public class Calculadora extends javax.swing.JFrame {
                                 break;
                         }
 
+                        // Cria a linha de parâmetros para o arquivo hide
                         String linha = "";
                         String[] parametrosHide = {nome, tipoHide, operacoesHide, String.valueOf(colunasArquivo), String.valueOf(freq), comboIndex};
                         for (int i = 0; i < parametrosHide.length; i++) {
-
                             linha += parametrosHide[i];
-
                             if (i < parametrosHide.length - 1) {
                                 linha += "|";
                             }
                         }
                         writerHide.write(linha + "\n");
 
+                        // Se for um arquivo aberto, escreve o caminho do arquivo hide
                         if (jTabbedPane1.getSelectedIndex() == 1) {
                             writerHide.write(previewHide + "\n");
                         } else {
+                            // Se forem dados digitados, escreve cada linha da tabela jTable2 no arquivo hide
                             int n = ((DefaultTableModel) jTable2.getModel()).getRowCount();
                             int c = ((DefaultTableModel) jTable2.getModel()).getColumnCount();
                             for (int i = 0; i < n; i++) {
@@ -2474,17 +2498,17 @@ public class Calculadora extends javax.swing.JFrame {
                                     if (i == n - 1 && j == c - 1) {
                                         linha += "&zz";
                                     }
-
                                 }
-
                                 writerHide.write(linha + "\n");
                             }
                         }
 
+                        // Obtém a data e hora atuais
                         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
                         LocalDateTime atual = LocalDateTime.now();
                         String data = dtf.format(atual);
 
+                        // Cria a linha de parâmetros para o arquivo show
                         linha = "";
                         String[] parametrosShow = {nome, tipoShow, operacoes, previewShow, data};
                         for (int i = 0; i < parametrosShow.length; i++) {
@@ -2494,11 +2518,11 @@ public class Calculadora extends javax.swing.JFrame {
                             }
                         }
                         writerShow.write(linha + "\n");
+                        
+                        // Retorna 1 para indicar sucesso
                         return 1;
                     }
-
                 }
-
             }
 
         } catch (Exception e) {
@@ -2508,6 +2532,7 @@ public class Calculadora extends javax.swing.JFrame {
                     JOptionPane.ERROR_MESSAGE);
         } finally {
             try {
+                // Fecha os escritores de arquivo
                 writerShow.close();
                 writerHide.close();
             } catch (IOException ex) {
@@ -2520,20 +2545,28 @@ public class Calculadora extends javax.swing.JFrame {
     // Exibe, em tabela, as informações armazenadas no arquivo que contém os dados de histórico a serem mostrados
     public void lerHistorico() {
         try {
+            // Cria um FileReader para o arquivo de histórico (show)
             FileReader reader = new FileReader(historicoShow);
             BufferedReader bf = new BufferedReader(reader);
             String linha = bf.readLine();
+            
+            // Lê cada linha do arquivo de histórico
             ((DefaultTableModel) jTable3.getModel()).setRowCount(0);
             ((DefaultTableModel) jTable2.getModel()).setRowCount(0);
 
+            // Lê cada linha do arquivo de histórico
             while (linha != null) {
+                // Divide a linha em tokens usando o caractere "|"
                 StringTokenizer tokens = new StringTokenizer(linha, "|");
                 String row[] = new String[5];
+                
+                // Preenche o array row (linha da tabela) com os tokens
                 for (int i = 0; i < row.length; i++) {
                     row[i] = tokens.nextToken();
                 }
+                
+                // Insere a linha na tabela jTable3 (histórico) e lê a próxima
                 ((DefaultTableModel) jTable3.getModel()).insertRow(0, row);
-
                 linha = bf.readLine();
             }
         } catch (Exception e) {
@@ -2547,22 +2580,27 @@ public class Calculadora extends javax.swing.JFrame {
     // Carrega as informações do arquivo que permanece oculto ao usuário, para o tipo de tabela escolhido
     public void carregarHistorico() {
         try {
-
+            // Verifica se o histórico está vazio
             if (((DefaultTableModel) jTable3.getModel()).getRowCount() == 0) {
                 throw new Exception("O histórico está vazio.");
             }
+            // Obtém a linha selecionada na tabela do histórico
             int row = jTable3.getSelectedRow();
             if (row == -1) {
                 throw new Exception("Nenhum salvamento selecionado.");
             }
 
+            // Cria um FileReader para o arquivo de histórico (hide)
             FileReader reader = new FileReader(historicoHide);
             BufferedReader bf = new BufferedReader(reader);
             String linha = bf.readLine();
 
+            // Obtém o nome do salvamento selecionado
             String nome = (String) jTable3.getValueAt(row, 0);
             StringTokenizer tk = new StringTokenizer(linha, "|");
             String parametros[] = new String[tk.countTokens()];
+            
+            // Procura pelo nome no arquivo de histórico hide e pega seus parâmetros
             while (linha != null) {
                 if (linha.startsWith(nome)) {
                     tk = new StringTokenizer(linha, "|");
@@ -2579,12 +2617,11 @@ public class Calculadora extends javax.swing.JFrame {
                 }
             }
 
+            // Carrega dados conforme o tipo de salvamento (arquivo)
             if (parametros[1].equals("arqv")) {
                 linha = bf.readLine();
                 jTabbedPane1.setSelectedIndex(1);
                 jMenuBar1.setVisible(true);
-                //jTable4.setEnabled(false);
-                //jTable4.setVisible(false);
                 arquivo = new File(linha);
 
                 if (parametros[3].equals("1")) {
@@ -2986,10 +3023,6 @@ public class Calculadora extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // Abre a tela de escolha de arquivo e muda de tela
         limparTela(jCheckBox4, jCheckBox5, jCheckBox6, jCheckBox8, jCheckBox7, jTextArea1, jComboBox1, jTable4, jCheckBox9, jPanel5, jButton6, jCheckBox16, jCheckBox17);
@@ -3076,10 +3109,6 @@ public class Calculadora extends javax.swing.JFrame {
         // Escreve as informações no histórico
         escreverHistorico(operacoes, operacoesHide);
     }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
-
-    }//GEN-LAST:event_jCheckBox3ActionPerformed
 
     private void jSpinner2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner2StateChanged
         // Previne o spinner das linhas de tomar valores negativos
@@ -3214,57 +3243,22 @@ public class Calculadora extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         confirmacaoFechar();
-
     }//GEN-LAST:event_formWindowClosing
 
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_formWindowClosed
-
-    private void jCheckBox8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox8ActionPerformed
-
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
+
         jMenuBar1.setVisible(false);
-
     }//GEN-LAST:event_formWindowOpened
-
-    private void jCheckBox9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox9ActionPerformed
-
-    private void jButton4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseEntered
-
-    }//GEN-LAST:event_jButton4MouseEntered
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         escreverHistorico(operacoes, operacoesHide);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
-    private void jCheckBox7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox7ActionPerformed
-
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         calcular(jCheckBox12, jCheckBox14, jCheckBox10, jCheckBox11, jCheckBox15, jTextArea2, jCheckBox13, jPanel8, jTable2, jTable5, jComboBox2, jCheckBox18, jPanel12, jCheckBox19, jPanel13, jTabbedPane3);
     }//GEN-LAST:event_jButton12ActionPerformed
 
-    private void jCheckBox11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox11ActionPerformed
-
-    private void jCheckBox13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox13ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox13ActionPerformed
-
-    private void jCheckBox15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox15ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox15ActionPerformed
-
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-
         limparHistorico();
         lerHistorico();
     }//GEN-LAST:event_jButton10ActionPerformed
@@ -3289,7 +3283,6 @@ public class Calculadora extends javax.swing.JFrame {
         return 0;
     }
 
-
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         // TODO add your handling code here:
         pagVoltar = ajuda();
@@ -3301,7 +3294,6 @@ public class Calculadora extends javax.swing.JFrame {
         if (pagVoltar != 0) {
             jMenuBar1.setVisible(true);
         }
-
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
@@ -3311,6 +3303,7 @@ public class Calculadora extends javax.swing.JFrame {
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
         pagVoltar = ajuda();
     }//GEN-LAST:event_jButton17ActionPerformed
+    
     int valorAnteriorDados = 3;
     private void jSpinner3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner3StateChanged
         int s3 = (int) jSpinner3.getValue();
@@ -3328,6 +3321,7 @@ public class Calculadora extends javax.swing.JFrame {
             valorAnteriorDados = s3;
         }
     }//GEN-LAST:event_jSpinner3StateChanged
+    
     int valorAnteriorArqv = 3;
     private void jSpinner4StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner4StateChanged
         int s4 = (int) jSpinner4.getValue();
@@ -3345,14 +3339,6 @@ public class Calculadora extends javax.swing.JFrame {
             valorAnteriorArqv = s4;
         }
     }//GEN-LAST:event_jSpinner4StateChanged
-
-    private void jCheckBox16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox16ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox16ActionPerformed
-
-    private void jCheckBox18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox18ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox18ActionPerformed
 
     /**
      * @param args the command line arguments
