@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>C:\Users\jvalb\OneDrive\Documentos (OneDrive)\NetBeansProjects\Calc\dist\Calc.jar</jar>
+  <outfile>C:\Users\jvalb\OneDrive\Documentos (OneDrive)\NetBeansProjects\Calc\dist\CalcuLágrimas.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir>.</chdir>
+  <priority>normal</priority>
+  <downloadUrl></downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest></manifest>
+  <icon>C:\Users\jvalb\OneDrive\Documentos (OneDrive)\NetBeansProjects\Calc\src\calc\img\iconeCalcv20.ico</icon>
+  <singleInstance>
+    <mutexName>CalcuLagrimas</mutexName>
+    <windowTitle>CalcuLágrimas</windowTitle>
+  </singleInstance>
+  <classPath>
+    <mainClass>calc.Calculadora</mainClass>
+    <cp>lib/AbsoluteLayout.jar</cp>
+    <cp>lib/flatlaf-3.2.5.jar</cp>
+    <cp>lib/flatlaf-intellij-themes-3.2.5.jar</cp>
+    <cp>lib/jcommon-1.0.23.jar</cp>
+    <cp>lib/jfreechart-1.0.19.jar</cp>
+    <cp>lib/Calc.jar</cp>
+  </classPath>
+  <jre>
+    <path>%JAVA_HOME%;%PATH%</path>
+    <requiresJdk>false</requiresJdk>
+    <requires64Bit>false</requires64Bit>
+    <minVersion></minVersion>
+    <maxVersion></maxVersion>
+  </jre>
+</launch4jConfig>
