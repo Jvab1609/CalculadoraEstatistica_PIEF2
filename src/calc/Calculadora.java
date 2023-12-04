@@ -212,6 +212,7 @@ public class Calculadora extends javax.swing.JFrame {
         jPopupMenu1.add(jMenuItem2);
 
         jMenuItem5.setText("Salvar no histórico");
+        jMenuItem5.setEnabled(false);
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem5ActionPerformed(evt);
@@ -1368,13 +1369,13 @@ public class Calculadora extends javax.swing.JFrame {
         // Mostra o submenu quando o usuário clica em "Arquivo" no canto superior direito
         jPopupMenu1.show(this, 10, 35);
         // Desabilita a opção de acessar o histórico caso o usuário já esteja nessa tela
-        if (jTabbedPane1.getSelectedIndex() != 3) {
+        if (jTabbedPane1.getSelectedIndex() != 3 && (jButton6.isEnabled() || jButton7.isEnabled())) {
             jMenuItem5.setEnabled(true);
 
         } else {
             jMenuItem5.setEnabled(false);
-
         }
+        
     }//GEN-LAST:event_jMenu1MouseClicked
 
     // Gerencia a criação e atualização da tabela para digitação manual de dados
@@ -1408,6 +1409,7 @@ public class Calculadora extends javax.swing.JFrame {
         // Habilita ou desabilita as operações caso a tabela esteja vazia ou não
         if (numLinha != 0 && numCol != 0) {
             jButton7.setEnabled(true);
+            jMenuItem5.setEnabled(true);
             jButton12.setEnabled(true);
             jCheckBox10.setEnabled(true);
             jCheckBox11.setEnabled(true);
@@ -1419,6 +1421,7 @@ public class Calculadora extends javax.swing.JFrame {
 
         } else {
             jButton7.setEnabled(false);
+            jMenuItem5.setEnabled(false);
             jButton12.setEnabled(false);
             jCheckBox10.setEnabled(false);
             jCheckBox11.setEnabled(false);
@@ -2354,6 +2357,7 @@ public class Calculadora extends javax.swing.JFrame {
             jButton11.setEnabled(true);
             jComboBox1.setEnabled(true);
             jButton6.setEnabled(true);
+            jMenuItem5.setEnabled(false);
             itensCombo(jComboBox1, jTable1, jCheckBox7);
             jCheckBox4.setEnabled(true);
             jCheckBox5.setEnabled(true);
@@ -3119,6 +3123,12 @@ public class Calculadora extends javax.swing.JFrame {
     private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
         // Abre o submenu para abrir o histórico
         jPopupMenu2.show(this, 10, 35);
+        if (jTabbedPane1.getSelectedIndex() != 3) {
+            jMenuItem4.setEnabled(true);
+
+        } else {
+            jMenuItem4.setEnabled(false);
+        }
     }//GEN-LAST:event_jMenu2MouseClicked
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
@@ -3204,72 +3214,93 @@ public class Calculadora extends javax.swing.JFrame {
         // Calcula as operações para input de arquivo
         calcular(jCheckBox4, jCheckBox5, jCheckBox6, jCheckBox8, jCheckBox7, jTextArea1, jCheckBox9, jPanel5, jTable1, jTable4, jComboBox1, jCheckBox16, jPanel10, jCheckBox17, jPanel11, jTabbedPane2);
     }//GEN-LAST:event_jButton11ActionPerformed
-
+    
+    // Verifica se há alterações não salvas antes de mudar de tela
     public int confirmacaoMudar(int index) {
+        // Configuração dos botões
         UIManager.put("OptionPane.noButtonText", "Não");
         UIManager.put("OptionPane.yesButtonText", "Sim");
         UIManager.put("OptionPane.cancelButtonText", "Cancelar");
+        
+        // Verifica se a aba atual não é o início nem o histórico
         if (jTabbedPane1.getSelectedIndex() != 0 && jTabbedPane1.getSelectedIndex() != 3) {
+            // Verifica se os botões de salvar estão habilitados (ou seja, se houve carregamento de dados)
             if (jButton6.isEnabled() || jButton7.isEnabled()) {
                 int dialogButton = JOptionPane.YES_NO_CANCEL_OPTION;
                 int dialogResult = JOptionPane.showConfirmDialog(this, "Deseja salvar antes?", "Salvar antes de trocar?", dialogButton);
+                
+                // Se o usuário escolher "Sim", tenta salvar
                 if (dialogResult == JOptionPane.YES_OPTION) {
-                    //System.exit(1);
+                    // Se o salvamento for bem-sucedido, troca de aba
                     if (escreverHistorico(operacoes, operacoesHide) == 1) {
                         jTabbedPane1.setSelectedIndex(index);
                         jButton6.setEnabled(false);
                         jButton7.setEnabled(false);
+                        jMenuItem5.setEnabled(false);
                         return 1;
                     } else {
+                        // Se ocorrer algum erro ao salvar ou o usuário cancelar, mantém a janela aberta
                         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                         jMenuBar1.setVisible(true);
                     }
                 } else if (dialogResult == JOptionPane.NO_OPTION) {
+                    // Se o usuário escolher "Não", troca de aba sem salvar
                     jTabbedPane1.setSelectedIndex(index);
                     jButton6.setEnabled(false);
                     jButton7.setEnabled(false);
+                    jMenuItem5.setEnabled(false);
                     return 1;
                 }
             } else {
+                 // Se os botões de salvar não estiverem habilitados, troca de aba sem perguntar
                 jTabbedPane1.setSelectedIndex(index);
                 jButton6.setEnabled(false);
                 jButton7.setEnabled(false);
+                jMenuItem5.setEnabled(false);
                 return 1;
             }
         } else if (jTabbedPane1.getSelectedIndex() == 3) {
+            // Se a aba atual for o histórico, troca de tela sem perguntar
             jTabbedPane1.setSelectedIndex(index);
             return 1;
         }
         return 0;
-
     }
 
     public void confirmacaoFechar() {
-        // usar jTabbedPane1.getSelectedIndex(); para ver se ele está nas janelas de digitar dados (1 e 2) com if
-        // se sim, executar esse método
-        // se o usuário escolher salvar, chamar o método escreverHistorico(operacoes);
+        // Configuração dos botões de diálogo
         UIManager.put("OptionPane.noButtonText", "Não");
         UIManager.put("OptionPane.yesButtonText", "Sim");
         UIManager.put("OptionPane.cancelButtonText", "Cancelar");
+        
+        // Verifica se a aba atual não é o início nem o histórico e se os botões de salvar estão habilitados
         if (jTabbedPane1.getSelectedIndex() != 0 && jTabbedPane1.getSelectedIndex() != 3 && (jButton6.isEnabled() || jButton7.isEnabled())) {
             int dialogButton = JOptionPane.YES_NO_CANCEL_OPTION;
             int dialogResult = JOptionPane.showConfirmDialog(this, "Deseja salvar antes de fechar a janela?", "Salvar antes de fechar?", dialogButton);
+            
+            // Se o usuário escolher "Sim", tenta salvar
             if (dialogResult == JOptionPane.YES_OPTION) {
-                //System.exit(1);
+                
+                // Se o salvamento for bem-sucedido, fecha a janela
                 if (escreverHistorico(operacoes, operacoesHide) == 1) {
                     setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 } else {
+                     // Se ocorrer algum erro ao salvar, mantém a janela aberta
                     setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
                 }
 
             } else if (dialogResult == JOptionPane.NO_OPTION) {
+                 // Se o usuário escolher "Não", fecha a janela
                 setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             } else if (dialogResult == JOptionPane.CANCEL_OPTION) {
+                // Se o usuário escolher "Cancelar", mantém a janela aberta
                 setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
             }
         } else {
+            // Se a aba atual for o início ou o histórico, ou se os botões de salvar não estiverem habilitados
             int dialogButton = JOptionPane.YES_NO_OPTION;
             int dialogResult = JOptionPane.showConfirmDialog(this, "Deseja fechar a janela?", "Fechar janela?", dialogButton);
+            // Se o usuário escolher "Sim", fecha a janela; se não, mantém aberta
             if (dialogResult == JOptionPane.YES_OPTION) {
                 setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             } else {
@@ -3281,23 +3312,27 @@ public class Calculadora extends javax.swing.JFrame {
 
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // Pede confirmação antes de fechar
         confirmacaoFechar();
     }//GEN-LAST:event_formWindowClosing
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-
+        // Oculta, por padrão a JMenuBar
         jMenuBar1.setVisible(false);
     }//GEN-LAST:event_formWindowOpened
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // Salva os dados atuais no histórico
         escreverHistorico(operacoes, operacoesHide);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        // Calcula as operações para dados digitados
         calcular(jCheckBox12, jCheckBox14, jCheckBox10, jCheckBox11, jCheckBox15, jTextArea2, jCheckBox13, jPanel8, jTable2, jTable5, jComboBox2, jCheckBox18, jPanel12, jCheckBox19, jPanel13, jTabbedPane3);
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // Chama a função de limpar o histórico e o atualiza
         limparHistorico();
         lerHistorico();
     }//GEN-LAST:event_jButton10ActionPerformed
@@ -3307,6 +3342,7 @@ public class Calculadora extends javax.swing.JFrame {
         carregarHistorico();
     }//GEN-LAST:event_jButton8ActionPerformed
 
+    // Muda para a página de ajuda, armazenando o índice da aba anterior para poder voltar
     public int ajuda() {
         try {
             int pagAtual = jTabbedPane1.getSelectedIndex();
@@ -3323,12 +3359,12 @@ public class Calculadora extends javax.swing.JFrame {
     }
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        // TODO add your handling code here:
+        // Armazena o índice do início
         pagVoltar = ajuda();
-
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+        // Usa o índice armazenado para voltar
         jTabbedPane1.setSelectedIndex(pagVoltar);
         if (pagVoltar != 0) {
             jMenuBar1.setVisible(true);
@@ -3336,13 +3372,20 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        // Armazena o índice da tela de arquivo
         pagVoltar = ajuda();
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+        // Armazena o índice da tela de dados digitados
         pagVoltar = ajuda();
     }//GEN-LAST:event_jButton17ActionPerformed
     
+    
+    // Lidam com a mudança de casas decimais na visualização dos dados
+    // Armazenam os valores anteriores de casas e, a partir do movimento dos spinners, adicionam ou retiram 0s
+  
+    // Define o número inicial de casas como 3 para dados digitados
     int valorAnteriorDados = 3;
     private void jSpinner3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner3StateChanged
         int s3 = (int) jSpinner3.getValue();
@@ -3361,6 +3404,7 @@ public class Calculadora extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jSpinner3StateChanged
     
+    // Define o número inicial de casas  como 3 para arquivo
     int valorAnteriorArqv = 3;
     private void jSpinner4StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner4StateChanged
         int s4 = (int) jSpinner4.getValue();

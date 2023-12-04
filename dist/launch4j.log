@@ -1,0 +1,28 @@
+
+
+Version:	3.50
+CmdLine:	C:\Users\jvalb\OneDrive\Documentos (OneDrive)\NetBeansProjects\Calc\dist\CalcuLágrimas.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Create mutex:	CalcuLagrimas
+Working dir:	C:\Users\jvalb\OneDrive\Documentos (OneDrive)\NetBeansProjects\Calc\dist\.
+Requires JDK:	No
+Requires 64-Bit: No
+Java min ver:	
+Java max ver:	
+Substitute:	JAVA_HOME = 
+Substitute:	PATH = C:\Program Files\Eclipse Adoptium\jdk-21.0.1.12-hotspot\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\IVI Foundation\VISA\WinNT\Bin;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\WINDOWS\System32\OpenSSH\;C:\Users\jvalb\AppData\Local\Programs\Python\Python36-32;C:\Program Files\nodejs\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\dotnet\;C:\Users\jvalb\AppData\Local\Microsoft\WindowsApps;C:\Users\jvalb\AppData\Local\Programs\Python\Python36-32;C:\Users\jvalb\AppData\Local\Programs\Python\Python36-32\Scripts;C:\Users\jvalb\AppData\Roaming\npm;C:\Users\jvalb\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\jvalb\AppData\Local\GitHubDesktop\bin;C:\Program Files\Eclipse Adoptium\jdk-21.0.1.12-hotspot\bin
+JRE paths:	;C:\Program Files\Eclipse Adoptium\jdk-21.0.1.12-hotspot\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\IVI Foundation\VISA\WinNT\Bin;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\WINDOWS\System32\OpenSSH\;C:\Users\jvalb\AppData\Local\Programs\Python\Python36-32;C:\Program Files\nodejs\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\dotnet\;C:\Users\jvalb\AppData\Local\Microsoft\WindowsApps;C:\Users\jvalb\AppData\Local\Programs\Python\Python36-32;C:\Users\jvalb\AppData\Local\Programs\Python\Python36-32\Scripts;C:\Users\jvalb\AppData\Roaming\npm;C:\Users\jvalb\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\jvalb\AppData\Local\GitHubDesktop\bin;C:\Program Files\Eclipse Adoptium\jdk-21.0.1.12-hotspot\bin
+Check launcher:	C:\Program Files\Eclipse Adoptium\jdk-21.0.1.12-hotspot\bin\javaw.exe (OK)
+Version string: 1.021.000_001 / 64-Bit (OK)
+Main class:	calc.Calculadora
+Add classpath:	lib\AbsoluteLayout.jar
+Add classpath:	lib\flatlaf-3.2.5.jar
+Add classpath:	lib\flatlaf-intellij-themes-3.2.5.jar
+Add classpath:	lib\jcommon-1.0.23.jar
+Add classpath:	lib\jfreechart-1.0.19.jar
+Add classpath:	lib\Calc.jar
+Launcher:	C:\Program Files\Eclipse Adoptium\jdk-21.0.1.12-hotspot\bin\javaw.exe
+Launcher args:	-classpath "C:\Users\jvalb\OneDrive\Documentos (OneDrive)\NetBeansProjects\Calc\dist\CalcuLágrimas.exe;lib\AbsoluteLayout.jar;lib\flatlaf-3.2.5.jar;lib\flatlaf-intellij-themes-3.2.5.jar;lib\jcommon-1.0.23.jar;lib\jfreechart-1.0.19.jar;lib\Calc.jar" calc.Calculadora
+Args length:	265/32768 chars
+Exit code:	0
