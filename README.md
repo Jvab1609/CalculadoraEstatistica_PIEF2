@@ -1,5 +1,5 @@
 # CalculadoraEstatistica_PIEF2
-![image](https://github.com/Jvab1609/CalculadoraEstatistica_PIEF2/assets/39803932/07da151e-87b3-4045-a374-7eb267467f9f)
+![image](https://github.com/Jvab1609/CalculadoraEstatistica_PIEF2/assets/39803932/7aae7886-2470-4abc-a7eb-c447525131ad)
 
 Seja bem-vindo ao repositório da CalcuLágrimas, a calculadora estatística desenvolvida para o PIEF (Projeto Integrado de Engenharia da FACAMP) do 2º semestre de Engenharia da Computação.
 
